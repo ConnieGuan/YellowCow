@@ -1,10 +1,12 @@
 # Idea 1 - 
 Airplane arrival time clusters for Uber drivers
 # Idea 2 - 
-graffiti at certain locations
+    graffiti at certain locations. Users are able to see the tag or comment 
+    at certain location withing certain radius that other user has commented or 
+    tagged.
 # Idea 3 - 
   Restaurant recommendation based on weather and time of day
-# Idea 4 - ShortcutShare (Tony)
+# Idea 4 - ShortcutShare
     One of the most annoying thing at UCSD is how at certain times of the day, 
     certain path on campus is very crowded. If you want to get to classes or
     certain places quickly, you often wonder if there are alternative route
