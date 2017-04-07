@@ -1,7 +1,7 @@
 # Idea 1 - 
 Airplane arrival time clusters for Uber drivers
 # Idea 2 - 
-
+graffiti at certain locations
 # Idea 3 - 
   Restaurant recommendation based on weather and time of day
 # Idea 4 - ShortcutShare (Tony)
