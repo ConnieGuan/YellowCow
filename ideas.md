@@ -27,3 +27,8 @@ Airplane arrival time clusters for Uber drivers
   visited in one convenient map. You can even add your own and share it with 
   your friends! Wanderlust allows users to see the sights at their current 
   location or future vacation spot that you can't find anywhere else!
+
+# Idea 7 - THE ROCK PEDOMETER
+  Working out is easier than ever with Dwayne "The Rock" Johnson in your pocket!
+  For every 100 meters you run, you'll hear the Rock's motivational voice 
+  telling you that you're doing a good job.
