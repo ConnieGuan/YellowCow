@@ -1,13 +1,16 @@
 # Idea 1 - 
-Airplane arrival time clusters for Uber drivers
+    Airplane arrival time clusters for Uber drivers
+    Storyboard: (Connie)
 
 # Idea 2 - 
     graffiti at certain locations. Users are able to see the tag or comment 
     at certain location within a certain radius that other users have 
     commented or tagged.
+    Storyboard: (Connie)
 
 # Idea 3 - 
-  Restaurant recommendation based on weather and time of day
+    Restaurant recommendation based on weather and time of day
+    Storyboard: (Chang)
 
 # Idea 4 - ShortcutShare
     One of the most annoying things at UCSD is how at certain times of the day, 
@@ -17,18 +20,20 @@ Airplane arrival time clusters for Uber drivers
     ShortcutShare allows users to share the shortcut route on campus that
     most people are not aware of. This will allows users to have fun and explore 
     the campus at the same time.
+    Storyboard: (Tony)
 
 # Idea 5 - 
-  GeoCashing with location as area to look for prize
+    GeoCashing with location as area to look for prize
+    Storyboard: (Jorenne)
 
 # Idea 6 - Wanderlust
-  Do you ever see cool places on Instagram and think "I want to see that in
-  person!" With this app, users can see all the cool places their friends have
-  visited in one convenient map. You can even add your own and share it with 
-  your friends! Wanderlust allows users to see the sights at their current 
-  location or future vacation spot that you can't find anywhere else!
+    Do you ever see cool places on Instagram and think "I want to see that in
+    person!" With this app, users can see all the cool places their friends have
+    visited in one convenient map. You can even add your own and share it with 
+    your friends! Wanderlust allows users to see the sights at their current 
+    location or future vacation spot that you can't find anywhere else!
 
 # Idea 7 - THE ROCK PEDOMETER
-  Working out is easier than ever with Dwayne "The Rock" Johnson in your pocket!
-  For every 100 meters you run, you'll hear the Rock's motivational voice 
-  telling you that you're doing a good job.
+    Working out is easier than ever with Dwayne "The Rock" Johnson in your pocket!
+    For every 100 meters you run, you'll hear the Rock's motivational voice 
+    telling you that you're doing a good job.
