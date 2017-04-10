@@ -1,4 +1,4 @@
-Connie Guan
+Connie Guan\n
 #1
 ![alt tag](images/graffitiConnie.JPG)
 #2
