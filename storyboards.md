@@ -5,3 +5,7 @@ Connie Guan
 Tony Salim
 ![alt tag](images/ShortcutShareTony.png)
 ---
+Jorenne Flores
+![alt tag](images/WanderlustJorenne.png)
+![alt tag](images/WeatherJorenne.png)
+---
