@@ -11,6 +11,8 @@ Tony Salim
 ![alt tag](images/ShortcutShareTony.png)
 #4
 ---
+![alt tag](images/SideQuest.png)
+---
 Jorenne Flores
 ---
 #5
