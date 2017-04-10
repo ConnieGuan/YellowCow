@@ -10,6 +10,6 @@ Jorenne Flores
 ![alt tag](images/WeatherJorenne.png)
 ---
 Chang Gwoun
-![alt tag](images/ballUp.jpg)
+![alt tag](images/ballup.jpg)
 ![alt tag](images/pictureMe.jpg)
 ---
