@@ -1,8 +1,8 @@
-# Title: 
+# Title: Pintura
 
 
 Summary:
-//TODO (Connie?)
+Our app is a location based social network sharing platform where users can anonymously create and share digital graffiti. 
 ---------
 
 
@@ -21,11 +21,23 @@ Feedback:
 
 
 Features:
-- Upvoting system in which graffiti with more upvotes can be seen from longer distances than graffiti with less upvotes.
-//TODO add more!
+- (main) Virtually tag locations, and places are marked on the map
+- (main) Interactive map allows user to browse for nearby graffiti
+- (main) Upvoting system in which graffiti with more upvotes can be seen from longer distances than graffiti with less upvotes.
+Stretch Goals:
+- Spam prevention system that restrict disruptive users to abuse the comments.
+- A feature to report comments that are inappropriate.
+- Social media integrations, ex: Twitter/Facebook that allows user to tag with their social media profile.
+- Filtering system that allows user to only see messages with specific hashtag.
+- Options to delete or remove own graffiti.
+- Automatic deletion of expired graffiti to prevent overcrowding.
+- Alert/Reminder system that notify user for a new graffiti that appears nearby.
+- Comment system/emoji (like facebook) that allows users to reply to a graffiti.
+- (Optional) Features to post with media files such as picture, audio or video.
+- (Extra) Virtual/Augmented Reality mode that allows users to view graffiti in VR/AR.
 ---------
 
 
-Group Tasks:
-//TODO
+Programming Tasks:
+At the beginning of the week we will meet to discuss our goals/tasks for that week. Then we assign people to those tasks. We will also use google sheet to keep track of our weekly tasks and assign the tasks accordingly. We plan to further split up our group into pairs for a specific coding part so that no individual person gets stuck and everyone is accounted for. This way the division of work can be fair. 
 ---------
