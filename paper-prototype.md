@@ -10,5 +10,5 @@ Description:
 
 Chang Gwoun
 ---
-![alt tag](images/paperProto_Chang.jpg)
+![alt tag](images/paperProto_Chang.jpeg)
 
