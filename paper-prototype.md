@@ -6,10 +6,17 @@ Connie Guan
 Tony Salim
 ---
 ![alt tag](images/pptype_tony.jpg)
-Description:
-<<<<<<< HEAD
 
 Chang Gwoun
 ---
 ![alt tag](images/paperProto_Chang.jpeg)
 
+Jorenne Flores
+---
+![alt tag](images/prototype_jorenne1.jpg)
+
+![alt tag](images/prototype_jorenne2.jpg)
+
+![alt tag](images/prototype_jorenne3.jpg)
+
+![alt tag](images/prototype_jorenne4.jpg)
