@@ -9,4 +9,7 @@ Tony Salim
 ![alt tag](images/pptype_tony.jpg)
 Description:
 
-
+Jorenne Flores
+---
+![alt tag](images/prototype_jorenne1.jpg)
+Description:
