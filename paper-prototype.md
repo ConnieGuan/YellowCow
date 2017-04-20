@@ -7,6 +7,14 @@ Tony Salim
 ---
 ![alt tag](images/pptype_tony.jpg)
 
+    Description:
+    In this pape prototype, I sketched the interfaces and usage flow for the app. The screens are home screen, canvas screen, grid view of graffiti, and graffiti entry view. 
+    The home screen is a map view of the app, where markers for nearby graffiti post are visible. Each entity has upvode and downvote that allows user to vote the graffiti. 
+    Below the homscreen is a button to make a graffiti at current location. This brings to screen 2, where user can either take a picture or make a drawing to post the graffiti.
+    From the Hamburger menu, user can access other relevant screens. Screen 3, grid view, allows user to browse listing of nearby graffiti. User can click any of the items to view
+    the details of the graffiti and comment on it and see others comment. 
+
+
 Chang Gwoun
 ---
 ![alt tag](images/paperProto_Chang.jpeg)
