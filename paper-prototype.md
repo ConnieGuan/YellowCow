@@ -2,6 +2,18 @@ Connie Guan
 ---
 ![alt tag](images/prototypesConnie1.JPG)
 ![alt tag](images/prototypesConnie2.JPG)
+   Description:
+   Here are paper prototypes of two different interfaces. The first one is based off
+   of a homescreen where users can see a map of the various graffiti's around them.
+   From there they are able to either post a graffiti which takes them to a new
+   screen where they can upload an image, draw on it, and give it a title. The other
+   option is to select view graffiti which takes them to a new screen where nearby
+   graffiti's are able to be viewed in a long scroll format. 
+   The second interface begins without the map homescreen. Users are taken
+   directly to the feed where they can view nearby graffiti. From the top menu 
+   they are able to select the option to create a graffiti by uploading an image
+   and drawing on it. This top menu also allows navigation to a map view
+   where the user can see pins representing nearby graffiti. 
 
 Tony Salim
 ---
