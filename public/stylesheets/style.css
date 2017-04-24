@@ -1,0 +1,24 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+#map {
+  height: 100%;
+}
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+  background: #e93434;
+  color: #ffffff;
+}
+img.popup {
+  max-width: 100%;
+  max-height: 100%;
+}
+.square {
+  height: 75px;
+  width: 75px;
+}
