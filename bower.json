@@ -1,0 +1,24 @@
+{
+  "name": "Pintura",
+  "description": "An app that allows user to do grafitty virtually without damaging public property",
+  "main": "",
+  "authors": [
+    "Tony Lim <atomictheorist@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mobile",
+    "app"
+  ],
+  "homepage": "https://github.com/ConnieGuan/YellowCow",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
