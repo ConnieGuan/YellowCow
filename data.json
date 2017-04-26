@@ -12,8 +12,26 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [
-						"32.867348",
-						"-117.2345588"
+						"-117.2355588",
+						"32.867848"
+					]
+				}
+			}
+		},
+		{
+			"title": "Office",
+			"comment": "Office post",
+			"geo": {
+				"type": "Feature",
+				"properties": {
+					"name": "Office",
+					"popupContent": "Office post"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						"-117.23156",
+						"32.8673151"
 					]
 				}
 			}

@@ -3,46 +3,45 @@
  */
 
 var ucsd_coor = [32.88044, -117.23758];
+console.log(data); /** Ask TA how to get this data rendered from hbs **/
 
-var map = L.map('map',{
-    center: ucsd_coor,     // at UCSD
-    zoom: 20
-});
+var map = L.map('map', {
+    doubleClickZoom: false}
+).locate({setView: true, maxZoom: 16});
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 let marker = L.marker(ucsd_coor).addTo(map);
-var polygon = L.polygon([
-    [32.882, -0.08],
-    [32.822, -0.06],
-    [32.892, -0.047]
-]).addTo(map);
+// var polygon = L.polygon([
+//     [32.882, -0.08],
+//     [32.822, -0.06],
+//     [32.892, -0.047]
+// ]).addTo(map);
+//
+// var polygon = L.polygon([
+//     [32.88038,-117.23632],
+//     [32.88070, -117.23685],
+//     [32.88092, -117.23626]
+// ]).addTo(map);
 
-var polygon = L.polygon([
-    [32.88038,-117.23632],
-    [32.88070, -117.23685],
-    [32.88092, -117.23626]
-]).addTo(map);
+// var circle = L.circle(ucsd_coor, {
+//     color: 'red',
+//     fillColor: '#f03',
+//     fillOpacity: 0.5,
+//     radius: 70
+// }).addTo(map);
 
-var circle = L.circle(ucsd_coor, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 70
-}).addTo(map);
+// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+// circle.bindPopup("I am a circle.");
+// polygon.bindPopup("I am a polygon.");
 
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
+// var popup = L.popup()
+//     .setLatLng([32.88070, -117.23685])
+//     .setContent("I am a standalone popup.")
+//     .openOn(map);
 
-var popup = L.popup()
-    .setLatLng([32.88070, -117.23685])
-    .setContent("I am a standalone popup.")
-    .openOn(map);
-
-var popup = L.popup();
 
 var LeafIcon = L.Icon.extend({
     options: {
@@ -80,16 +79,15 @@ var customOptions = {
     'className' : 'custom'
 };
 
-function onMapClick(e) {
-    console.log('adasdas');
-    console.log(customPopup.html());
-    L.marker([e.latlng.lat, e.latlng.lng], {icon: greenIcon}).bindPopup(customPopup.html(), customOptions)
-        .addTo(map);
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-}
-
-map.on('click', onMapClick);
+// function onMapClick(e) {
+//     console.log('adasdas');
+//     console.log(customPopup.html());
+//     L.marker([e.latlng.lat, e.latlng.lng], {icon: greenIcon}).bindPopup(customPopup.html(), customOptions)
+//         .addTo(map);
+//     popup
+//         .setLatLng(e.latlng)
+//         .setContent("You clicked the map at " + e.latlng.toString())
+//         .openOn(map);
+// }
+// map.on('click', onMapClick);
 

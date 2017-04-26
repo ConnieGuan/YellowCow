@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var hbs = require('hbs');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -27,6 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
+hbs.registerHelper('json', function(context) {
+    return JSON.stringify(context);
+});
 
 app.use('/', login);
 app.use('/login', login);

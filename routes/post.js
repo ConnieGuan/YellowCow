@@ -36,7 +36,7 @@ router.post('/submit', function (req, res, next) {
             },
             "geometry": {
                 "type": "Point",
-                "coordinates" : [lat,lng]
+                "coordinates" : [lng,lat]
             }
         }
     });

@@ -1,5 +1,18 @@
 <h1>This is Home Page</h1>
+
 <p>TODO: add sample format of list of nearby graffiti</p>
+{{#with data}}
+    <div class="container">
+            {{#each features}}
+                <div class="post row">
+                    <p>Title: {{ title }}</p>
+                    <p>Comment: {{ comment }}</p>
+                    <p>Location: {{ geo.geometry.coordinates }} </p>
+                    <p>Graffiti Preview: (TODO)</p>
+                </div>
+            {{/each}}
+    </div>
+{{/with}}
 
 <a href="/post"><button class="btn btn-primary"> Post Graffiti </button></a>
 <a href="/map"><button class="btn">Go to Map</button></a>
