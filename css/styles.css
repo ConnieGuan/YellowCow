@@ -1,5 +1,17 @@
 body {
+	text-align: center;
+	font-family: Helvetica;
+}
 
+
+dl {
+	display: block;
+	margin: auto;
+	width: 50%;
+}
+
+.pic {
+	width: 100%;
 }
 
 #map {
