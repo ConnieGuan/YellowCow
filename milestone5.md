@@ -13,7 +13,10 @@ Added a photopicker
 ---
 
 Jorenne:
-//TODO add it here!
+- Changed homescreen to display hardcoded list view of graffiti instead of map view
+- Hardcoded voting buttons on homescreen
+- Linked graffiti to hardcoded map view
+- Edited map to only display current location and graffiti location
 
 ---
 
@@ -24,12 +27,16 @@ Chang:
 
 # Screenshots 
 
-![alt tag](images/home-page.JPG)
-Description: Our home page. It has a list view of nearby graffiti's with
-an option to view the map location of that image. There is also a link to
-a page where users can create and upload their own graffitis. 
+and draw on it.
+![alt tag](images/milestone5_screenshot1.png)
 
+Description: Users can view images of graffiti and click on the link to view its location on the map. They can also draw their own graffiti when they click on the designated link. We also plan to implement the voting functionality, but currently it does not respond.
+
+
+![alt tag](images/milestone5_screenshot2.png)
+
+Description: This screenshot shows a map with the graffiti's location centered. Users can interact with the map and also view their current location.
 
 ![alt tag](images/post-page.JPG)
-Description: Our "mae a post" page. Here users are able to upload an image
-and draw on it.
+Description: Our "make a post" page. Here users are able to upload an image
+
