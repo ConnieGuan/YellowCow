@@ -11,7 +11,10 @@ Connie:
 ---
 
 Jorenne:
-//TODO add it here!
+- Changed homescreen to display hardcoded list view of graffiti instead of map view
+- Hardcoded voting buttons on homescreen
+- Linked graffiti to hardcoded map view
+- Edited map to only display current location and graffiti location
 
 ---
 
