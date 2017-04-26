@@ -6,6 +6,8 @@ var ucsd_coor = [32.88044, -117.23758];
 console.log(data); /** Ask TA how to get this data rendered from hbs **/
 
 var map = L.map('map', {
+        center: ucsd_coor,  /** just in case gps does not work */
+        zoom: 20,
     doubleClickZoom: false}
 ).locate({setView: true, maxZoom: 16});
 
