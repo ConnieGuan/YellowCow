@@ -7,4 +7,4 @@ A repo for Yellow Cow COGS 121 Group
 
 
 # deployed to
-http://pintura.herokuapp.com/
+https://pintura.herokuapp.com/
