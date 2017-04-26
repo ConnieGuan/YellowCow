@@ -11,15 +11,42 @@
                 this index.html is for prototyping front-end,
                 server index is in vimap.hbs.hbs which uses handlebars template
     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
     <!-- map in map.html <div id="map" style="height: 500px; width: auto;"></div>-->
+
+    <div class="navbar navbar-default" role="navigation">
+       <div class="container">
+         <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavBar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+       </div>
+       <div class="collapse navbar-collapse" id="myNavBar">
+         <ul class="nav navbar-nav">
+           <li class="active"><a href="#">Pintura Catalog</a></li>
+           <li><a href="map.html">Map</a></li>
+           <li><a href="posts.html">Make A Post!</a></li>
+           <li><a href="#">Help</a></li>
+           <li><a href="#">Log Out</a></li>
+         </ul>
+       </div>
+     </div>
+    </div>
     
     <h1>Pintura</h1>
 
@@ -42,11 +69,6 @@
       <br>
       <br>
     </dl>
-
-
-    <div class="button">
-      <a href="posts.html"> Add Graffiti!</a>
-    </div>
 
 </body>
 

@@ -21,7 +21,9 @@ Jorenne:
 ---
 
 Chang:
-//TODO add it here!
+- Found tutorial to draw on canvas
+- Linked up all html files through a navbar
+- Added code to make pages mobile friendly
 
 ---
 
