@@ -4,7 +4,8 @@ var data = require('../data.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('home', { title: 'Home' });
+    console.log('afsdfs dsf sdf sdf asdf');
+    res.render('home', { title: 'Home', 'data': data });
 });
 
 module.exports = router;

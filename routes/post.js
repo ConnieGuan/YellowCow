@@ -8,11 +8,22 @@ router.get('/', function(req, res, next) {
     res.render('post', { title: 'Post Graffiti' });
 });
 
-router.get('/submit', function (req, res, next) {
+router.get('/test', function (req, res, next) {
+    res.redirect('/home');
+});
 
-    var title = req.query.title;
-    var comment = req.query.comment;
-    var latlng = req.query.latlng;
+router.post('/submit', function (req, res, next) {
+
+    var title = req.body.title;
+    var comment = req.body.comment;
+    var lat = req.body.lat;
+    var lng = req.body.lng;
+
+    console.log('inside submit');
+    console.log('title: '  + title);
+    console.log('comment: ' + comment);
+    console.log('lat:  ' + lat);
+    console.log('lng:  ' + lng);
 
     data.features.push( {
         "title": title,
@@ -25,17 +36,19 @@ router.get('/submit', function (req, res, next) {
             },
             "geometry": {
                 "type": "Point",
-                "coordinates" : latlng
+                "coordinates" : [lng,lat]
             }
         }
     });
 
-    fs.writeFile('../data.json', JSON.stringify(data, null, '\t'), function (err) {
+    console.log(data);
+
+    fs.writeFile('data.json', JSON.stringify(data, null, '\t'), function (err) {
         if (err) throw err;
         console.log('New graffiti is saved');
     });
 
-    res.redirect('Home');
+    res.redirect('/home');
 
 });
 

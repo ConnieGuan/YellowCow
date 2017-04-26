@@ -5,8 +5,65 @@
 </div>
 
 
-<script src="javascripts/map.js"> </script>
-
 <script>
-</script>
+    var data = {{{ json data }}}
+//    console.log(data);
+    var features = data.features;
 
+    var map = L.map('map', {
+        doubleClickZoom: false}
+    ).locate({setView: true, maxZoom: 16});
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng).addTo(map)
+                .bindPopup("You are here").openPopup();
+
+        $("#lat").val(e.latlng.lat);
+        $("#lng").val(e.latlng.lng);
+
+        L.circle(e.latlng, radius).addTo(map);
+    }
+
+    var imgSrc = 'http://inthesetimes.com/images/articles/trump_flicker_face_yess.jpg';
+    var imgPop = $('<img class="popup" src="'+imgSrc+'" />');
+    var btnUpVote = $('<button type="button"/>Upvote</button');
+    var btnDnVote = $('<button type="button"/>Downvote</button');
+    var customOptions = {
+        'maxWidth': '500',
+        'className' : 'custom'
+    };
+
+    function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.popupContent) {
+            var customPopup = $("<div></div>").html( feature.properties.name + "</br>" )
+                    .append( $("p").html( feature.properties.popupContent + "</br>") )
+                    .append( imgPop )
+                    .append(btnUpVote)
+                    .append(btnDnVote);
+//            layer.bindPopup(feature.properties.popupContent);
+            layer.bindPopup( customPopup.html(), customOptions);
+        }
+    }
+
+    map.on('locationfound', onLocationFound);
+    map.locate({setView: true, maxZoom: 16});
+
+
+//    add all graffiti to map
+    for(let item in features) {
+        console.log(features[item].geo);
+        L.geoJSON(features[item].geo, {
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+    }
+
+</script>
+<!--<script src="javascripts/map.js"> </script>-->

@@ -1,6 +1,6 @@
 
 <h1>Page to Post Grafitti</h1>
-<form action="/post/submit">
+<form id="post_graffiti_form" method="post" role="form" action="/post/submit">
     <!--TODO: look mindlee how to add new destress, follow same template-->
     <div class="container">
         <canvas id="myCanvas" width="490" height="220" style="border:1px solid #000000";></canvas>
@@ -8,13 +8,28 @@
 
         <br>
 
-        <div class="container">
+        <div class="form-group container text-center">
+            <label for="title">Title</label>
+            <input type="text" name="title" placeholder="Post Title">
+            <br>
             <label for="comment"></label>
             <textarea class="comment-box" rows="4" cols="50" name="comment" id="comment">
                 Say something about the graffiti you posted
             </textarea>
+            <div class="input-prepend">
+                <span class="add-on">@</span>
+                <label for="latlng"></label>
+                <input class="span2" id="lat" type="number" step="0.01" name="lat" readonly>
+                <input class="span2" id="lng" type="number" step="0.01" name="lng" readonly>
+
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Post</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-block">Post</button>
+            <a href="/home">
+                <input type="button" id="cancel_post" class="btn-add-activity btn btn-block" value="Cancel"/>
+            </a>
+        </div>
     </div>
 </form>
 <div id="map" style="height: 200px; width: auto;"> </div>

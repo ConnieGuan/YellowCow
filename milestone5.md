@@ -1,7 +1,13 @@
 # Description of what each team member has done on the project so far
 
 Tony:
-//TODO add it here!
+- Setup Node.js stack for the project
+- Heroku deployment activated ( pintura.herokuapp.com )
+- Routed all skeleton pages and general layout of the app
+- Implemented map main functionality to add new graffiti
+- Implemented persistent posted content to server side .json file (temporary)
+- Added list view that list actual added Graffiti on home screen
+- Hooked pop-up content of posted graffiti
 
 ---
 
@@ -41,3 +47,16 @@ Description: This screenshot shows a map with the graffiti's location centered. 
 ![alt tag](images/post-page.JPG)
 
 Description: Our "make a post" page. Here users are able to upload an image and draw on it.
+
+![alt tag](images/milestone5_home.png)
+
+    Description: This is a home screen of the app where user can see the list of nearby graffiti.
+
+![alt tag](images/milestone5_map.png)
+
+    Description: Map view where user can see nearby graffiti on the map, and can click on it.
+
+![alt tag](images/milestone5_post.png)
+
+    Description: Post screen where user can post a new graffiti on the map.
+
