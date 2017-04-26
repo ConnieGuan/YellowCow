@@ -15,19 +15,32 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://www.nihilogic.dk/labs/exif/exif.js"
+       type="text/javascript"></script>
+<script src="http://www.nihilogic.dk/labs/binaryajax/binaryajax.js"
+       type="text/javascript"></script>
 
 </head>
 <body>
     <h3> Post a Graffiti!</h3>
 
-   <input id="PhotoPicker" type="file" accept="image/*" />
+   <div style="width: 0; height: 0; overflow: hidden;">
+  <input id="PhotoPicker" type="file" accept="image/*">
+</div>
 
-   <canvas id="myCanvas" width="490" height="220" style="border:1px solid #000000";></canvas>
+<button class="lovely" id="PhotoButton">
+  1. Select Photo
+</button>
+
+<button id="upload">Upload</button>
+
+   <canvas id="myCanvas" width="490" height="220" style="border:1px solid";></canvas>
 
 </body>
+
 <script>
     // Scripts for the canvas drawing
-context = document.getElementById('myCanvas').getContext("2d");
+context = $('#myCanvas')[0].getContext("2d");
 $('#myCanvas').mousedown(function(e){
   var mouseX = e.pageX - this.offsetLeft;
   var mouseY = e.pageY - this.offsetTop;
@@ -52,12 +65,14 @@ var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
 var paint;
+
 function addClick(x, y, dragging)
 {
   clickX.push(x);
   clickY.push(y);
   clickDrag.push(dragging);
 }
+
 function redraw(){
   context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
   
@@ -78,5 +93,90 @@ function redraw(){
   }
 }
 //End Scripts for canvas drawing
+
+//access image file when uploaded
+
+        $('#PhotoButton').click(function() {
+            $('#PhotoPicker').trigger('click');
+            return false;
+        });
+        $('#PhotoPicker').on('change', function(e) {
+            e.preventDefault();
+            if(this.files.length === 0) return;
+            var imageFile = this.files[0];
+            var img = new Image();
+            var url = window.URL ? window.URL : window.webkitURL;
+            img.src = url.createObjectURL(imageFile);
+            img.onload = function(e) {
+                url.revokeObjectURL(this.src);
+                var width;
+                var height;
+                var binaryReader = new FileReader();
+                binaryReader.onloadend=function(d) {
+                    var exif, transform = "none";
+                    exif=EXIF.readFromBinaryFile(createBinaryFile(d.target.result));
+                    if(exif.Orientation === 8) {
+                        width = img.height;
+                        height = img.width;
+                        transform = "left";
+                    } else if(exif.Orientation === 6) {
+                        width = img.height;
+                        height = img.width;
+                        transform = "right";
+                    } else if(exif.Orientation === 1) {
+                        width = img.width;
+                        height = img.height;
+                    } else if(exif.Orientation === 3) {
+                        width = img.width;
+                        height = img.height;
+                        transform = "flip";
+                    } else {
+                        width = img.width;
+                        height = img.height;
+                    }
+                    var MAX_WIDTH = 700;
+                    var MAX_HEIGHT = 600;
+                    if (width/MAX_WIDTH > height/MAX_HEIGHT) {
+                        if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                        }
+                    } else {
+                        if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                        }
+                    }
+                    var canvas = $('#myCanvas')[0];
+                    canvas.width = width;
+                    canvas.height = height;
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    if(transform === 'left') {
+                        ctx.setTransform(0, -1, 1, 0, 0, height);
+                        ctx.drawImage(img, 0, 0, height, width);
+                    } else if(transform === 'right') {
+                        ctx.setTransform(0, 1, -1, 0, width, 0);
+                        ctx.drawImage(img, 0, 0, height, width);
+                    } else if(transform === 'flip') {
+                        ctx.setTransform(1, 0, 0, -1, 0, height);
+                        ctx.drawImage(img, 0, 0, width, height);
+                    } else {
+                        ctx.setTransform(1, 0, 0, 1, 0, 0);
+                        ctx.drawImage(img, 0, 0, width, height);
+                    }
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                };
+                binaryReader.readAsArrayBuffer(imageFile);
+            };
+        });
+        $('#upload').click(function() {
+            var canvas = $('#myCanvas')[0];
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img);
+            var data = canvas.toDataURL('image/png');
+            return false;
+        });
 
 </script>

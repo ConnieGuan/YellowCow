@@ -6,7 +6,9 @@ Tony:
 ---
 
 Connie:
-//TODO add it here!
+Added a link to a "Make Posts" page
+Implemented a canvas that users can draw on to make posts
+Added a photopicker
 
 ---
 
@@ -22,5 +24,12 @@ Chang:
 
 # Screenshots 
 
-//TODO add screenshot here
-Description: //TODO add description of features here
+![alt tag](images/home-page.JPG)
+Description: Our home page. It has a list view of nearby graffiti's with
+an option to view the map location of that image. There is also a link to
+a page where users can create and upload their own graffitis. 
+
+
+![alt tag](images/post-page.JPG)
+Description: Our "mae a post" page. Here users are able to upload an image
+and draw on it.
