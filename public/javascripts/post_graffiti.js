@@ -19,10 +19,8 @@ function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
     L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+        .bindPopup("Your graffiti will be posted within " + radius + " meters from this point").openPopup();
 
-    console.log(e);
-    alert('user latlng: ' + e.latlng);
     L.circle(e.latlng, radius).addTo(map);
 }
 
