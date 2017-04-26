@@ -1,7 +1,13 @@
 # Description of what each team member has done on the project so far
 
 Tony:
-//TODO add it here!
+- Setup Node.js stack for the project
+- Heroku deployment activated ( pintura.herokuapp.com )
+- Routed all skeleton pages and general layout of the app
+- Implemented map main functionality to add new graffiti
+- Implemented persistent posted content to server side .json file (temporary)
+- Added list view that list actual added Graffiti on home screen
+- Hooked pop-up content of posted graffiti
 
 ---
 
