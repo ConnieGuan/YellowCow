@@ -1,0 +1,33 @@
+
+<h1>Page to Post Grafitti</h1>
+<form action="/map">
+    <div class="container">
+        <canvas id="myCanvas" width="490" height="220" style="border:1px solid #000000";></canvas>
+        <p style="text-align: center; font-weight: bold">Draw your Grafitti Here</p>
+
+        <br>
+
+        <div class="container">
+            <label for="comment"></label>
+            <textarea class="comment-box" rows="4" cols="50" name="comment" id="comment">
+                Say something about the graffiti you posted
+            </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Post</button>
+    </div>
+</form>
+<div id="map" style="height: 200px; width: auto;"> </div>
+
+
+
+<style>
+    textarea, canvas {
+        width: 100%;
+    }
+    #map {
+        margin-top: 2em;
+    }
+</style>
+
+<script src="javascripts/post_graffiti.js"></script>
+<script src="javascripts/canvas.js"> </script>
