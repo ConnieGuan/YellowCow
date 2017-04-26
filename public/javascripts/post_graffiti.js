@@ -21,6 +21,10 @@ function onLocationFound(e) {
     L.marker(e.latlng).addTo(map)
         .bindPopup("Your graffiti will be posted within " + radius + " meters from this point").openPopup();
 
+    console.log(e.latlng);
+    $("#lat").val(e.latlng.lat);
+    $("#lng").val(e.latlng.lng);
+
     L.circle(e.latlng, radius).addTo(map);
 }
 
