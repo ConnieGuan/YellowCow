@@ -25,5 +25,11 @@ Chang:
 
 # Screenshots 
 
-//TODO add screenshot here
-Description: //TODO add description of features here
+![alt tag](images/milestone5_screenshot1.png)
+
+Description: Users can view images of graffiti and click on the link to view its location on the map. They can also draw their own graffiti when they click on the designated link. We also plan to implement the voting functionality, but currently it does not respond.
+
+
+![alt tag](images/milestone5_screenshot2.png)
+
+Description: This screenshot shows a map with the graffiti's location centered. Users can interact with the map and also view their current location.
