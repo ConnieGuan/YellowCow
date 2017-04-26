@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PINtura</title>
+    <title>Pintura</title>
 
     <!--
     https://developers.google.com/speed/libraries/
@@ -19,14 +19,25 @@
 </head>
 <body>
     <h1>Pintura</h1>
+    <button onclick="goBack()">Back</button>
+    <br>
+    <br>
     <div id="map" style="height: 500px; width: auto;"></div>
 </body>
 
 <script>
+    //Back button
+    function goBack() {
+        window.history.back();
+    }
+
+
+
     // initialize the map
-    var ucsd_coor = [32.88044, -117.23758];
+    var ucsd_coor = [32.87822, -117.24152];
+    var graf_coor = [32.87851, -117.24187];
     var map = L.map('map',{
-        center: ucsd_coor,     // at UCSD
+        center: graf_coor,     // at UCSD
         zoom: 20
     });
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -38,20 +49,13 @@
         [32.822, -0.06],
         [32.892, -0.047]
     ]).addTo(map);
-    var polygon = L.polygon([
-        [32.88038,-117.23632],
-        [32.88070, -117.23685],
-        [32.88092, -117.23626]
-    ]).addTo(map);
     var circle = L.circle(ucsd_coor, {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
         radius: 70
     }).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-    circle.bindPopup("I am a circle.");
-    polygon.bindPopup("I am a polygon.");
+    marker.bindPopup("<b>Current Location</b>").openPopup();
     var popup = L.popup()
         .setLatLng([32.88070, -117.23685])
         .setContent("I am a standalone popup.")
@@ -87,69 +91,12 @@
             'maxWidth': '500',
             'className' : 'custom'
     };
-    function onMapClick(e) {
-        console.log('adasdas');
-        console.log(customPopup.html());
-        L.marker([e.latlng.lat, e.latlng.lng], {icon: greenIcon}).bindPopup(customPopup.html(), customOptions)
+    L.marker(graf_coor, {icon: greenIcon}).bindPopup("<b>Graffiti Location</b>")
             .addTo(map);
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
+    function onMapClick(e) {
     }
     map.on('click', onMapClick);
-// Scripts for the canvas drawing
-context = document.getElementById('myCanvas').getContext("2d");
-$('#myCanvas').mousedown(function(e){
-  var mouseX = e.pageX - this.offsetLeft;
-  var mouseY = e.pageY - this.offsetTop;
-        
-  paint = true;
-  addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-  redraw();
-});
-$('#myCanvas').mousemove(function(e){
-  if(paint){
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-    redraw();
-  }
-});
-$('#myCanvas').mouseup(function(e){
-  paint = false;
-});
-$('#myCanvas').mouseleave(function(e){
-  paint = false;
-});
-var clickX = new Array();
-var clickY = new Array();
-var clickDrag = new Array();
-var paint;
-function addClick(x, y, dragging)
-{
-  clickX.push(x);
-  clickY.push(y);
-  clickDrag.push(dragging);
-}
-function redraw(){
-  context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-  
-  context.strokeStyle = "#df4b26";
-  context.lineJoin = "round";
-  context.lineWidth = 5;
-            
-  for(var i=0; i < clickX.length; i++) {        
-    context.beginPath();
-    if(clickDrag[i] && i){
-      context.moveTo(clickX[i-1], clickY[i-1]);
-     }else{
-       context.moveTo(clickX[i]-1, clickY[i]);
-     }
-     context.lineTo(clickX[i], clickY[i]);
-     context.closePath();
-     context.stroke();
-  }
-}
-//End Scripts for canvas drawing
+
 </script>
 
 

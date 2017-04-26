@@ -10,8 +10,9 @@ dl {
 	width: 50%;
 }
 
-.pic {
+.graffiti {
 	width: 100%;
+	border: 3px solid #000000;
 }
 
 #map {
