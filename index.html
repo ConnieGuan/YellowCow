@@ -18,18 +18,31 @@
 
 </head>
 <body>
-    <!--map no longer in index <div id="map" style="height: 500px; width: auto;"></div> -->
 
+    <!-- map in map.html <div id="map" style="height: 500px; width: auto;"></div>-->
+    
     <h1>Pintura</h1>
 
     <dl>
-      <dt><img class="pic" src="https://i.imgur.com/QjurNdW.jpg" alt="graffiti 1 s drawing"></dt>
+      <dd>Votes: 69 <button type="button">Upvote</button> <button type="button">Downvote</button> </dd>
+      <dt><img class="graffiti" src="https://i.imgur.com/QjurNdW.jpg" alt="graffiti 1 s drawing"></dt>
       <dd><a href="map.html">View on Map</a></dd>
-      <dt><img class="pic" src="https://i.ytimg.com/vi/zJkcjp1AjUI/hqdefault.jpg" alt="graffiti 2 squidward"></dt>
+      <br>
+      <br>
+
+      <dd>Votes: 13 <button type="button">Upvote</button> <button type="button">Downvote</button> </dd>
+      <dt><img class="graffiti" src="https://i.ytimg.com/vi/zJkcjp1AjUI/hqdefault.jpg" alt="graffiti 2 squidward"></dt>
       <dd><a href="map.html">View on Map</a></dd>
-      <dt><img class="pic" src="http://wrmc.middlebury.edu/files/2015/09/Skool_4_Chumps1.jpg" alt="graffiti 3 chumps"></dt>
+      <br>
+      <br>
+      
+      <dd>Votes: 24 <button type="button">Upvote</button> <button type="button">Downvote</button> </dd>
+      <dt><img class="graffiti" src="http://wrmc.middlebury.edu/files/2015/09/Skool_4_Chumps1.jpg" alt="graffiti 3 chumps"></dt>
       <dd><a href="map.html">View on Map</a></dd>
+      <br>
+      <br>
     </dl>
+
 
     <div class="button">
       <a href="posts.html"> Add Graffiti!</a>
@@ -38,7 +51,7 @@
 </body>
 
 <script>
-    // initialize the map
+// initialize the map
     var ucsd_coor = [32.88044, -117.23758];
     var map = L.map('map',{
         center: ucsd_coor,     // at UCSD
@@ -113,7 +126,7 @@
             .openOn(map);
     }
     map.on('click', onMapClick);
-
+    
 </script>
 
 
