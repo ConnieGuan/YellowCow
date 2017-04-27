@@ -7,7 +7,7 @@
     <div class="container">
         <p class="modal-titl">Here are the list of nearby Graffiti</p>
             {{#each features}}
-                <div class="post row">
+                <div class="post row" data-coordinate={{ geo.geometry.coordinates}}>
                     <p>Title: {{ title }}</p>
                     <p>Comment: {{ comment }}</p>
                     <p>Location: {{ geo.geometry.coordinates }} </p>
@@ -16,4 +16,33 @@
             {{/each}}
     </div>
 {{/with}}
+
+
+<script>
+    $(".post").each( function (i, obj) {
+        var coor = $(this).data('coordinate');
+        coor = coor.split(',').map(parseFloat).reverse();
+        console.log(coor);
+
+        var postmap = $('<div>', {
+            "id": "map" + i,
+            "style": "height: 200px; width: auto;"
+        });
+        $(this).append(postmap);
+
+        let map = L.map('map' + i, {
+            center: coor,  /** just in case gps does not work */
+            zoom: 15,
+            doubleClickZoom: false}
+        );
+        L.marker(coor).addTo(map);
+
+//        Mapbox Tile as a backup
+//        L.tileLayer('https://api.mapbox.com/styles/v1/twsalim/cj201s4ev001q2soz3o0zvcsg/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHdzYWxpbSIsImEiOiJjajFoNGpsd2owMGI0MzNvaGNxeWN5ZTJ3In0.X-Mp23YcMlZIfXak5KzKvg').addTo(map);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    });
+</script>
 
