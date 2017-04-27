@@ -30,25 +30,23 @@
         L.circle(e.latlng, radius).addTo(map);
     }
 
-    var imgSrc = 'http://inthesetimes.com/images/articles/trump_flicker_face_yess.jpg';
-    var imgPop = $('<img class="popup" src="'+imgSrc+'" />');
-    var btnUpVote = $('<button type="button"/>Upvote</button');
-    var btnDnVote = $('<button type="button"/>Downvote</button');
+    var btnVote = $('<button type="button" class="btn btn-primary btn-lg"/></button>').text('Vote');
     var customOptions = {
-        'maxWidth': '500',
-        'className' : 'custom'
+        maxWidth: "300",
+        className: "custom"
     };
 
     function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
-            var customPopup = $("<div></div>").html( feature.properties.name + "</br>" )
-                    .append( $("p").html( feature.properties.popupContent + "</br>") )
+            imgPop = $('<img class="popup" src="' + feature.link + '" />');
+            var customPopup = $("<div>").addClass('container modal-dialog')
+                    .append( "<h1>" + feature.properties.name + "</h1>" )
+                    .append( $("h3").html( feature.properties.popupContent + "</br>") )
                     .append( imgPop )
-                    .append(btnUpVote)
-                    .append(btnDnVote);
+                    .append(btnVote);
 //            layer.bindPopup(feature.properties.popupContent);
-            layer.bindPopup( customPopup.html(), customOptions);
+            layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
         }
     }
 
@@ -65,5 +63,9 @@
 
     }
 
+//    useful to add new sample coordinate data later
+     map.on('click', function(e) {
+         console.log(e.latlng.lng + ',' + e.latlng.lat);
+     });
 </script>
 <!--<script src="javascripts/map.js"> </script>-->

@@ -1,18 +1,19 @@
 <h1>This is Home Page</h1>
 
-<p>Here are the list of nearby Graffiti</p>
+<a href="/post"><button class="btn btn-primary"> Post Graffiti </button></a>
+<a href="/map"><button class="btn">Go to Map</button></a>
+
 {{#with data}}
     <div class="container">
+        <p class="modal-titl">Here are the list of nearby Graffiti</p>
             {{#each features}}
                 <div class="post row">
                     <p>Title: {{ title }}</p>
                     <p>Comment: {{ comment }}</p>
                     <p>Location: {{ geo.geometry.coordinates }} </p>
-                    <p>Graffiti Preview: (TODO)</p>
+                    <img class="graffiti" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                 </div>
             {{/each}}
     </div>
 {{/with}}
 
-<a href="/post"><button class="btn btn-primary"> Post Graffiti </button></a>
-<a href="/map"><button class="btn">Go to Map</button></a>

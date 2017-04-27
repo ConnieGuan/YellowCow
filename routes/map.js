@@ -4,7 +4,7 @@ var data = require('../data.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('map', { title: 'Pintura (Home)' , 'data': data});
+  res.render('map', { title: 'Map' , 'data': data});
 });
 
 module.exports = router;

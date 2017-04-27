@@ -11,11 +11,11 @@ a {
 }
 .custom .leaflet-popup-tip,
 .custom .leaflet-popup-content-wrapper {
-  background: #e9b1b5;
-  color: #ffeff1;
+  background: rgba(176, 176, 176, 0.41);
+  color: #060606;
 }
 img.popup {
-  max-width: 100%;
+  max-width: 200px;
   max-height: 100%;
 }
 .square {
@@ -32,3 +32,7 @@ img.popup {
   padding: 1em
 }
 
+.graffiti {
+  width: 100%;
+  border: 3px solid #000000;
+}
