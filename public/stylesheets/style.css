@@ -35,4 +35,18 @@ img.popup {
 .graffiti {
   width: 100%;
   border: 3px solid #000000;
+  flex: 3;
+}
+
+.post-content {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.icn-comments {
+    height: 100px;
+    width: 100px;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
 }

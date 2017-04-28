@@ -4,6 +4,7 @@
 <div id="map" style="height: 500px; width: auto;"></div>
 
 
+<script src="javascripts/map.js"></script>
 <script>
     var data = {{{ json data }}}
 
@@ -23,8 +24,8 @@
     function onLocationFound(e) {
         var radius = e.accuracy / 2;
 
-        L.marker(e.latlng).addTo(map)
-                .bindPopup("You are here").openPopup();
+//        L.marker(e.latlng).addTo(map)
+//                .bindPopup("You are here").openPopup();
 
         $("#lat").val(e.latlng.lat);
         $("#lng").val(e.latlng.lng);

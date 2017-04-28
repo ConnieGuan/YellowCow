@@ -3,12 +3,12 @@
 		{
 			"title": "Home",
 			"comment": "My Home Graffiti",
-          "comments": [],
+			"comments": ["So lit!!", "such WOW!"],
 			"votes": 69,
-          "nsfw": false,
+			"nsfw": false,
 			"geo": {
 				"type": "Feature",
-                "link": "https://i.imgur.com/QjurNdW.jpg",
+				"link": "https://i.imgur.com/QjurNdW.jpg",
 				"properties": {
 					"name": "Home",
 					"popupContent": "My Home Graffiti"
@@ -25,12 +25,12 @@
 		{
 			"title": "Ralph",
 			"comment": "Ralph graffiti",
-          "comments": [],
+			"comments": ["Thats nasty!!!"],
 			"votes": 13,
-          "nsfw": false,
+			"nsfw": false,
 			"geo": {
 				"type": "Feature",
-                "link": "https://i.ytimg.com/vi/zJkcjp1AjUI/hqdefault.jpg",
+				"link": "https://i.ytimg.com/vi/zJkcjp1AjUI/hqdefault.jpg",
 				"properties": {
 					"name": "Office",
 					"popupContent": "Office post"
@@ -44,24 +44,27 @@
 				}
 			}
 		},
-        {
-          "title": "Geisel Graffiti",
-          "comment": "Geisel tag",
-          "comments": [],
-          "votes": 45,
-          "nsfw": false,
-          "geo": {
-            "type": "Feature",
-            "link": "http://wrmc.middlebury.edu/files/2015/09/Skool_4_Chumps1.jpg",
-            "properties": {
-              "name": "Geisel Graffiti",
-              "popupContent": "Geisel tag"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [ -117.23758578300477 ,32.88109637198742]
-            }
-          }
-        }
+		{
+			"title": "Geisel Graffiti",
+			"comment": "Geisel tag",
+			"comments": ["Ay!!!"],
+			"votes": 45,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "http://wrmc.middlebury.edu/files/2015/09/Skool_4_Chumps1.jpg",
+				"properties": {
+					"name": "Geisel Graffiti",
+					"popupContent": "Geisel tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.23758578300477,
+						32.88109637198742
+					]
+				}
+			}
+		}
 	]
 }
