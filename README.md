@@ -1,10 +1,11 @@
-# YellowCow
+# Yellow Cow
 A repo for Yellow Cow COGS 121 Group
+Note: View all milestone assignments in "milestones" directory.
 
 
-# start server
+# Start Server
 `npm start`
 
 
-# deployed to
+# Deployed to
 https://pintura.herokuapp.com/
