@@ -14,10 +14,11 @@ router.get('/test', function (req, res, next) {
 
 router.post('/submit', function (req, res, next) {
 
-    var title = req.body.title;
-    var comment = req.body.comment;
-    var lat = req.body.lat;
-    var lng = req.body.lng;
+    const title = req.body.title;
+    const comment = req.body.comment;
+    const lat = req.body.lat;
+    const lng = req.body.lng;
+
 
     console.log('inside submit');
     console.log('title: '  + title);
@@ -26,6 +27,7 @@ router.post('/submit', function (req, res, next) {
     console.log('lng:  ' + lng);
 
     data.features.push( {
+        "id": data.total,
         "title": title,
         "comment": comment,
         "comments": [],
@@ -49,7 +51,7 @@ router.post('/submit', function (req, res, next) {
             }
         }
     });
-
+    data.total = data.total + 1;
     console.log(data);
 
     fs.writeFile('data.json', JSON.stringify(data, null, '\t'), function (err) {

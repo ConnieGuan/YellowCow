@@ -6,9 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+/** For main map in map.hbs */
 #map {
   height: 100%;
 }
+/** For maps in home.hbs */
+.map {
+  z-index: 1;
+}
+
 .custom .leaflet-popup-tip,
 .custom .leaflet-popup-content-wrapper {
   background: rgba(176, 176, 176, 0.41);

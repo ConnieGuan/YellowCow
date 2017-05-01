@@ -10,7 +10,7 @@
         <h3 class="text-center">Here are the list of nearby Graffiti</h3>
             {{#each features}}
                 <div class="post row center-block"
-                     data-coordinate={{ geo.geometry.coordinates}}>
+                     data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden">
                         {{#each comments}}
@@ -21,7 +21,7 @@
                     <p class="">Comment: {{ comment }}</p>
                     <div class="post-content">
                         <img class="graffiti" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
-                        <img class="icn-comments btn-comments" src="images/comment-bubble.jpg" alt="">
+                        <img class="icn-comments btn-comments" src="images/comment-bubble.jpg" alt="" data-id="{{ id }}">
                     </div>
                     <p class="text-center">Location: {{ geo.geometry.coordinates }} </p>
                 </div>
@@ -50,67 +50,4 @@
 
 </div>
 
-<script>
-    $(".post").each( function (i, obj) {
-        var coor = $(this).data('coordinate');
-        coor = coor.split(',').map(parseFloat).reverse();
-        console.log(coor);
-
-        var postmap = $('<div>', {
-            "id": "map" + i,
-            "style": "height: 200px; width: auto;"
-        });
-        $(this).append(postmap);
-
-        let map = L.map('map' + i, {
-            center: coor,  /** just in case gps does not work */
-            zoom: 15,
-            doubleClickZoom: false}
-        );
-        L.marker(coor).addTo(map);
-
-//        Mapbox Tile as a backup
-//        L.tileLayer('https://api.mapbox.com/styles/v1/twsalim/cj201s4ev001q2soz3o0zvcsg/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHdzYWxpbSIsImEiOiJjajFoNGpsd2owMGI0MzNvaGNxeWN5ZTJ3In0.X-Mp23YcMlZIfXak5KzKvg').addTo(map);
-
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-    });
-
-    // Get the modal
-    const modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
-    const btnComments = $(".btn-comments");
-    let newComment = $("#modal-cmt-add");
-    let modalBody = $(".modal-body");
-
-    btnComments.each(function (index) {
-        $(this).on("click", function () {
-            modal.style.display = "block";
-            const comments = $(this).closest('div.post').find('.comments');
-            console.log(comments.html());
-            modalBody.html(comments.html());
-        })
-    });
-    $(".modal-btn-add").each(function () {
-        $(this).on("click", function () {
-            newComment.show();
-        })
-    });
-    $(".modal-btn-close").each(function () {
-        $(this).on("click", function () {
-            newComment.hide();
-            modal.style.display = "none";
-        })
-    });
-
-    // Get the <span> element that closes the modal
-    const span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    };
-</script>
-
+<script src="javascripts/home.js"></script>
