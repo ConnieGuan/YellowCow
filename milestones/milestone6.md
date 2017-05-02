@@ -1,3 +1,4 @@
 Video Link:
 
-//TODO paste link here
+https://www.youtube.com/watch?v=VAz45D7AfBo&feature=youtu.be
+
