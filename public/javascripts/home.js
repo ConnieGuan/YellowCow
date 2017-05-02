@@ -31,8 +31,10 @@ $(document).ready(function (event) {
     let newComment = $("#modal-cmt-add");
     $("#modal-btn-close").each(function () {
         $(this).on("click", function () {
+            commentShown = false;                   // redundant if page is going to be reloaded anyway
             newComment.hide();
             modal.style.display = "none";
+            location.reload();                      // TODO: this is temporary solution, later on use some kind of object representation to store different posts's data (Angular?)
         })
     });
     $("#modal-btn-add").each(function () {
@@ -47,7 +49,8 @@ $(document).ready(function (event) {
 
                 $.post('/home/add_comments', { 'id': selected_id, 'comment': newComment.val() }, function (req, res) {
                     // alert('Comment Added!');
-                    $comments.append($('<p class="list-group-item">' + newComment.val() + '</p>'));
+                    modalBody.first().append($('<p class="list-group-item">' + newComment.val() + '</p>'));
+                    newComment.val("");
                 });
                 // newComment.hide();
                 // modal.style.display = "none";
