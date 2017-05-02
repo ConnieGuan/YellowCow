@@ -1,7 +1,9 @@
 # Description of what each team member has done since Milestone 5:
 
 Tony:
-- TODO
+- Responsive and persistent home screen comment features on each graffiti
+- updated data.json to store additional information regarding user data
+- each post on home screen has corresponding minimap for particular graffiti location
 
 ---
 
