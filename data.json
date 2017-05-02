@@ -1,5 +1,5 @@
 {
-	"total": 4,
+	"total": 3,
 	"features": [
 		{
 			"id": 0,
@@ -73,38 +73,6 @@
 					"coordinates": [
 						-117.23758578300477,
 						32.88109637198742
-					]
-				}
-			}
-		},
-		{
-			"id": 3,
-			"title": "ASDASDASD",
-			"comment": "Something  asdasda",
-			"comments": [
-				"asddasda",
-				"123123123",
-				"asdasd",
-				"asdasd",
-				"123123",
-				"3123123123",
-				"3123123123",
-				"123123123"
-			],
-			"vote": 0,
-			"nsfw": false,
-			"geo": {
-				"type": "Feature",
-				"link": "https://us.123rf.com/450wm/zazamedia/zazamedia1409/zazamedia140900289/31596594-coming-soon-icon-sign.jpg?ver=6",
-				"properties": {
-					"name": "ASDASDASD",
-					"popupContent": "Something  asdasda"
-				},
-				"geometry": {
-					"type": "Point",
-					"coordinates": [
-						"-117.23456230000001",
-						"32.867353699999995"
 					]
 				}
 			}
