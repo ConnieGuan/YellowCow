@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var map = require('./routes/map');
 var post = require('./routes/post');
 var login = require('./routes/login');
+var profile = require('./routes/profile');
 var home = require('./routes/home');
 var help = require('./routes/help');
 var users = require('./routes/users');
@@ -34,6 +35,7 @@ hbs.registerHelper('json', function(context) {
 
 app.use('/', login);
 app.use('/login', login);
+app.use('/profile', profile);
 app.use('/home', home);
 app.use('/help', help);
 app.use('/post', post);
