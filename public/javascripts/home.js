@@ -10,8 +10,55 @@ $(document).ready(function (event) {
 
     // Get the button that opens the modal
 
-    const btnComments = $(".btn-comments");
-    btnComments.each(setupCommentModal);
+    const modal = document.getElementById('myModal');
+    let modalBody = $(".modal-body");
+    let selected_id = 0;
+
+    $(".btn-comments").each( function (index) {
+        var $comments = $(this).closest('div.post').find('.comments');  // find the closest comments div
+
+        $(this).on("click", function () {
+            selected_id  = $comments.data('id');        // updating the selected_id for later use
+            modal.style.display = "block";
+            console.log($comments.html());
+            console.log(selected_id);
+            modalBody.html($comments.html());
+        });
+    });
+
+    let commentShown = false;
+
+    let newComment = $("#modal-cmt-add");
+    $("#modal-btn-close").each(function () {
+        $(this).on("click", function () {
+            newComment.hide();
+            modal.style.display = "none";
+        })
+    });
+    $("#modal-btn-add").each(function () {
+
+        console.log('setup, id: ' + selected_id);
+
+        $(this).off().on("click", function () {
+            console.log('comment: ' + commentShown);
+            console.log('id: ' + selected_id);
+
+            if (commentShown) {
+
+                $.post('/home/add_comments', { 'id': selected_id, 'comment': newComment.val() }, function (req, res) {
+                    // alert('Comment Added!');
+                    $comments.append($('<p class="list-group-item">' + newComment.val() + '</p>'));
+                });
+                // newComment.hide();
+                // modal.style.display = "none";
+                // commentShown = false;
+            } else {
+                commentShown = true;
+                newComment.show();
+            }
+        })
+    });
+
 
 
 // Get the <span> element that closes the modal
@@ -60,44 +107,5 @@ function setupPosts(i, obj) {
  *
  */
 function setupCommentModal(index) {
-
-    const modal = document.getElementById('myModal');
-    let newComment = $("#modal-cmt-add");
-    let modalBody = $(".modal-body");
-    let commentShown = false;
-    var $comments = $(this).closest('div.post').find('.comments');
-    id_selected = $(this).data('id');
-
-
-    $(this).on("click", function () {
-        modal.style.display = "block";
-        console.log($comments.html());
-        modalBody.html($comments.html());
-    });
-
-    $(".modal-btn-add").each(function () {
-        $(this).off().on("click", function () {
-            console.log(commentShown);
-            if (commentShown) {
-
-                $.post('/home/add_comments', { 'id': id_selected, 'comment': newComment.val() }, function (req, res) {
-                    alert('Comment Added!');
-                    // $comments.append($('<p class="list-group-item">' + newComment.val() + '</p>'));
-                });
-                // newComment.hide();
-                // modal.style.display = "none";
-                // commentShown = false;
-            } else {
-                commentShown = true;
-                newComment.show();
-            }
-        })
-    });
-    $(".modal-btn-close").each(function () {
-        $(this).on("click", function () {
-            newComment.hide();
-            modal.style.display = "none";
-        })
-    });
 }
 

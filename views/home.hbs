@@ -10,9 +10,9 @@
         <h3 class="text-center">Here are the list of nearby Graffiti</h3>
             {{#each features}}
                 <div class="post row center-block"
-                     data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+                     data-coordinate={{ geo.geometry.coordinates}}>
                     <!--This is hidden (comments shown using modal)-->
-                    <div class="comments list-group" hidden="hidden">
+                    <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
                         {{#each comments}}
                             <p class="list-group-item">{{ this }}</p>
                         {{/each}}
@@ -43,9 +43,9 @@
         <!--<div class="modal-footer">-->
             <!--<h3>Modal Footer</h3>-->
         <!--</div>-->
-        <textarea id="modal-cmt-add" style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
-        <button class="modal-btn-add" style="display: block; width: 100%; font-size: 4em;">Add Comment</button>
-        <button class="modal-btn-close" style="display: block; width: 100%; font-size: 4em;">Close</button>
+        <textarea id="modal-cmt-add"    style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
+        <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 4em;">Add Comment</button>
+        <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 4em;">Close</button>
     </div>
 
 </div>
