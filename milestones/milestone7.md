@@ -4,6 +4,7 @@ Tony:
 - Responsive and persistent home screen comment features on each graffiti
 - updated data.json to store additional information regarding user data
 - each post on home screen has corresponding minimap for particular graffiti location
+- fixed bug on mobile map does not show(ES6 is not supported by Safari)
 
 ---
 

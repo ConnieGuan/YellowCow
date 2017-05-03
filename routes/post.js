@@ -12,30 +12,37 @@ router.get('/test', function (req, res, next) {
     res.redirect('/home');
 });
 
+router.post('/submit_canvas', function (req, res, next) {
+    const dataURL = req.data.imgBase64;
+    console.log('inside submit_canvas route, ');
+    console.log('dataURL: ' + dataURL);
+    res.end();
+});
+
 router.post('/submit', function (req, res, next) {
 
     const title = req.body.title;
-    const comment = req.body.comment;
+    const description = req.body.description;
     const lat = req.body.lat;
     const lng = req.body.lng;
     //Canvas URL
-    //const myCanvas = req.query.myCanvas;
-    //var url = myCanvas.toDataURL();
+    // const myCanvas = req.query.canvas;
+    // var url = myCanvas.toDataURL();
 
 
     console.log('inside submit');
     console.log('title: '  + title);
-    console.log('comment: ' + comment);
+    console.log('description: ' + description);
     console.log('lat:  ' + lat);
     console.log('lng:  ' + lng);
-    //console.log('url: ' + url);
+    // console.log('url: ' + url);
 
     data.features.push( {
         "id": data.total,
         "title": title,
-        "comment": comment,
+        "description": description,
         "comments": [],
-        "vote": 0,
+        "votes": 0,
         "nsfw": false,
 
 
@@ -48,7 +55,7 @@ router.post('/submit', function (req, res, next) {
 
             "properties" : {
                 "name": title,
-                "popupContent": comment
+                "popupContent": description
             },
             "geometry": {
                 "type": "Point",
@@ -57,7 +64,6 @@ router.post('/submit', function (req, res, next) {
         }
     });
     data.total = data.total + 1;
-    console.log(data);
 
     fs.writeFile('data.json', JSON.stringify(data, null, '\t'), function (err) {
         if (err) throw err;
@@ -67,5 +73,6 @@ router.post('/submit', function (req, res, next) {
     res.redirect('/home');
 
 });
+
 
 module.exports = router;

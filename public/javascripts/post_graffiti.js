@@ -1,3 +1,39 @@
+$(document).ready(function (event) {
+    // http://stackoverflow.com/questions/34048093/submit-canvas-data-in-an-html-form
+    var $canvas = $("#myCanvas");
+    // $("#post_graffiti_form").submit(function (event) {
+    $(document).on('submit', '#post_graffiti_form', function(event) {
+
+        /**
+         * Using indirect post method to handle image upload separately
+         * @type {*}
+         */
+        var $form = $(this);
+        var dataURL = $canvas.toDataURL();
+        /* stop form from submitting (handle manually) */
+        event.preventDefault();
+        var canvasUpload = "/post/submit_canvas";
+
+        // TODO: fix this post request, server still does not receive the request (see route/post.js --> /submit_canvas)
+
+        $.ajax({
+            type: "POST",
+            url: canvasUpload,
+            data: {
+                imgBase64: dataURL
+            }
+        }).done(function (o) {
+            console.log('image saved successfully');
+            $.post( $form.attr('action'), $form.serialize(), function (data) {
+                console.log('posted the graffiti');
+            });
+        });
+
+
+    });
+});
+
+
 var ucsd_coor = [32.88044, -117.23758];
 
 var map = L.map('map', {
