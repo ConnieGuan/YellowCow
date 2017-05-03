@@ -55,18 +55,19 @@
 
 <script src="javascripts/home.js"></script>
 <script>
-    var data;
-    function upvote(xid){
-        console.log("upvoting");
-        var mydata = "data.json";
-        if(mydata)
-            for(i = 0; i <mydata.total; i++){
-                if(mydata.features[i].id == xid){
-                    mydata.features[i].votes += 1;
-                    console.log("votes increased");
-                }
-                else console.log("error upvoting");
+function upvote(xid){
+    console.log("upvoting");
+    var mydata = "data.json";
+    if(mydata)
+        console.log("reading json...");
+        console.log(mydata.total);
+        for(i = 0; i <mydata.total; i++){
+            if(mydata.features[i].id == xid){
+                mydata.features[i].votes += 1;
+                console.log("votes increased");
             }
-        else console.log("error reading json");
-    }
+            else console.log("error upvoting");
+        }
+    else console.log("error reading json");
+}
 </script>
