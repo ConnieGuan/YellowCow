@@ -27,7 +27,9 @@ Jorenne:
 ---
 
 Chang:
-- TODO
+- implemented ability to upload/take photos onto canvas
+- implemented map to show on mobile
+- implemented app to show mobile view
 
 ---
 
