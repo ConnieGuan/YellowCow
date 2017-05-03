@@ -34,19 +34,19 @@
     function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
-            imgPop = $('<img class="popup" src="' + feature.link + '" />');
-            var customPopup = $("<div>").addClass('container modal-dialog')
-                    .append( "<h1>" + feature.properties.name + "</h1>" )
-                    .append( $("h3").html( feature.properties.popupContent + "</br>") )
-                    .append( imgPop )
-                    .append(btnVote);
-//            layer.bindPopup(feature.properties.popupContent);
-            layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
+//            imgPop = $('<img class="popup" src="' + feature.link + '" />');
+//            var customPopup = $("<div>").addClass('container modal-dialog')
+//                    .append( "<h1>" + feature.properties.name + "</h1>" )
+//                    .append( $("h3").html( feature.properties.popupContent + "</br>") )
+//                    .append( imgPop )
+//                    .append(btnVote);
+            layer.bindPopup(feature.properties.popupContent);
+//            layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
         }
     }
     /** Set callbacks for each graffiti post on the map */
     for(let item in features) {
-//        console.log(features[item].geo);
+        console.log(features[item].geo);
         L.geoJSON(features[item].geo, {
             onEachFeature: onEachFeature
         }).addTo(map);
