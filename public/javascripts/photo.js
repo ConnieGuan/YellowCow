@@ -31,10 +31,3 @@ $('#PhotoPicker').on('change', function(e) {
   el("PhotoPicker").addEventListener("change", readImage(tf), false);
 });
 
-$('upload').click(function() {
-  var canvas = $('#myCanvas')[0];
-  var ctx = canvas.getContext("2d");
-  ctx.drawImage(img);
-  var data = canvas.toDataURL('image/png');
-  return false;
-});
