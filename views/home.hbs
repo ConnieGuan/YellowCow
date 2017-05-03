@@ -19,7 +19,7 @@
                     </div>
                     <p class="">Title: {{ title }}</p>
                     <p class="">Description: {{ description }}</p>
-                    <p class="">Votes: {{ votes }}</p>
+                    <p class="">Votes: {{ votes }} + 1</p>
                     <button class="btn" onclick="upvote({{id}})">Upvote</button> <!-- TODO: button doesn't do anything -->
                     <button class="btn" onclick="downvote({{id}})">Downvote</button> <!-- TODO: button doesn't do anything -->
                     <div class="post-content">
@@ -56,17 +56,16 @@
 <script src="javascripts/home.js"></script>
 <script>
     var data;
-    function upvote(id){
+    function upvote(xid){
         console.log("upvoting");
         if(data){
-            //TODO 
+            if(data)
         }
         else{
             console.log("Data not fetched");
         }
     }
     $.getJSON('/data.json', function(data){
-        //TODO
         data = data;
     });
 </script>
