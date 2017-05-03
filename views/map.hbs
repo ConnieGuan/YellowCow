@@ -45,13 +45,15 @@
         }
     }
     /** Set callbacks for each graffiti post on the map */
-    for(let item in features) {
-        console.log(features[item].geo);
-        L.geoJSON(features[item].geo, {
-            onEachFeature: onEachFeature
-        }).addTo(map);
-
-    }
+//    for(let item in features) {
+//        console.log(features[item].geo);
+//        L.geoJSON(features[item].geo, {
+//            onEachFeature: onEachFeature
+//        }).addTo(map);
+//    }
+    L.geoJSON(features[0].geo, {
+        onEachFeature: onEachFeature
+    }).addTo(map);
 
     /**
      * Fires when GPS detected current location
