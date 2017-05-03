@@ -55,10 +55,18 @@
 
 <script src="public/javascripts/home.js"></script>
 <script>
+    var data;
     function upvote(id){
         console.log("upvoting");
+        if(data){
+            //TODO 
+        }
+        else{
+            console.log("Data not fetched");
+        }
     }
     $.getJSON('data.json', function(data){
         //TODO
-    })
+        data = data;
+    });
 </script>
