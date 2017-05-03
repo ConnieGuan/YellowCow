@@ -20,8 +20,7 @@ router.post('/submit', function (req, res, next) {
     const lng = req.body.lng;
     //Canvas URL
     const myCanvas = req.body.myCanvas;
-    pic = new Image();
-    pic.src = myCanvas.toDataURL();
+    var url = myCanvas.toDataURL();
 
 
     console.log('inside submit');
@@ -29,7 +28,7 @@ router.post('/submit', function (req, res, next) {
     console.log('comment: ' + comment);
     console.log('lat:  ' + lat);
     console.log('lng:  ' + lng);
-    console.log('url: ' + pic.src);
+    console.log('url: ' + url);
 
     data.features.push( {
         "id": data.total,
@@ -44,8 +43,7 @@ router.post('/submit', function (req, res, next) {
             "type": "Feature",
 
             // TODO: For now use sample external image, later after image upload to server works, use link to local image
-            "link": pic.src,
-            //"link": url;
+            "link": url,
 
             "properties" : {
                 "name": title,
