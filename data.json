@@ -4,7 +4,7 @@
 		{
 			"id": 0,
 			"title": "Home",
-			"comment": "My Home Graffiti",
+			"description": "My Home Graffiti",
 			"comments": [
 				"So lit!!",
 				"such WOW!"
@@ -30,7 +30,7 @@
 		{
 			"id": 1,
 			"title": "Ralph",
-			"comment": "Ralph graffiti",
+			"description": "Ralph graffiti",
 			"comments": [
 				"Thats nasty!!!"
 			],
@@ -55,7 +55,7 @@
 		{
 			"id": 2,
 			"title": "Geisel Graffiti",
-			"comment": "Geisel tag",
+			"description": "Geisel tag",
 			"comments": [
 				"Ay!!!"
 			],
