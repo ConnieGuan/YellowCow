@@ -1,4 +1,4 @@
-//new canvas drawing song
+//new canvas drawing canvas
 var __slice = Array.prototype.slice;
 (function($) {
   var Sketch;
