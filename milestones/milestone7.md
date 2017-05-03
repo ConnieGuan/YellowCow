@@ -13,7 +13,7 @@ Connie:
 ---
 
 Jorenne:
-- TODO
+- Added voting system to posts in homescreen
 
 ---
 
