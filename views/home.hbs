@@ -59,6 +59,11 @@
     function upvote(xid){
         console.log("upvoting");
         var mydata = "data.json";
-        if(mydata == false) console.log("yikes");
+        for(i = 0; i <mydata.total; i++){
+            if(mydata.features[i].id == xid){
+                mydata.features[i].votes += 1;
+                console.log("votes increased");
+            }
+        }
     }
 </script>
