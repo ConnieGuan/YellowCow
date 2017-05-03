@@ -7,11 +7,14 @@
         <p style="text-align: center; font-weight: bold">Draw your graffiti below</p>
 
         <!-- Canvas -->
+          <div class='tools'>
+
+          </div>
         <canvas id="myCanvas" width="800" height="500" style="border:1px solid #000000";></canvas>
         <script type="text/javascript">
           $(function() {
-                $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
-      $('#post-container .tools').append("<a href='#myCanvas' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
+                $.each(['red', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
+      $('#post-container .tools').append("<a href='#myCanvas' data-color='" + this + "' style='width: 10px; background: " + this +  ";'></a> ");
     });
     $.each([3, 5, 10, 15], function() {
       $('#post-container .tools').append("<a href='#myCanvas' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
