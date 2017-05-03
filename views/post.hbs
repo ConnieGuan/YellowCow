@@ -2,7 +2,7 @@
 <h1>Post Graffiti</h1>
 <form id="post_graffiti_form" method="post" role="form" action="/post/submit">
     <!--TODO: look mindlee how to add new destress, follow same template-->
-    <div class="container">
+    <div class="container" id='canvas-container'>
         <p style="text-align: center; font-weight: bold">Draw your graffiti below</p>
 
         <div class="tools">
@@ -12,10 +12,10 @@
 <script type="text/javascript">
   $(function() {
     $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
-      $('#colors_demo .tools').append("<a href='#myCanvas' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
+      $('#canvas-container.tools').append("<a href='#myCanvas' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
     });
     $.each([3, 5, 10, 15], function() {
-      $('#colors_demo .tools').append("<a href='#myCanvas' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
+      $('#canvas-container.tools').append("<a href='#myCanvas' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
     });
     $('#myCanvas').sketch();
   });
