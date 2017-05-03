@@ -1,3 +1,9 @@
+/**
+ * NOTE: This file is not used for now,
+ *      map related js script is in map.hbs because the script needs to access data passed from the template directly.
+ *
+ */
+
 const LeafIcon = L.Icon.extend({
     options: {
         shadowUrl: 'images/leaf-shadow.png',

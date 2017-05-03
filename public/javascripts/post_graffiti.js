@@ -1,11 +1,7 @@
-var ucsd_coor = [32.88044, -117.23758];
-// var map = L.map('map',{
-//     center: ucsd_coor,     // at UCSD
-//     zoom: 20
-// });
+var ucsd_coor = [-117.23758, 32.88044];
 
 var map = L.map('map', {
-    center: ucsd_coor,
+    // center: ucsd_coor,
     zoom: 20,
     doubleClickZoom: false}
     ).locate({setView: true, maxZoom: 16});
@@ -28,5 +24,10 @@ function onLocationFound(e) {
     L.circle(e.latlng, radius).addTo(map);
 }
 
+function onLocationError(e) {
+    alert('Location cannot be found because of GPS error. Will center around UCSD');
+    map.panTo(new L.LatLng(ucsd_coor[0], ucsd_coor[1]));
+}
+
 map.on('locationfound', onLocationFound);
-map.locate({setView: true, maxZoom: 16});
+map.on('locationerror', onLocationError);
