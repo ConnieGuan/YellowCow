@@ -45,13 +45,13 @@
         }
     }
     /** Set callbacks for each graffiti post on the map */
-    for(let item in features) {
-        console.log(features[item].geo);
-        L.geoJSON(features[item].geo, {
-            onEachFeature: onEachFeature
-        }).addTo(map);
-
-    }
+//    for(let item in features) {
+//        console.log(features[item].geo);
+//        L.geoJSON(features[item].geo, {
+//            onEachFeature: onEachFeature
+//        }).addTo(map);
+//
+//    }
 
     /**
      * Fires when GPS detected current location
@@ -74,14 +74,14 @@
     /**
      * Callbacks for the GPS detection events
      */
-    map.on('locationfound', onLocationFound);
-    map.on('locationerror', onLocationError);
+//    map.on('locationfound', onLocationFound);
+//    map.on('locationerror', onLocationError);
 
 
 
 //    useful to add new sample coordinate data later
-     map.on('click', function(e) {
-         console.log(e.latlng.lng + ',' + e.latlng.lat);
-     });
+//     map.on('click', function(e) {
+//         console.log(e.latlng.lng + ',' + e.latlng.lat);
+//     });
 </script>
 <!--<script src="javascripts/map.js"> </script>-->
