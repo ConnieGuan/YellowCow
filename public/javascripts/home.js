@@ -11,8 +11,8 @@ $(document).ready(function (event) {
     // Get the button that opens the modal
 
     const modal = document.getElementById('myModal');
-    let modalBody = $(".modal-body");
-    let selected_id = 0;
+    var modalBody = $(".modal-body");
+    var selected_id = 0;
 
     $(".btn-comments").each( function (index) {
         var $comments = $(this).closest('div.post').find('.comments');  // find the closest comments div
@@ -26,9 +26,9 @@ $(document).ready(function (event) {
         });
     });
 
-    let commentShown = false;
+    var commentShown = false;
 
-    let newComment = $("#modal-cmt-add");
+    var newComment = $("#modal-cmt-add");
     $("#modal-btn-close").each(function () {
         $(this).on("click", function () {
             commentShown = false;                   // redundant if page is going to be reloaded anyway
@@ -91,7 +91,7 @@ function setupPosts(i, obj) {
     });
     $(this).append(postmap);
 
-    let map = L.map('map' + i, {
+    var map = L.map('map' + i, {
             center: coor,
             zoom: 15,
             doubleClickZoom: false
