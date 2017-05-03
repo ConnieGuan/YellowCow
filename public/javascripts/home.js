@@ -74,6 +74,11 @@ $(document).ready(function (event) {
 
 });
 
+/**
+ * Function that applies to each post
+ * @param i     index of the post on home page
+ * @param obj
+ */
 function setupPosts(i, obj) {
     var coor = $(this).data('coordinate');
     coor = coor.split(',').map(parseFloat).reverse();
@@ -87,7 +92,7 @@ function setupPosts(i, obj) {
     $(this).append(postmap);
 
     let map = L.map('map' + i, {
-            center: coor, /** just in case gps does not work */
+            center: coor,
             zoom: 15,
             doubleClickZoom: false
         }
