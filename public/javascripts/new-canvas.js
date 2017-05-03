@@ -2,6 +2,7 @@
 var __slice = Array.prototype.slice;
 (function($) {
   var Sketch;
+  var img;
   $.fn.sketch = function() {
     var args, key, sketch;
     key = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
@@ -28,6 +29,7 @@ var __slice = Array.prototype.slice;
       return this;
     }
   };
+
   Sketch = (function() {
     function Sketch(el, opts) {
       this.el = el;
@@ -62,10 +64,60 @@ var __slice = Array.prototype.slice;
           if ($(this).attr('data-download')) {
             sketch.download($(this).attr('data-download'));
           }
+
+          if ($(this).attr('data-upload')) {
+            sketch.upload($(this).attr('data-upload'));
+          }
+
           return false;
         });
       }
     }
+
+    Sketch.prototype.upload = function(format) {
+      var can = this;
+      console.log(can);
+      console.log("in this bih");
+      $('#PhotoPicker').trigger('click');
+      console.log("nooooooooo");
+      //return false;
+
+      $('#PhotoPicker').on('change', function(e) {
+        console.log("in this bih2");
+        e.preventDefault();
+        if(this.files.length === 0) return;
+
+        function el(id){return document.getElementById(id);} // Get elem by ID
+
+        var canvas  = el("myCanvas");
+        var context = can.context;
+
+        console.log(context);
+
+        var tf = this.files;
+
+        function readImage(theFile) {
+          if ( theFile && theFile[0] ) {
+          var FR= new FileReader();
+           FR.onload = function(e) {
+             img = new Image();
+             img.onload = function() {
+               context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+             };
+            img.src = e.target.result;
+          };       
+
+          console.log(theFile[0]);
+
+          FR.readAsDataURL( theFile[0] );
+          }
+        }
+
+        el("PhotoPicker").addEventListener("change", readImage(tf), false);
+      });
+
+    };
+
     Sketch.prototype.download = function(format) {
       var mime;
       format || (format = "png");
@@ -94,6 +146,9 @@ var __slice = Array.prototype.slice;
       }
       this.painting = false;
       this.action = null;
+
+      console.log("in stopPainting");
+
       return this.redraw();
     };
 
@@ -109,6 +164,8 @@ var __slice = Array.prototype.slice;
     Sketch.prototype.redraw = function() {
       var sketch;
       this.el.width = this.canvas.width();
+      if(img)
+        this.context.drawImage(img, 0, 0, img.width, img.height, 0, 0, this.el.width, this.el.height);
       this.context = this.el.getContext('2d');
       sketch = this;
       $.each(this.actions, function() {

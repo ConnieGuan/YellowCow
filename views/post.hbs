@@ -19,10 +19,15 @@
             <a href="#myCanvas" data-color="#0033cc"> Blue </a>
             <a href="#myCanvas" data-color="#993399"> Purple </a>
             <a href="#myCanvas" data-color="#000000"> Black </a>
-            <a href="#myCanvas" data-download="jpg">Download</a>   
+            <a href="#myCanvas" data-download="jpg">Download</a>
+            <a href="#myCanvas" data-upload="jpg" class="pull-right">Take/Select A Photo!</a>   
           </div>
-        <input type="file" id="PhotoPicker" >
-        <canvas id="myCanvas" width="800" height="500" style="border:1px solid #000000";></canvas>
+        <div style="width: 0; height: 0; overflow: hidden;"> 
+            <input type="file" id="PhotoPicker">
+        </div>
+
+        <canvas id="myCanvas" style="border:1px solid #000000";></canvas>
+        <!-- <canvas id="myCanvas" width="800" height="500" style="border:1px solid #000000";></canvas> -->
         <script type="text/javascript">
           $(function() 
           {
