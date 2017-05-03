@@ -19,7 +19,7 @@ router.post('/submit', function (req, res, next) {
     const lat = req.body.lat;
     const lng = req.body.lng;
     //Canvas URL
-    const myCanvas = req.body.myCanvas;
+    const myCanvas = req.query.myCanvas;
     var url = myCanvas.toDataURL();
 
 
