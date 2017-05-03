@@ -1,4 +1,3 @@
-//new canvas drawing canvas
 var __slice = Array.prototype.slice;
 (function($) {
   var Sketch;
@@ -30,11 +29,12 @@ var __slice = Array.prototype.slice;
   };
   Sketch = (function() {
     function Sketch(el, opts) {
+      var sketchContext = this;
+
       this.el = el;
       this.canvas = $(el);
       this.context = el.getContext('2d');
       this.options = $.extend({
-        toolLinks: true,
         defaultTool: 'marker',
         defaultColor: '#000000',
         defaultSize: 5
@@ -46,25 +46,18 @@ var __slice = Array.prototype.slice;
       this.actions = [];
       this.action = [];
       this.canvas.bind('click mousedown mouseup mousemove mouseleave mouseout touchstart touchmove touchend touchcancel', this.onEvent);
-      if (this.options.toolLinks) {
-        $('body').delegate("a[href=\"#" + (this.canvas.attr('id')) + "\"]", 'click', function(e) {
-          var $canvas, $this, key, sketch, _i, _len, _ref;
-          $this = $(this);
-          $canvas = $($this.attr('href'));
-          sketch = $canvas.data('sketch');
-          _ref = ['color', 'size', 'tool'];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            key = _ref[_i];
-            if ($this.attr("data-" + key)) {
-              sketch.set(key, $(this).attr("data-" + key));
-            }
-          }
-          if ($(this).attr('data-download')) {
-            sketch.download($(this).attr('data-download'));
-          }
-          return false;
-        });
-      }
+
+      this.bg = new Image();
+      this.bgLoaded = false;
+      this.bg.onload = function() {
+        sketchContext.bgLoaded = true;
+        sketchContext.redraw();
+      };
+      // Blank white image
+      this.bg.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=';
+
+      this.prevWidth = 0;
+      this.prevHeight = 0;
     }
     Sketch.prototype.download = function(format) {
       var mime;
@@ -96,9 +89,25 @@ var __slice = Array.prototype.slice;
       this.action = null;
       return this.redraw();
     };
+    Sketch.prototype.undo = function() {
+      this.actions.pop();
 
+      return this.redraw();
+    };
+    Sketch.prototype.loadBg = function(url) {
+      var sketchContext = this;
+
+      this.bg = new Image();
+      this.bgLoaded = false;
+
+      this.bg.onload = function() {
+        sketchContext.bgLoaded = true;
+        sketchContext.redraw();
+      };
+      this.bg.src = url;
+    };
     Sketch.prototype.onEvent = function(e) {
-      if (e.originalEvent && e.originalEvent.targetTouches && e.originalEvent.targetTouches.length > 0) {
+      if (e.originalEvent && e.originalEvent.targetTouches) {
         e.pageX = e.originalEvent.targetTouches[0].pageX;
         e.pageY = e.originalEvent.targetTouches[0].pageY;
       }
@@ -106,11 +115,37 @@ var __slice = Array.prototype.slice;
       e.preventDefault();
       return false;
     };
+    Sketch.prototype.onResize = function(newWidth, newHeight, oldWidth, oldHeight) {
+        var cfW = newWidth/oldWidth;
+        var cfH = newHeight/oldHeight;
+
+        this.actions.forEach(function(action) {
+          if(action.tool == "marker") {
+            action.size = action.size*cfW;
+
+            action.events.forEach(function(event) {
+              event.x = event.x*cfW;
+              event.y = event.y*cfH;
+            });
+          }
+        });
+    };
     Sketch.prototype.redraw = function() {
       var sketch;
       this.el.width = this.canvas.width();
+      this.el.height = this.canvas.height();
+
+      if(this.el.width != this.prevWidth || this.el.height != this.prevHeight)
+        this.onResize(this.el.width, this.el.height, this.prevWidth, this.prevHeight);
+
+      this.prevWidth = this.el.width;
+      this.prevHeight = this.el.height;
+
       this.context = this.el.getContext('2d');
       sketch = this;
+
+      sketch.context.drawImage(this.bg, 0, 0, sketch.el.width, sketch.el.height);
+
       $.each(this.actions, function() {
         if (this.tool) {
           return $.sketch.tools[this.tool].draw.call(sketch, this);
