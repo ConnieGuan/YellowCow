@@ -29,7 +29,7 @@ Chang:
 
 # Screenshots 
 
-![alt tag](/iimages/milestone7pic1.JPG)
+![alt tag](/images/milestone7pic1.JPG)
 
 ![alt tag](/images/milestone7pic2.JPG)
 
