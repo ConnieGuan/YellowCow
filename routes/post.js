@@ -19,8 +19,8 @@ router.post('/submit', function (req, res, next) {
     const lat = req.body.lat;
     const lng = req.body.lng;
     //Canvas URL
-    const myCanvas = req.query.myCanvas;
-    var url = myCanvas.toDataURL();
+    //const myCanvas = req.query.myCanvas;
+    //var url = myCanvas.toDataURL();
 
 
     console.log('inside submit');
@@ -28,7 +28,7 @@ router.post('/submit', function (req, res, next) {
     console.log('comment: ' + comment);
     console.log('lat:  ' + lat);
     console.log('lng:  ' + lng);
-    console.log('url: ' + url);
+    //console.log('url: ' + url);
 
     data.features.push( {
         "id": data.total,
@@ -43,7 +43,8 @@ router.post('/submit', function (req, res, next) {
             "type": "Feature",
 
             // TODO: For now use sample external image, later after image upload to server works, use link to local image
-            "link": url,
+            "link": "https://us.123rf.com/450wm/zazamedia/zazamedia1409/zazamedia140900289/31596594-coming-soon-icon-sign.jpg?ver=6",
+            //"link": url,
 
             "properties" : {
                 "name": title,

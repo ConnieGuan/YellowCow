@@ -18,7 +18,11 @@ Connie:
 ---
 
 Jorenne:
-- Added voting system to posts in homescreen
+- Displayed number of votes from json file
+- Added voting buttons to homescreen
+- Fixed some bugs with input fields in previous posting page prior to Connie's edits
+- Added a pin in map view showing user's current location (might change image of pin
+  to distinguish from other pins)
 
 ---
 
