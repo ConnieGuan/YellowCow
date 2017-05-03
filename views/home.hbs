@@ -58,12 +58,6 @@
     var data;
     function upvote(xid){
         console.log("upvoting");
-        var mydata = JSON.parse(data.json);
-        if(mydata){
-            //TODO get numvotes and increase
-        }
-        else{
-            console.log("Data not fetched");
-        }
+        var mydata = data.json.features;
     }
 </script>
