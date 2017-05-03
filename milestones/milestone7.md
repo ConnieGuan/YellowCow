@@ -28,9 +28,11 @@ Chang:
 ---
 
 # Screenshots 
-
+Picture one: Our new canvas with updated drawing features
 ![alt tag](/images/milestone7pic1.JPG)
 
+Picture two: Updated list view integrating the mini-maps and geo location and comment feature
 ![alt tag](/images/milestone7pic2.JPG)
 
+Picture three: Map view
 ![alt tag](/images/milestone7pic3.JPG)
