@@ -11,8 +11,8 @@ var map = L.map('map', {
     ).locate({setView: true, maxZoom: 16});
 
 
-L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 function onLocationFound(e) {
