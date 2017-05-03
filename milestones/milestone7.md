@@ -10,9 +10,9 @@ Tony:
 Connie:
 - Redid the canvas feature with a different implementation as previous version
   was buggy and did not support mobile interaction
-  Reintegrated the ability to upload an image to the canvas (however is buggy with the
+- Reintegrated the ability to upload an image to the canvas (however is buggy with the
   new drawing feature)
-  According to our feedback from last milestone add more colors, brush sizes, and 
+- According to our feedback from last milestone add more colors, brush sizes, and 
   overall more canvas functionality
 
 ---
@@ -29,8 +29,8 @@ Chang:
 
 # Screenshots 
 
-![alt tag](images/milestone7pic1.JPG)
+![alt tag](/iimages/milestone7pic1.JPG)
 
-![alt tag](images/milestone7pic2.JPG)
+![alt tag](/images/milestone7pic2.JPG)
 
-![alt tag](images/milestone7pic3.JPG)
+![alt tag](/images/milestone7pic3.JPG)
