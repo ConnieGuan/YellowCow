@@ -13,6 +13,9 @@ $(document).ready(function (event) {
         /* stop form from submitting (handle manually) */
         event.preventDefault();
         var canvasUpload = "/post/submit_canvas";
+
+        // TODO: fix this post request, server still does not receive the request (see route/post.js --> /submit_canvas)
+
         $.ajax({
             type: "POST",
             url: canvasUpload,
