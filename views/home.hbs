@@ -53,7 +53,7 @@
 
 </div>
 
-<script src="public/javascripts/home.js"></script>
+<script src="javascripts/home.js"></script>
 <script>
     var data;
     function upvote(id){
@@ -65,7 +65,7 @@
             console.log("Data not fetched");
         }
     }
-    $.getJSON('data.json', function(data){
+    $.getJSON('/data.json', function(data){
         //TODO
         data = data;
     });
