@@ -96,6 +96,7 @@ var __slice = Array.prototype.slice;
       this.action = null;
       return this.redraw();
     };
+
     Sketch.prototype.onEvent = function(e) {
       if (e.originalEvent && e.originalEvent.targetTouches && e.originalEvent.targetTouches.length > 0) {
         e.pageX = e.originalEvent.targetTouches[0].pageX;
@@ -107,7 +108,7 @@ var __slice = Array.prototype.slice;
     };
     Sketch.prototype.redraw = function() {
       var sketch;
-      this.el.width = this.canvas.width();
+      //this.el.width = this.canvas.width();
       this.context = this.el.getContext('2d');
       sketch = this;
       $.each(this.actions, function() {
