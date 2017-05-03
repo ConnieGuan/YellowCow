@@ -22,4 +22,8 @@ router.post('/add_comments', function (req, res, next) {
     res.redirect('/home');
 });
 
+router.upvote('/upvote', function (req, res, next){
+    console.log('upvoting');
+});
+
 module.exports = router;

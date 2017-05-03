@@ -20,8 +20,8 @@
                     <p class="">Title: {{ title }}</p>
                     <p class="">Description: {{ description }}</p>
                     <p class="">Votes: {{ votes }}</p>
-                    <button class="btn" onclick="upvote({{id}})">Upvote</button> <!-- TODO: button doesn't do anything -->
-                    <button class="btn" onclick="downvote({{id}})">Downvote</button> <!-- TODO: button doesn't do anything -->
+                    <button class="btn" onclick="upv({{id}})">Upvote</button> <!-- TODO: button doesn't do anything -->
+                    <button class="btn" onclick="down({{id}})">Downvote</button> <!-- TODO: button doesn't do anything -->
                     <div class="post-content">
                         <img class="graffiti" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                         <img class="icn-comments btn-comments" src="images/comment-bubble.jpg" alt="" data-id="{{ id }}">
@@ -56,16 +56,7 @@
 <script src="javascripts/home.js"></script>
 <script>
     var data;
-    function upvote(xid){
-        console.log("upvoting");
-        if(data){
-            //TODO get numvotes and increase
-        }
-        else{
-            console.log("Data not fetched");
-        }
-    }
-    $.getJSON("data.json", function(data){
-        data = data;
+    function upv(xid){
+        $.upvote();
     });
 </script>
