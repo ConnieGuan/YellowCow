@@ -20,13 +20,6 @@
           </div>
         <canvas id="myCanvas" width="800" height="500" style="border:1px solid #000000";></canvas>
         <script type="text/javascript">
-          $(function() {
-                $.each(['red', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
-      $('#post-container .tools').append("<a href='#myCanvas' data-color='" + this + "' style='width: 10px; background: " + this +  ";'></a> ");
-    });
-    $.each([3, 5, 10, 15], function() {
-      $('#post-container .tools').append("<a href='#myCanvas' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
-    });
              $('#myCanvas').sketch();
           });
 
