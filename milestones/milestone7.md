@@ -8,7 +8,12 @@ Tony:
 ---
 
 Connie:
-- TODO
+- Redid the canvas feature with a different implementation as previous version
+  was buggy and did not support mobile interaction
+- Reintegrated the ability to upload an image to the canvas (however is buggy with the
+  new drawing feature)
+- According to our feedback from last milestone add more colors, brush sizes, and 
+  overall more canvas functionality
 
 ---
 
@@ -23,7 +28,11 @@ Chang:
 ---
 
 # Screenshots 
+Picture one: Our new canvas with updated drawing features
+![alt tag](/images/milestone7pic1.JPG)
 
-TODO
+Picture two: Updated list view integrating the mini-maps and geo location and comment feature
+![alt tag](/images/milestone7pic2.JPG)
 
-Description: TODO
+Picture three: Map view
+![alt tag](/images/milestone7pic3.JPG)
