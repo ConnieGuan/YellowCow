@@ -61,3 +61,7 @@ typings/
 
 
 .idea
+
+# uploaded images you did on local should be ignored when pushed to server
+public/graffiti/
+tmp/

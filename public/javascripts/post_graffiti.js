@@ -1,36 +1,37 @@
 $(document).ready(function (event) {
     // http://stackoverflow.com/questions/34048093/submit-canvas-data-in-an-html-form
-    var $canvas = $("#myCanvas");
-    // $("#post_graffiti_form").submit(function (event) {
-    $(document).on('submit', '#post_graffiti_form', function(event) {
+    var canvas = document.getElementById('myCanvas');
+
+    $("#post_graffiti_form").submit( function(event) {
+        event.preventDefault();
 
         /**
          * Using indirect post method to handle image upload separately
          * @type {*}
          */
         var $form = $(this);
-        var dataURL = $canvas.toDataURL();
+        var dataURL = canvas.toDataURL('image/png');
         /* stop form from submitting (handle manually) */
-        event.preventDefault();
         var canvasUpload = "/post/submit_canvas";
-
-        // TODO: fix this post request, server still does not receive the request (see route/post.js --> /submit_canvas)
 
         $.ajax({
             type: "POST",
             url: canvasUpload,
             data: {
+                testSend: 'stuff',
                 imgBase64: dataURL
             }
-        }).done(function (o) {
+        }).done(function (data) { // data is undefined, not sending anything back
             console.log('image saved successfully');
             $.post( $form.attr('action'), $form.serialize(), function (data) {
-                console.log('posted the graffiti');
+                window.location.href = '/home';
             });
         });
 
 
     });
+    // $(document).on('submit', '#post_graffiti_form', function(event) {
+    // });
 });
 
 

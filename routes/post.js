@@ -13,9 +13,15 @@ router.get('/test', function (req, res, next) {
 });
 
 router.post('/submit_canvas', function (req, res, next) {
-    const dataURL = req.data.imgBase64;
-    console.log('inside submit_canvas route, ');
-    console.log('dataURL: ' + dataURL);
+    let dataURL = req.body.imgBase64;
+    dataURL =  dataURL.replace(/^data:image\/\w+;base64,/, "");
+    dataURL =  dataURL.replace(/ /g, '+');
+
+
+    // Save the dataURL image to public/graffiti/...
+    fs.writeFile('./public/graffiti/' + data.total + '.png', dataURL, 'base64', function(err) {
+        console.log(err);
+    });
     res.end();
 });
 
@@ -50,8 +56,8 @@ router.post('/submit', function (req, res, next) {
             "type": "Feature",
 
             // TODO: For now use sample external image, later after image upload to server works, use link to local image
-            "link": "https://us.123rf.com/450wm/zazamedia/zazamedia1409/zazamedia140900289/31596594-coming-soon-icon-sign.jpg?ver=6",
-            //"link": url,
+            // "link": "https://us.123rf.com/450wm/zazamedia/zazamedia1409/zazamedia140900289/31596594-coming-soon-icon-sign.jpg?ver=6",
+            "link": '/graffiti/' + data.total + '.png',
 
             "properties" : {
                 "name": title,
@@ -71,7 +77,6 @@ router.post('/submit', function (req, res, next) {
     });
 
     res.redirect('/home');
-
 });
 
 
