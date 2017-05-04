@@ -65,6 +65,10 @@ var __slice = Array.prototype.slice;
             sketch.download($(this).attr('data-download'));
           }
 
+          if ($(this).attr('data-clear')) {
+            sketch.clear($(this).attr('data-clear'));
+          }
+
           if ($(this).attr('data-upload')) {
             sketch.upload($(this).attr('data-upload'));
           }
@@ -73,6 +77,12 @@ var __slice = Array.prototype.slice;
         });
       }
     }
+
+    Sketch.prototype.clear = function(format){
+      this.context.clearRect(0,0,this.el.width,this.el.height);
+      img = 0;
+      this.actions = [];
+    };
 
     Sketch.prototype.upload = function(format) {
       var can = this;
