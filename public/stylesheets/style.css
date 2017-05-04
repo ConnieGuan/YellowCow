@@ -53,7 +53,16 @@ img.popup {
 .icn-comments {
     height: 100px;
     width: 100px;
-    -webkit-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    transform: translateY(100%);
+}
+
+.post_header {
+  display: flex;
+  flex-direction: row;
+    margin-bottom: 1em;
+}
+.post_left {
+  flex: 3;
+}
+.post_right {
+  flex: 1;
 }
