@@ -39,6 +39,12 @@ img.popup {
   padding: 1em
 }
 
+.myCanvas {
+  width: 100%;
+  height: 100%;
+
+}
+
 .graffiti {
   width: 100%;
   border: 3px solid #000000;
