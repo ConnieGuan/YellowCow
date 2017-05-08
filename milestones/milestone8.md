@@ -17,7 +17,7 @@ upload/take a photo. They can then open a color picker and
 select a color to draw on to the photo and make a post.
 
 Image:
-![alt tag](images/prototype_connie.JPG)
+![alt tag](../images/prototype_connie.JPG)
 
 
 ---
