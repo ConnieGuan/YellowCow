@@ -17,7 +17,7 @@ upload/take a photo. They can then open a color picker and
 select a color to draw on to the photo and make a post.
 
 Image:
-![alt tag](../images/prototype_connie.JPG)
+![alt tag](.../images/prototype_connie.JPG)
 
 
 ---
@@ -35,4 +35,3 @@ Chang:
 Description:
 
 //TODO add picture
->>>>>>> ae7dad6b41c71c438a34593d1810358763299641
