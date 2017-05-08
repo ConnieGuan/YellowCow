@@ -4,7 +4,8 @@ Jorenne:
 
 Description:
 
-//TODO add picture
+![alt tag](../images/prototype2-jorenne1.jpg)
+![alt tag](../images/prototype2-jorenne2.jpg)
 
 ---
 
