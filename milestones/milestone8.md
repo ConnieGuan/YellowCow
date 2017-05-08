@@ -1,20 +1,37 @@
-# Images of our team's paper prototypes and descriptions
+# Paper Prototypes 2
 
-Connie Guan
+Jorenne:
+
+Description:
+
+//TODO add picture
+
 ---
-#1
-![alt tag](images/prototype_connie.JPG)
+
+Connie:
+
 Description: This is a prototype of our "Post Graffiti" page.
 The primary interaction depicted here is allowing users to
 upload/take a photo. They can then open a color picker and 
 select a color to draw on to the photo and make a post.
 
+Image:
+![alt tag](images/prototype_connie.JPG)
 
 
+---
 
+Tony:
 
+Description:
 
+//TODO add picture
 
+---
 
+Chang:
 
+Description:
 
+//TODO add picture
+>>>>>>> ae7dad6b41c71c438a34593d1810358763299641
