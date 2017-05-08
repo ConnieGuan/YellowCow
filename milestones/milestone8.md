@@ -25,8 +25,10 @@ Image:
 Tony:
 
 Description:
+This is a prototype for the interaction flow from map screen to list screen, and eventually to the commenting screen. This alternative design is quite different from our current app design. In this design, I attempt to connect the map view and list view of graffitis so that the app has more synergy between screen.
 
-//TODO add picture
+Image:
+![alt tag](../images/milestone8_tony.jpg)
 
 ---
 
