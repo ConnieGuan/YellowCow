@@ -2,7 +2,7 @@
 
 Jorenne:
 
-Description:
+Description: My prototypes display the UI of the profiles. I made two versions for both mobile and desktop, and they both display the same content. Each profile has public graffiti and favorite graffiti. Private graffiti can only be viewed on your own profile.
 
 ![alt tag](../images/prototype2-jorenne1.jpg)
 ![alt tag](../images/prototype2-jorenne2.jpg)
