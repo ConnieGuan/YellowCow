@@ -33,5 +33,5 @@ Description:
 Chang:
 
 Description:
-
+The main page will have a news feed of all the other pintura's and so you can view comments that other people said. By clicking on the view comments link/button, you will be lead to a page with all the comments on it. The post page has a canvas for the images/graffiti for the user to design their pintura. The user can also choose from a list of tools available.
 ![alt tag](../images/Cogs121milestone8page1.jpg)
