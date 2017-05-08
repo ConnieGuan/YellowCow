@@ -34,4 +34,4 @@ Chang:
 
 Description:
 
-//TODO add picture
+![alt tag](.../images/Cogs121milestone8page1.jpg)
