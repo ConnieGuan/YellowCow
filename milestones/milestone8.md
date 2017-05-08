@@ -34,4 +34,4 @@ Chang:
 
 Description:
 
-![alt tag](.../images/Cogs121milestone8page1.jpg)
+![alt tag](../images/Cogs121milestone8page1.jpg)
