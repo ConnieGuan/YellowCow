@@ -10,7 +10,7 @@ Our app is a location based social network sharing platform where users can anon
 
 Storyboard:
 
-![alt tag](images/graffitiConnie.JPG)
+![alt tag](../images/graffitiConnie.JPG)
 
 ---------
 

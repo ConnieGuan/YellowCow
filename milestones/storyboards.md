@@ -1,29 +1,29 @@
 Connie Guan
 ---
 #1
-![alt tag](images/graffitiConnie.JPG)
+![alt tag](../images/graffitiConnie.JPG)
 #2
-![alt tag](images/UberAirplanesConnie.JPG)
+![alt tag](../images/UberAirplanesConnie.JPG)
 ---
 Tony Salim
 ---
 #3
-![alt tag](images/ShortcutShareTony.png)
+![alt tag](../images/ShortcutShareTony.png)
 #4
 ---
-![alt tag](images/SideQuest.png)
+![alt tag](../images/SideQuest.png)
 ---
 Jorenne Flores
 ---
 #5
-![alt tag](images/WanderlustJorenne.png)
+![alt tag](../images/WanderlustJorenne.png)
 #6
-![alt tag](images/WeatherJorenne.png)
+![alt tag](../images/WeatherJorenne.png)
 ---
 Chang Gwoun
 ---
 #7
-![alt tag](images/ballup.jpg)
+![alt tag](../images/ballup.jpg)
 #8
-![alt tag](images/pictureMe.jpg)
+![alt tag](../images/pictureMe.jpg)
 ---
