@@ -7,7 +7,7 @@
 <h1>Post Graffiti</h1>
 <form id="post_graffiti_form" method="post" role="form" action="/post/submit">
     <!--TODO: look mindlee how to add new destress, follow same template-->
-    <div class="container">
+    <div class="container" id="post-container">
         <!-- Canvas -->
         <div id="canvas-container">
           <div class='tools'>
@@ -16,47 +16,49 @@
             <a href="#myCanvas" data-size="3"> Small </a>
             <a href="#myCanvas" data-size="10"> Medium </a>
             <a href="#myCanvas" data-size="30"> Large </a>
-            <a href="#myCanvas" data-download="jpg">Download</a>
             <a href="#myCanvas" data-clear="clear">Clear</a>
             <a href="#myCanvas" data-upload="jpg">Take/Select A Photo!</a> 
           </div>
         <div style="width: 0; height: 0; overflow: hidden;"> 
             <input type="file" id="PhotoPicker">
         </div>
-            <div id="slider-container">
+
+        <!-- Leave styling in canvas. Only way it works -->
+        <div id="canvas-slider">
+                    <div id="slider-container">
                 <a href="#myCanvas" id="box" data-color="#ff0000" ></a>
                 <div id="slider"></div>
             </div>
-        <!-- Leave styling in canvas. Only way it works -->
-        <canvas id="myCanvas" width="800" height="500"> </canvas>
+        <canvas id="myCanvas" width="320" height="320"> </canvas>
 
+            </div>
         </div>
-    </div>
+
         <!-- End canvas -->
-        <div class="form-group container text-center">
+        <div class="form-group" id="form-container">
             <label for="title">Title</label>
-            <input type="text" name="title" placeholder="Post Title">
+            <input type="text" class="form-control" name="title" placeholder="Post Title">
             <br>
-            <label for="description"></label>
-            <textarea class="comment-box" rows="4" cols="50" name="description" id="description" placeholder="Say something about this graffiti"></textarea>
+            <label for="description"> Description </label>
+            <textarea class="comment-box form-control" rows="4" name="description" id="description" placeholder="Say something about this graffiti"></textarea>
             <div class="input-prepend">
-                <span class="add-on">Location: </span>
+                <span class="add-on"></span>
                 <label for="latlng"></label>
                 <input class="span2" id="lat" type="number" step="0.01" name="lat" readonly>
                 <input class="span2" id="lng" type="number" step="0.01" name="lng" readonly>
 
             </div>
         </div>
-
-        <div class="text-center">
-            <input type="submit" class="btn btn-primary btn-block" value="Post">
+<!--<div id="map"> </div> -->
+        <div id="form-submit">
+            <input type="submit" class="btn btn-primary" value="Post">
             <a href="/home">
-                <input type="button" id="cancel_post" class="btn-add-activity btn btn-block" value="Cancel"/>
+                <input type="button" id="cancel_post" class="btn-add-activity btn" value="Cancel"/>
             </a>
         </div>
     </div>
 </form>
-<div id="map" style="height: 200px; width: auto;"> </div>
+
 </body>
 <script type="text/javascript">
     ColorPicker(
