@@ -9,10 +9,8 @@
 <form id="post_graffiti_form" method="post" role="form" action="/post/submit">
     <!--TODO: look mindlee how to add new destress, follow same template-->
     <div class="container">
-        <p style="text-align: center; font-weight: bold">Draw your graffiti below</p>
-
         <!-- Canvas -->
-          <div class='tools'>
+          <div class='tools' id="canvas-container">
             <a href="#myCanvas" data-tool="marker">Marker</a>
             <a href="#myCanvas" data-tool="eraser">Erase</a>
             <a href="#myCanvas" data-size="3"> Small </a>
@@ -28,14 +26,13 @@
              <a href="#myCanvas" data-download="jpg">Download</a>
             <a href="#myCanvas" data-clear="clear">Clear</a>
             <input type="text" id="custom"/>
-
-            <a href="#myCanvas" data-upload="jpg" class="pull-right">Take/Select A Photo!</a>   
+            <a href="#myCanvas" data-upload="jpg">Take/Select A Photo!</a>   
           </div>
         <div style="width: 0; height: 0; overflow: hidden;"> 
             <input type="file" id="PhotoPicker">
         </div>
-
-        <canvas id="myCanvas" style="border:1px solid #000000";></canvas>
+        <!-- Leave styling in canvas. Only way it works -->
+        <canvas id="myCanvas" width="800" height="500"> </canvas>
         <script type="text/javascript">
           $(function() 
           {

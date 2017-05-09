@@ -65,10 +65,17 @@ img.popup {
   padding: 1em
 }
 
-.myCanvas {
-  width: 100%;
-  height: 100%;
+/* Styling for the canvas */
 
+#canvas-container {
+  display: block;
+  margin: auto;
+}
+
+#myCanvas{
+  border: 1px;
+  border-style: solid;
+  border-color: "#000000";
 }
 
 .graffiti {

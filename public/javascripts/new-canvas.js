@@ -177,7 +177,7 @@ var __slice = Array.prototype.slice;
     };
     Sketch.prototype.redraw = function() {
       var sketch;
-      this.el.width = this.canvas.width();
+      //this.el.width = this.canvas.width();
       if(img)
         this.context.drawImage(img, 0, 0, img.width, img.height, 0, 0, this.el.width, this.el.height);
       this.context = this.el.getContext('2d');
