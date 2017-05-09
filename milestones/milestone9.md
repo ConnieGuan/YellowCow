@@ -24,6 +24,7 @@ Jorenne:
 Chang:
 - Fixed the image upload to canvas bug. The image now draws to the canvas
 - Added a clear option to remove everything from the canvas so that the user may restart their pintura
+- Made home page mobile friendly, still need to work on desktop and tablet screen
 
 ---
 
