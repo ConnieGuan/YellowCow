@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 3.5em;
+  font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 a {
@@ -9,11 +9,37 @@ a {
 
 /** For main map in map.hbs */
 #map {
+  margin-top: 50px;
   height: 100%;
 }
 /** For maps in home.hbs */
 .map {
   z-index: 1;
+}
+
+/** For the nav bar **/
+#nav-custom {
+  background-color: #fbce43;
+  border-color: #fbce43;
+}
+
+/* Custom styling for nav collapse */
+#nav-button-custom {
+  border-color: white;
+  background-color: #fbce43;
+}
+
+#nav-button-custom span{
+  background-color: white;
+}
+/* Custom text color for brand */
+#brand-custom{
+  color: white;
+}
+
+/* Custom color for nav links */
+.nav.navbar-nav.navbar-right li a {
+    color: white;
 }
 
 .custom .leaflet-popup-tip,
@@ -39,12 +65,41 @@ img.popup {
   padding: 1em
 }
 
-.myCanvas {
-  width: 100%;
-  height: 100%;
-
+/** Styling for the canvas **/
+#canvas-container {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
 }
 
+#myCanvas{
+  border: 1px;
+  border-style: solid;
+  border-color: "#000000";
+}
+#slider { 
+  width: 30px; 
+  height: 200px;
+}
+#slider-container {
+  max-width: 30px;
+  float: right;
+}
+
+#box {
+    width:30px;
+    height:30px;
+    border: 1px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: black;
+    background-color: #ff0000;
+    display: inline-block;
+}
+
+/** End Canvas Styling */
 .graffiti {
   width: 100%;
   border: 3px solid #000000;

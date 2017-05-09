@@ -38,7 +38,7 @@ var __slice = Array.prototype.slice;
       this.options = $.extend({
         toolLinks: true,
         defaultTool: 'marker',
-        defaultColor: '#000000',
+        defaultColor: '#ff0000',
         defaultSize: 5
       }, opts);
       this.painting = false;
@@ -61,6 +61,7 @@ var __slice = Array.prototype.slice;
               sketch.set(key, $(this).attr("data-" + key));
             }
           }
+
           if ($(this).attr('data-download')) {
             sketch.download($(this).attr('data-download'));
           }
@@ -173,7 +174,7 @@ var __slice = Array.prototype.slice;
     };
     Sketch.prototype.redraw = function() {
       var sketch;
-      this.el.width = this.canvas.width();
+      //this.el.width = this.canvas.width();
       if(img)
         this.context.drawImage(img, 0, 0, img.width, img.height, 0, 0, this.el.width, this.el.height);
       this.context = this.el.getContext('2d');

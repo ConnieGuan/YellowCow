@@ -3,33 +3,44 @@
   <head>
     <title>{{title}}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-      <link rel='stylesheet' href='/stylesheets/style.css' />
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
       <!-- Bootstrap with Optional theme -->
       <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/bower_components/hover/css/hover-min.css">
-
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script src="https://use.fontawesome.com/91fb7f42a2.js"></script>
       <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!-- bootstrap script -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
+  
   <body>
-  <nav class="navbar navbar-default">
+<!-- Navbar begin -->
+  <nav class="navbar navbar-default navbar-fixed-top" id="nav-custom" role="navigation">
       <div class="container-fluid">
+        <!-- Collect all nav elements for collapsable nav -->
           <div class="navbar-header">
-              <a class="navbar-brand" href="/home">Pintura</a>
+            <!-- A nice hamburger menu button -->
+            <button type="button" class="navbar-toggle collapsed" id= "nav-button-custom" data-toggle="collapse" data-target="#nav-to-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="brand-custom"><img src="images/logo.png" alt="Pintura" height="40px"></a>
           </div>
-          <ul class="nav navbar-default navbar-fixed-top">
-            <div class="container">
-
-              <li><a href="/home">Home</a></li>
-              <li><a href="/map">Map</a></li>
-              <li><a href="/profile">Profile</a></li>
-              <li><a href="/help">Help</a></li>
-            </div>
-          </ul>
+          <div class="collapse navbar-collapse collapse" id="nav-to-collapse"> 
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/home" id="nav-text-custom">Home</a></li>
+              <li><a href="/map" class="nav-text-custom">Map</a></li>
+              <li><a href="/post" class="nav-text-custom">Post</a></li>
+              <li><a href="/profile" class="nav-text-custom">Profile</a></li>
+              <li><a href="/help" class="nav-text-custom">Help</a></li>
+            </ul>
+          </div>
       </div>
   </nav>
+<!-- Navbar end -->
     {{{body}}}
   </body>
 </html>
