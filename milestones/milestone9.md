@@ -6,11 +6,11 @@ Tony:
 ---
 
 Connie:
--Added a color picker bar and hooked it up to the canvas so now users can select a color from the color bar
-to begin drawing. 
--Fixed the canvas resizing bug
--Making the post/canvas view more mobile friendly
--Added in a new navbar with a collapsable menu
+- Added a color picker bar and hooked it up to the canvas so now users can select a color from the color bar
+ to begin drawing. 
+- Fixed the canvas resizing bug
+- Making the post/canvas view more mobile friendly
+- Added in a new navbar with a collapsable menu
 
 ---
 
