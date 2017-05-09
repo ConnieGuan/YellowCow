@@ -82,14 +82,14 @@ h1 {
 
 /** For the nav bar **/
 #nav-custom {
-  background-color: #00a2ad;
-  border-color: #00a2ad;
+  background-color: #fbce43;
+  border-color: #fbce43;
 }
 
 /* Custom styling for nav collapse */
 #nav-button-custom {
-  border-color: #00a2ad;
-  background-color: #00a2ad;
+  border-color: #fbce43;
+  background-color: #fbce43;
 }
 
 #nav-button-custom span{
