@@ -2,12 +2,24 @@ body {
 /*  padding: 3.5em;*/
   padding-top: 3.1em;
   font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: white;
 }
 
 a {
-  color: #00B7FF;
+  color: #014656;
 }
 
+h1 {
+  font-style: normal;
+  font-size: 2.5em;
+  font-weight: normal;
+
+}
+#post-container{
+  margin-left: auto;
+  margin-right: auto;
+
+}
 /** For main map in map.hbs */
 #mainHeading{
   font-family: 'Leckerli One', cursive;
@@ -16,7 +28,8 @@ a {
 
 #map {
   margin-top: 50px;
-  height: 100%;
+  height: 200px;
+  width: 200px;
 }
 /** For home.hbs */
 
@@ -69,18 +82,18 @@ a {
 
 /** For the nav bar **/
 #nav-custom {
-  background-color: #fbce43;
-  border-color: #fbce43;
+  background-color: #00a2ad;
+  border-color: #00a2ad;
 }
 
 /* Custom styling for nav collapse */
 #nav-button-custom {
-  border-color: white;
-  background-color: #fbce43;
+  border-color: #00a2ad;
+  background-color: #00a2ad;
 }
 
 #nav-button-custom span{
-  background-color: white;
+  background-color: #f9f7f6;
 }
 /* Custom text color for brand */
 #brand-custom{
@@ -92,6 +105,24 @@ a {
 .nav.navbar-nav.navbar-right li a {
     color: white;
 }
+
+/* Styling for the form input on post */
+#form-container {
+  float: left;
+  padding-left: 10%;
+  max-width: 90%;
+}
+
+.span2 {
+  visibility: hidden;
+
+}
+
+#form-submit {
+  text-align: center;
+}
+
+/** end form styling **/
 
 .custom .leaflet-popup-tip,
 .custom .leaflet-popup-content-wrapper {
@@ -119,8 +150,9 @@ img.popup {
 #myCanvas{
   border: 1px;
   border-style: solid;
-  border-color: "#000000";
+  border-color:#D3D3D3;
 }
+
 #slider { 
   width: 30px; 
   height: 200px;
@@ -140,7 +172,6 @@ img.popup {
     background-color: #ff0000;
     display: inline-block;
 }
-
 /** End Canvas Styling */
 .icn-comments {
   height: 100px;
