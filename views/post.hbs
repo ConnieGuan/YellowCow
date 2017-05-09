@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script type="text/javascript" src="javascripts/colorpicker.js"></script>
 </head>
 
 <body>
@@ -8,37 +9,29 @@
     <!--TODO: look mindlee how to add new destress, follow same template-->
     <div class="container">
         <!-- Canvas -->
-          <div class='tools' id="canvas-container">
+        <div id="canvas-container">
+          <div class='tools'>
             <a href="#myCanvas" data-tool="marker">Marker</a>
             <a href="#myCanvas" data-tool="eraser">Erase</a>
             <a href="#myCanvas" data-size="3"> Small </a>
             <a href="#myCanvas" data-size="10"> Medium </a>
             <a href="#myCanvas" data-size="30"> Large </a>
-           <!-- <a href="#myCanvas" data-color="#ff0000"> Red </a>
-            <a href="#myCanvas" data-color="#ff9966"> Orange </a>
-            <a href="#myCanvas" data-color="#ffff66"> Yellow </a>
-            <a href="#myCanvas" data-color="#009900"> Green </a>
-            <a href="#myCanvas" data-color="#0033cc"> Blue </a>
-            <a href="#myCanvas" data-color="#993399"> Purple </a>
-            <a href="#myCanvas" data-color="#000000"> Black </a> -->
-             <a href="#myCanvas" data-download="jpg">Download</a>
+            <a href="#myCanvas" data-download="jpg">Download</a>
             <a href="#myCanvas" data-clear="clear">Clear</a>
-            <a href="#myCanvas" data-upload="jpg">Take/Select A Photo!</a>   
+            <a href="#myCanvas" data-upload="jpg">Take/Select A Photo!</a> 
           </div>
         <div style="width: 0; height: 0; overflow: hidden;"> 
             <input type="file" id="PhotoPicker">
         </div>
+            <div id="slider-container">
+                <a href="#myCanvas" id="box" data-color="#ff0000" ></a>
+                <div id="slider"></div>
+            </div>
         <!-- Leave styling in canvas. Only way it works -->
         <canvas id="myCanvas" width="800" height="500"> </canvas>
-        <script type="text/javascript">
-          $(function() 
-          {
-            $('#myCanvas').sketch();
-          });
-             
-        </script>
-        <br>
+
         </div>
+    </div>
         <!-- End canvas -->
         <div class="form-group container text-center">
             <label for="title">Title</label>
@@ -54,6 +47,7 @@
 
             </div>
         </div>
+
         <div class="text-center">
             <input type="submit" class="btn btn-primary btn-block" value="Post">
             <a href="/home">
@@ -64,6 +58,23 @@
 </form>
 <div id="map" style="height: 200px; width: auto;"> </div>
 </body>
+<script type="text/javascript">
+    ColorPicker(
+        document.getElementById('slider'),
 
+        function(hex, hsv, rgb) {
+            console.log(hsv.h, hsv.s, hsv.v);         // [0-359], [0-1], [0-1]
+            console.log(rgb.r, rgb.g, rgb.b);         // [0-255], [0-255], [0-255]
+            $('#box').css('background-color', hex);
+            $('#box').attr("data-color", hex).trigger('click');
+        }
+    );
+</script>
+<script type="text/javascript">
+    $(function() 
+    {
+        $('#myCanvas').sketch();
+    });
+</script>
 <script src="javascripts/post_graffiti.js"></script>
 <script src="javascripts/new-canvas.js"> </script>

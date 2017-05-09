@@ -65,7 +65,7 @@ img.popup {
   padding: 1em
 }
 
-/* Styling for the canvas */
+/** Styling for the canvas **/
 #canvas-container {
   display: block;
   position: relative;
@@ -79,7 +79,27 @@ img.popup {
   border-style: solid;
   border-color: "#000000";
 }
+#slider { 
+  width: 30px; 
+  height: 200px;
+}
+#slider-container {
+  max-width: 30px;
+  float: right;
+}
 
+#box {
+    width:30px;
+    height:30px;
+    border: 1px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: black;
+    background-color: #ff0000;
+    display: inline-block;
+}
+
+/** End Canvas Styling */
 .graffiti {
   width: 100%;
   border: 3px solid #000000;

@@ -38,14 +38,11 @@ var __slice = Array.prototype.slice;
       this.options = $.extend({
         toolLinks: true,
         defaultTool: 'marker',
-        defaultColor: '#000000',
+        defaultColor: '#ff0000',
         defaultSize: 5
       }, opts);
       this.painting = false;
-      //this.color = this.options.defaultColor;
-                //Get the color from the color picker
-          this.color = $("#custom").spectrum("get");
-          console.log("the color is " + this.color);
+      this.color = this.options.defaultColor;
       this.size = this.options.defaultSize;
       this.tool = this.options.defaultTool;
       this.actions = [];
