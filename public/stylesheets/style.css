@@ -66,10 +66,12 @@ img.popup {
 }
 
 /* Styling for the canvas */
-
 #canvas-container {
   display: block;
-  margin: auto;
+  position: relative;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 #myCanvas{
