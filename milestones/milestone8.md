@@ -25,13 +25,15 @@ Image:
 Tony:
 
 Description:
+This is a prototype for the interaction flow from map screen to list screen, and eventually to the commenting screen. This alternative design is quite different from our current app design. In this design, I attempt to connect the map view and list view of graffitis so that the app has more synergy between screen.
 
-//TODO add picture
+Image:
+![alt tag](../images/milestone8_tony.jpg)
 
 ---
 
 Chang:
 
 Description:
-
-//TODO add picture
+The main page will have a news feed of all the other pintura's and so you can view comments that other people said. By clicking on the view comments link/button, you will be lead to a page with all the comments on it. The post page has a canvas for the images/graffiti for the user to design their pintura. The user can also choose from a list of tools available.
+![alt tag](../images/Cogs121milestone8page1.jpg)
