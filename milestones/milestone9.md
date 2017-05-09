@@ -18,7 +18,8 @@ Jorenne:
 ---
 
 Chang:
-- TODO
+- Fixed the image upload to canvas bug. The image now draws to the canvas
+- Added a clear option to remove everything from the canvas so that the user may restart their pintura
 
 ---
 
