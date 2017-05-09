@@ -13,6 +13,10 @@
     var data = {{{ json data }}}
 
     var features = data.features;
+    var you = L.icon({
+        iconUrl: 'images/youstar.png',
+        iconSize: [50, 50]
+    });
 
     var ucsd_coor = [32.88044, -117.23758];
     var map = L.map('map', {
@@ -63,7 +67,7 @@
      */
     function onLocationFound(e) {
         var radius = e.accuracy / 2;
-        L.marker(e.latlng).addTo(map).bindPopup("You").openPopup();
+        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup();
         L.circle(e.latlng, radius).addTo(map);
     }
     /**
