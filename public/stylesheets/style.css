@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 3.5em;
+  font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 a {
@@ -9,11 +9,37 @@ a {
 
 /** For main map in map.hbs */
 #map {
+  margin-top: 50px;
   height: 100%;
 }
 /** For maps in home.hbs */
 .map {
   z-index: 1;
+}
+
+/** For the nav bar **/
+#nav-custom {
+  background-color: #fbce43;
+  border-color: #fbce43;
+}
+
+/* Custom styling for nav collapse */
+#nav-button-custom {
+  border-color: white;
+  background-color: #fbce43;
+}
+
+#nav-button-custom span{
+  background-color: white;
+}
+/* Custom text color for brand */
+#brand-custom{
+  color: white;
+}
+
+/* Custom color for nav links */
+.nav.navbar-nav.navbar-right li a {
+    color: white;
 }
 
 .custom .leaflet-popup-tip,

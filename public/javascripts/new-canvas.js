@@ -42,7 +42,10 @@ var __slice = Array.prototype.slice;
         defaultSize: 5
       }, opts);
       this.painting = false;
-      this.color = this.options.defaultColor;
+      //this.color = this.options.defaultColor;
+                //Get the color from the color picker
+          this.color = $("#custom").spectrum("get");
+          console.log("the color is " + this.color);
       this.size = this.options.defaultSize;
       this.tool = this.options.defaultTool;
       this.actions = [];
@@ -61,6 +64,7 @@ var __slice = Array.prototype.slice;
               sketch.set(key, $(this).attr("data-" + key));
             }
           }
+
           if ($(this).attr('data-download')) {
             sketch.download($(this).attr('data-download'));
           }
