@@ -1,41 +1,57 @@
-<link rel="stylesheet" href="stylesheets/comment-modal.css">
 
-<h1>This is Home Page</h1>
 
-<a href="/post"><button class="btn btn-primary"> Post Graffiti </button></a>
-<a href="/map"><button class="btn">Go to Map</button></a>
+<h1 id="mainHeading" class="text-center">Pintura Home Feed</h1>
+<hr>
 
 {{#with data}}
-    <div class="container center-block">
-        <h3 class="text-center">Here are the list of nearby Graffiti</h3>
+
+    
+    <div class="container-fluid align-center">
+    
+
+        <!--
+        <h3 class="text-center">List Of Nearby Pinturas</h3>
+        -->
+
             {{#each features}}
-                <div class="post row center-block"
+                <div class="container-fluid row">
+
+                <!--
                      data-coordinate={{ geo.geometry.coordinates}}>
+                -->
+
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
                         {{#each comments}}
                             <p class="list-group-item">{{ this }}</p>
                         {{/each}}
                     </div>
-                    <div class="container post_header">
-                        <div class="post_left">
-                            <p class="">Title: {{ title }}</p>
-                            <p class="">Description: {{ description }}</p>
-                            <p class="">Votes: {{ votes }}</p>
-                            <button class="btn" onclick="upvote({{id}})">Upvote</button>
-                            <button class="btn" onclick="downvote({{id}})">Downvote</button> <!-- TODO: button doesn't do anything -->
+
+                    <h4 class="strong post_left">Title: {{ title }}</h4>
+                    <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
+                    <div class="post_header">
+                        <div class="strong post_left space">
+                            <p >Description: {{ description }}</p>
+                            <p>Votes: {{ votes }}</p>
+                            <button type="button" class="btn btn-primary" onclick="upvote({{id}})">Upvote</button>
+                            <button type="button" class="btn btn-danger" onclick="downvote({{id}})">Downvote</button> <!-- TODO: button doesn't do anything -->
                         </div>
                         <div class="post_right">
                             <img class="icn-comments btn-comments hvr-bounce-in" src="images/comment-bubble.jpg" alt="" data-id="{{ id }}">
                         </div>
                     </div>
-                    <div class="post-content">
-                        <img class="graffiti" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
-                    </div>
+                    <hr>
+                    <!--
                     <p class="text-center">Location: {{ geo.geometry.coordinates }} </p>
+                    -->
+
                 </div>
             {{/each}}
+
+ 
     </div>
+
+
 {{/with}}
 
 <!-- The Modal for Comments -->

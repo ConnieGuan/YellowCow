@@ -1,5 +1,6 @@
 body {
-  padding: 3.5em;
+/*  padding: 3.5em;*/
+  padding-top: 3.1em;
   font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
@@ -8,11 +9,60 @@ a {
 }
 
 /** For main map in map.hbs */
+#mainHeading{
+  font-family: 'Leckerli One', cursive;
+
+}
+
 #map {
   margin-top: 50px;
   height: 100%;
 }
-/** For maps in home.hbs */
+/** For home.hbs */
+
+/*.post{
+  width: 95%;
+}*/
+.strong{
+  font-weight: bold;
+}
+
+.space{
+  margin-top: 7px;
+}
+
+.row {
+  /*border: solid 3px black;
+  border-radius: 9px;*/
+  background-color: rgba(255, 255, 255, 0.4);
+/*  align-items:center;*/
+  margin-top: 5px;
+  margin-bottom: 5px; 
+}
+
+.graffiti {
+  width: 100%;
+  border: 3px solid #000000;
+  flex: 3;
+}
+
+.post-content {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.post_header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+.post_left {
+  flex: 3;
+}
+.post_right {
+  flex: 1;
+}
+
 .map {
   z-index: 1;
 }
@@ -35,6 +85,7 @@ a {
 /* Custom text color for brand */
 #brand-custom{
   color: white;
+  padding-top: 5px;
 }
 
 /* Custom color for nav links */
@@ -54,15 +105,6 @@ img.popup {
 .square {
   height: 75px;
   width: 75px;
-}
-
-.row {
-  border: solid 3px #585858;
-  border-radius: 9px;
-  background-color: rgba(255, 255, 255, 0.4);
-  align-items:center;
-  margin: 2em;
-  padding: 1em
 }
 
 /** Styling for the canvas **/
@@ -100,30 +142,11 @@ img.popup {
 }
 
 /** End Canvas Styling */
-.graffiti {
-  width: 100%;
-  border: 3px solid #000000;
-  flex: 3;
-}
-
-.post-content {
-  display: -webkit-flex;
-  display: flex;
-}
-
 .icn-comments {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
-.post_header {
-  display: flex;
-  flex-direction: row;
-    margin-bottom: 1em;
-}
-.post_left {
-  flex: 3;
-}
-.post_right {
-  flex: 1;
+#postHeading{
+  font-family: 'Leckerli One', cursive;
 }
