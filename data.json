@@ -1,5 +1,5 @@
 {
-	"total": 3,
+	"total": 7,
 	"features": [
 		{
 			"id": 0,
@@ -73,6 +73,98 @@
 					"coordinates": [
 						-117.23758578300477,
 						32.88109637198742
+					]
+				}
+			}
+		},
+		{
+			"id": 3,
+			"title": "",
+			"description": "",
+			"comments": [],
+			"votes": 0,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "/graffiti/3.png",
+				"properties": {
+					"name": "",
+					"popupContent": ""
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						"-117.2414726",
+						"32.8784576"
+					]
+				}
+			}
+		},
+		{
+			"id": 4,
+			"title": "test",
+			"description": "test",
+			"comments": [],
+			"votes": 0,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "/graffiti/4.png",
+				"properties": {
+					"name": "test",
+					"popupContent": "test"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						"-117.24146889999999",
+						"32.878437999999996"
+					]
+				}
+			}
+		},
+		{
+			"id": 5,
+			"title": "",
+			"description": "",
+			"comments": [],
+			"votes": 0,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "/graffiti/5.png",
+				"properties": {
+					"name": "",
+					"popupContent": ""
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						"-117.23589170000001",
+						"32.8797077"
+					]
+				}
+			}
+		},
+		{
+			"id": 6,
+			"title": "Test",
+			"description": "tests again",
+			"comments": [],
+			"votes": 0,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "/graffiti/6.png",
+				"properties": {
+					"name": "Test",
+					"popupContent": "tests again"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						"",
+						""
 					]
 				}
 			}
