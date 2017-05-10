@@ -24,6 +24,10 @@
         iconUrl: 'images/unexplored.png',
         iconSize: [50, 50]
     });
+    var hot = L.icon({
+        iconUrl: 'https://openclipart.org/download/206317/Map-Warning-Icon.svg',
+        iconSize: [50, 50]
+    })
 
     var ucsd_coor = [32.88044, -117.23758];
     var map = L.map('map', {
@@ -60,7 +64,7 @@
 //            layer.bindPopup(feature.properties.popupContent);
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
             layer.on('click', function (e) {
-                    map.removeLayer(radius_circle);
+                    if (radius_circle) { map.removeLayer(radius_circle); }
                     radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
             }).on('popupclose', function (e) {
                 map.removeLayer(radius_circle);
@@ -71,6 +75,7 @@
 
     function onEachHiddenFeature(feature, layer) {
         layer.on('click', function (e) {
+            if (radius_circle) { map.removeLayer(radius_circle); }
             radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
         }).on('popupclose', function (e) {
             map.removeLayer(radius_circle);
@@ -121,6 +126,11 @@
 
             if (dist <= rad) {
                 L.geoJSON(features[i].geo, {
+                    pointToLayer: function (feature, latlng) {
+                        if (rad >= 1000) {
+                            return L.marker(latlng, {icon: hot});
+                        } else { return L.marker(latlng); }
+                    },
                     onEachFeature: onEachFeature
                 }).addTo(map);
             } else {
@@ -144,8 +154,8 @@
 
 
 //    useful to add new sample coordinate data later
-//     map.on('click', function(e) {
-//         console.log(e.latlng.lng + ',' + e.latlng.lat);
-//     });
+     map.on('click', function(e) {
+         console.log(e.latlng.lng + ',' + e.latlng.lat);
+     });
 </script>
 <!--<script src="javascripts/map.js"> </script>-->
