@@ -4,7 +4,7 @@
 		{
 			"id": 0,
 			"title": "Home",
-			"comment": "My Home Graffiti",
+			"description": "My Home Graffiti",
 			"comments": [
 				"So lit!!",
 				"such WOW!"
@@ -13,7 +13,7 @@
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
-				"link": "https://i.imgur.com/QjurNdW.jpg",
+				"link": "graffiti/0.jpg",
 				"properties": {
 					"name": "Home",
 					"popupContent": "My Home Graffiti"
@@ -30,7 +30,7 @@
 		{
 			"id": 1,
 			"title": "Ralph",
-			"comment": "Ralph graffiti",
+			"description": "Ralph graffiti",
 			"comments": [
 				"Thats nasty!!!"
 			],
@@ -55,7 +55,7 @@
 		{
 			"id": 2,
 			"title": "Geisel Graffiti",
-			"comment": "Geisel tag",
+			"description": "Geisel tag",
 			"comments": [
 				"Ay!!!"
 			],
@@ -63,7 +63,7 @@
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
-				"link": "http://wrmc.middlebury.edu/files/2015/09/Skool_4_Chumps1.jpg",
+				"link": "https://i.ytimg.com/vi/su9GR8xxI-Q/maxresdefault.jpg",
 				"properties": {
 					"name": "Geisel Graffiti",
 					"popupContent": "Geisel tag"
