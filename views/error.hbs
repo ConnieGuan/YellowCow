@@ -1,3 +1,18 @@
-<h1>{{message}}</h1>
+<div style="float: left; height:50%"><img src="images/lost.png"></div>
+<div style="padding: 100px">
+	<h1>{{message}}</h1>
+	<h3>We're sorry!</h3>
+	<p>The link you followed is probably broken or the page you requested has been moved or deleted.</p>
+	<p><button onclick="goBack()">Go Back</button></p>
+</div>
+
+<!--
 <h2>{{error.status}}</h2>
 <pre>{{error.stack}}</pre>
+-->
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
