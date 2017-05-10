@@ -41,6 +41,7 @@
      */
     function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
+        var radius_circle = null;
         if (feature.properties && feature.properties.popupContent) {
             imgPop = $('<img class="popup" src="' + feature.link + '" />');
             var customPopup = $("<div>").addClass('container modal-dialog')
@@ -52,7 +53,12 @@
                     .append(btnVote);
 //            layer.bindPopup(feature.properties.popupContent);
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
-            L.circle( feature.geometry.coordinates.slice().reverse(), feature.radius).addTo(map);
+            layer.on('click', function (e) {
+                    radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
+            }).on('popupclose', function (e) {
+                map.removeLayer(radius_circle);
+                console.log(e);
+            });
         }
     }
 //    L.geoJSON(features[0].geo, {
