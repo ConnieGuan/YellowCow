@@ -20,6 +20,11 @@
         iconSize: [50, 50]
     });
 
+    var unexplored = L.icon({
+        iconUrl: 'images/unexplored.png',
+        iconSize: [50, 50]
+    });
+
     var ucsd_coor = [32.88044, -117.23758];
     var map = L.map('map', {
         zoom: 15,
@@ -36,12 +41,13 @@
         className: "custom"
     };
 
+    var radius_circle = null;       // global to keep track which circle is opened
+
     /**
      * Call back function used on each graffiti post
      */
     function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
-        var radius_circle = null;
         if (feature.properties && feature.properties.popupContent) {
             imgPop = $('<img class="popup" src="' + feature.link + '" />');
             var customPopup = $("<div>").addClass('container modal-dialog')
@@ -54,6 +60,7 @@
 //            layer.bindPopup(feature.properties.popupContent);
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
             layer.on('click', function (e) {
+                    map.removeLayer(radius_circle);
                     radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
             }).on('popupclose', function (e) {
                 map.removeLayer(radius_circle);
@@ -61,9 +68,15 @@
             });
         }
     }
-//    L.geoJSON(features[0].geo, {
-//        onEachFeature: onEachFeature
-//    }).addTo(map);
+
+    function onEachHiddenFeature(feature, layer) {
+        layer.on('click', function (e) {
+            radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
+        }).on('popupclose', function (e) {
+            map.removeLayer(radius_circle);
+            console.log(e);
+        });
+    }
 
     /**
      * Fires when GPS detected current location
@@ -72,7 +85,8 @@
     function onLocationFound(e) {
         current_pos = e.latlng;
         var radius = e.accuracy / 2;
-        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup();
+//        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying
+        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>");
         L.circle(e.latlng, radius).addTo(map);
         setupFeatures();
 
@@ -105,13 +119,20 @@
             console.log('distance from current to post ' + features[i].title + ' : ' + dist + ' meters');
             console.log('post radius: ' + rad);
 
-//            if (dist <= rad) {
+            if (dist <= rad) {
                 L.geoJSON(features[i].geo, {
                     onEachFeature: onEachFeature
                 }).addTo(map);
-//            } else {
-//                post_hidden++;
-//            }
+            } else {
+                // add custum markers for unexplored graffiti area
+                L.geoJSON(features[i].geo, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.marker(latlng, {icon: unexplored});
+                    },
+                    onEachFeature: onEachHiddenFeature
+                }).addTo(map);
+                post_hidden++;
+            }
         }
     }
     /**
