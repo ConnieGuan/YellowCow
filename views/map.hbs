@@ -10,9 +10,11 @@
 
 <!--<script src="javascripts/map.js"></script>-->
 <script>
+//    NOTE: This cannot be moved to separate javascript files, since data will be generated through templating
     var data = {{{ json data }}}
-
     var features = data.features;
+    var current_pos = null;
+    var post_hidden = 0;
     var you = L.icon({
         iconUrl: 'images/youstar.png',
         iconSize: [50, 50]
@@ -43,19 +45,15 @@
             imgPop = $('<img class="popup" src="' + feature.link + '" />');
             var customPopup = $("<div>").addClass('container modal-dialog')
                     .append( "<h1>" + feature.properties.name + "</h1>" )
+                    .append( "<h4> distance : " + feature.dist + "</h4>" )
+                    .append( "<h4> radius : " + feature.radius + "</h4>" )
                     .append( $("h3").html( feature.properties.popupContent + "</br>") )
                     .append( imgPop )
                     .append(btnVote);
 //            layer.bindPopup(feature.properties.popupContent);
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
+            L.circle( feature.geometry.coordinates.slice().reverse(), feature.radius).addTo(map);
         }
-    }
-    /** Set callbacks for each graffiti post on the map */
-    for(item in features) {
-        console.log(features[item].geo);
-        L.geoJSON(features[item].geo, {
-            onEachFeature: onEachFeature
-        }).addTo(map);
     }
 //    L.geoJSON(features[0].geo, {
 //        onEachFeature: onEachFeature
@@ -66,9 +64,13 @@
      * @param e
      */
     function onLocationFound(e) {
+        current_pos = e.latlng;
         var radius = e.accuracy / 2;
         L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup();
         L.circle(e.latlng, radius).addTo(map);
+        setupFeatures();
+
+        console.log('post hidden: ' + post_hidden);
     }
     /**
      * Fires when GPS fail to locate, or user does not allow to detect location
@@ -78,6 +80,33 @@
         alert('Location cannot be found because of GPS error. Will center around UCSD');
         map.panTo(new L.LatLng(ucsd_coor[0], ucsd_coor[1]));
         map.setView( ucsd_coor, 15);
+        current_pos = new L.LatLng( ucsd_coor.slice().reverse() );
+        setupFeatures();    // show markers around UCSD if no GPS detected
+    }
+
+    /**
+     * functin to set up all graffiti pop-up contents, radius, show or not show
+     */
+    function setupFeatures() {
+        /** Set callbacks for each graffiti post on the map */
+        for(var i in features) {
+            var dist = current_pos.distanceTo(features[i].geo.geometry.coordinates.slice().reverse());
+            var rad  = parseInt(200 + 10.0*(features[i].votes));
+            features[i].geo.dist = parseInt(dist);
+            features[i].geo.radius = rad;        // store on global data variable for easier access in callback function
+
+
+            console.log('distance from current to post ' + features[i].title + ' : ' + dist + ' meters');
+            console.log('post radius: ' + rad);
+
+//            if (dist <= rad) {
+                L.geoJSON(features[i].geo, {
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+//            } else {
+//                post_hidden++;
+//            }
+        }
     }
     /**
      * Callbacks for the GPS detection events
