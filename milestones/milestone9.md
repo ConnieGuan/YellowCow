@@ -1,7 +1,13 @@
 # Description of what each team member has done since Milestone 7:
 
 Tony:
-- TODO
+- Implemented map radius for each graffiti
+- Map view now has filter to only see marker with certain radius
+- Redesign map marker to include more information
+- Add more sample data points to demonstrate radius mechanism
+- Clicks on marker will show both post and its radius circle
+- Custum icon signature for unexplored graffiti
+- Custom icon for hot graffiti
 
 ---
 
