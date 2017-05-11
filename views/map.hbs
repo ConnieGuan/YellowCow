@@ -22,11 +22,11 @@
 
     var unexplored = L.icon({
         iconUrl: 'images/unexplored.png',
-        iconSize: [50, 50]
+        iconSize: [45, 45]
     });
     var hot = L.icon({
-        iconUrl: 'https://openclipart.org/download/206317/Map-Warning-Icon.svg',
-        iconSize: [50, 50]
+        iconUrl: 'images/popular.png',
+        iconSize: [45, 45]
     })
 
     var ucsd_coor = [32.88044, -117.23758];
@@ -90,7 +90,7 @@
     function onLocationFound(e) {
         current_pos = e.latlng;
         var radius = e.accuracy / 2;
-//        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying
+//        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
         L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>");
         L.circle(e.latlng, radius).addTo(map);
         setupFeatures();
@@ -102,7 +102,7 @@
      * @param e
      */
     function onLocationError(e) {
-        alert('Location cannot be found because of GPS error. Will center around UCSD');
+        alert('Location cannot be found because of GPS error. Will center around UCSD.');
         map.panTo(new L.LatLng(ucsd_coor[0], ucsd_coor[1]));
         map.setView( ucsd_coor, 15);
         current_pos = new L.LatLng( ucsd_coor.slice().reverse() );
@@ -110,7 +110,7 @@
     }
 
     /**
-     * functin to set up all graffiti pop-up contents, radius, show or not show
+     * function to set up all graffiti pop-up contents, radius, show or not show
      */
     function setupFeatures() {
         /** Set callbacks for each graffiti post on the map */
