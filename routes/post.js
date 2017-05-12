@@ -27,10 +27,10 @@ router.post('/submit_canvas', function (req, res, next) {
 
 router.post('/submit', function (req, res, next) {
 
-    const title = req.body.title;
-    const description = req.body.description;
-    const lat = req.body.lat;
-    const lng = req.body.lng;
+    const title = req.body.title,
+        description = req.body.description,
+        lat = req.body.lat,
+        lng = req.body.lng;
     //Canvas URL
     // const myCanvas = req.query.canvas;
     // var url = myCanvas.toDataURL();
@@ -54,11 +54,7 @@ router.post('/submit', function (req, res, next) {
 
         "geo": {
             "type": "Feature",
-
-            // TODO: For now use sample external image, later after image upload to server works, use link to local image
-            // "link": "https://us.123rf.com/450wm/zazamedia/zazamedia1409/zazamedia140900289/31596594-coming-soon-icon-sign.jpg?ver=6",
             "link": '/graffiti/' + data.total + '.png',
-
             "properties" : {
                 "name": title,
                 "popupContent": description

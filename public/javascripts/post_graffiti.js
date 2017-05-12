@@ -23,9 +23,29 @@ $(document).ready(function (event) {
             }
         }).done(function (data) { // data is undefined, not sending anything back
             console.log('image saved successfully');
-            $.post( $form.attr('action'), $form.serialize(), function (data) {
-                window.location.href = '/home';
-            });
+            $.post( $form.attr('action'), $form.serialize() + '&lat=' + coor[1] + '&lng=' + coor[0],
+                function (data) {
+                    window.location.href = '/home';
+                });
+        }).fail(function (jqXHR, exception) {
+            // Our error logic here
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            console.log(msg);
         });
 
 
@@ -35,7 +55,7 @@ $(document).ready(function (event) {
 });
 
 
-var ucsd_coor = [32.88044, -117.23758];
+var coor = [32.88044, -117.23758]; // temporary
 
 var map = L.map('map', {
     // center: ucsd_coor,
@@ -58,14 +78,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 function onLocationFound(e) {
+    coor = [e.latlng.lng, e.latlng.lat];
+
     var radius = e.accuracy / 2;
 
     L.marker(e.latlng, { icon: new_marker }).addTo(map);
-        // .bindPopup("Your graffiti will be posted within " + radius + " meters from this point").openPopup();
 
-    console.log(e.latlng);
-    $("#lat").val(e.latlng.lat);
-    $("#lng").val(e.latlng.lng);
+    console.log('location: e.latlng');
 }
 
 function onLocationError(e) {
