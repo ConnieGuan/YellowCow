@@ -1,33 +1,176 @@
 /**
- * NOTE: This file is not used for now,
- *      map related js script is in map.hbs because the script needs to access data passed from the template directly.
- *
+ * client side scripts for map page
  */
+$(document).ready(function (event) {
 
-const LeafIcon = L.Icon.extend({
-    options: {
-        shadowUrl: 'images/leaf-shadow.png',
-        iconSize: [38, 95],
-        shadowSize: [50, 64],
-        iconAnchor: [22, 94],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    }
+
+    /**
+     * set up data from server before showing the map view
+     */
+    var data;
+    $.get('/api/data', {}, function (res, req) {
+        data = res;
+        return res;
+    }).done(setupMap);
+
 });
 
-const greenIcon = new LeafIcon({iconUrl: 'images/leaf-green.png'}),
-    redIcon = new LeafIcon({iconUrl: 'images/leaf-red.png'}),
-    orangeIcon = new LeafIcon({iconUrl: 'images/leaf-orange.png'});
+function setupMap(data) {
+    var features = data.features;
+    var current_pos = null;
+    var post_hidden = 0;
+    var you = L.icon({
+        iconUrl: 'images/youstar.png',
+        iconSize: [50, 50]
+    });
 
-// function onMapClick(e) {
-//     console.log('adasdas');
-//     console.log(customPopup.html());
-//     L.marker([e.latlng.lat, e.latlng.lng], {icon: greenIcon}).bindPopup(customPopup.html(), customOptions)
-//         .addTo(map);
-//     popup
-//         .setLatLng(e.latlng)
-//         .setContent("You clicked the map at " + e.latlng.toString())
-//         .openOn(map);
-// }
-// map.on('click', onMapClick);
+    var unexplored = L.icon({
+        iconUrl: 'images/unexplored.png',
+        iconSize: [45, 45]
+    });
+    var hot = L.icon({
+        iconUrl: 'images/popular.png',
+        iconSize: [45, 45]
+    });
 
+    var ucsd_coor = [32.88044, -117.23758];
+    var map = L.map('map', {
+        zoom: 15,
+        doubleClickZoom: false
+    }).locate({setView: true, maxZoom: 16});
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+    var customOptions = {
+        maxWidth: "300",
+        className: "custom"
+    };
+
+    var radius_circle = null;       // global to keep track which circle is opened
+    var btnVote = $('<button type="button" class="btn btn-primary btn-lg btn-vote"/></button>').text('Vote');
+
+
+    /**
+     * Call back function used on each graffiti post
+     */
+    function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.popupContent) {
+            imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
+            var customPopup = $("<div>").addClass('container popup-inner')
+                .append( "<h1>" + feature.properties.name + "</h1>" )
+                .append( "<h3>" + feature.votes + "</h3>" )
+                //                    .append( "<h4> distance : " + feature.dist + "</h4>" )
+                //                    .append( "<h4> radius : " + feature.radius + "</h4>" )
+                .append( $("h3").html( feature.properties.popupContent + "</br>") )
+                .append( imgPop )
+                .append(btnVote);
+
+
+            layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
+            layer.on('click', function (e) {
+                if (radius_circle) { map.removeLayer(radius_circle); }
+                radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
+            }).on('popupclose', function (e) {
+                map.removeLayer(radius_circle);
+                console.log(e);
+            });
+        }
+    }
+
+    function onEachHiddenFeature(feature, layer) {
+        layer.on('click', function (e) {
+            if (radius_circle) { map.removeLayer(radius_circle); }
+            radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
+        }).on('popupclose', function (e) {
+            map.removeLayer(radius_circle);
+            console.log(e);
+        });
+    }
+
+    /**
+     * Fires when GPS detected current location
+     * @param e
+     */
+    function onLocationFound(e) {
+        current_pos = e.latlng;
+        var radius = e.accuracy / 2;
+//        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
+        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>");
+        L.circle(e.latlng, radius).addTo(map);
+        setupFeatures();
+
+        console.log('post hidden: ' + post_hidden);
+    }
+    /**
+     * Fires when GPS fail to locate, or user does not allow to detect location
+     * @param e
+     */
+    function onLocationError(e) {
+        alert('Location cannot be found because of GPS error. Will center around UCSD.');
+        map.panTo(new L.LatLng(ucsd_coor[0], ucsd_coor[1]));
+        map.setView( ucsd_coor, 15);
+        current_pos = new L.LatLng( ucsd_coor.slice().reverse() );
+        setupFeatures();    // show markers around UCSD if no GPS detected
+    }
+
+    /**
+     * function to set up all graffiti pop-up contents, radius, show or not show
+     */
+    function setupFeatures() {
+        /** Set callbacks for each graffiti post on the map */
+        for(var i in features) {
+            var dist = current_pos.distanceTo(features[i].geo.geometry.coordinates.slice().reverse());
+            var rad  = parseInt(200 + 10.0*(features[i].votes));
+            features[i].geo.dist = parseInt(dist);
+            features[i].geo.radius = rad;        // store on global data variable for easier access in callback function
+            features[i].geo.id = features[i].id;        // a workaroud for popup events later on
+            features[i].geo.votes = features[i].votes;
+
+
+            console.log('distance from current to post ' + features[i].title + ' : ' + dist + ' meters');
+            console.log('post radius: ' + rad);
+
+            if (dist <= rad) {
+                L.geoJSON(features[i].geo, {
+                    pointToLayer: function (feature, latlng) {
+                        if (rad >= 1000) {
+                            return L.marker(latlng, {icon: hot});
+                        } else { return L.marker(latlng); }
+                    },
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+            } else {
+                // add custum markers for unexplored graffiti area
+                L.geoJSON(features[i].geo, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.marker(latlng, {icon: unexplored});
+                    },
+                    onEachFeature: onEachHiddenFeature
+                }).addTo(map);
+                post_hidden++;
+            }
+        }
+    }
+    /**
+     * Callbacks for the GPS detection events
+     */
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+    map.on('popupopen', function (e) {
+        console.log('popup opened');
+        $(" button.btn-vote").click( function () {
+            console.log('id: ' + $(".popup").data('id'));
+            vote( $(".popup").data('id'), 1, null); // TODO: add callback to update map's vote count
+        });
+    });
+
+
+//    useful to add new sample coordinate data later
+    map.on('click', function(e) {
+        console.log(e.latlng.lng + ',' + e.latlng.lat);
+    });
+}

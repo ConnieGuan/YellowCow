@@ -1,19 +1,20 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var hbs = require('hbs');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
+var hbs          = require('hbs');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser   = require('body-parser');
 
-var map = require('./routes/map');
-var update = require('./routes/update');           // common controller function used across different routes
-var post = require('./routes/post');
-var login = require('./routes/login');
+var map     = require('./routes/map');
+var update  = require('./routes/update');           // common controller function used across different routes
+var post    = require('./routes/post');
+var login   = require('./routes/login');
 var profile = require('./routes/profile');
-var home = require('./routes/home');
-var help = require('./routes/help');
-var users = require('./routes/users');
+var home    = require('./routes/home');
+var help    = require('./routes/help');
+var users   = require('./routes/users');
+var api     = require('./routes/api');
 
 var app = express();
 
@@ -34,16 +35,17 @@ hbs.registerHelper('json', function(context) {
     return JSON.stringify(context);
 });
 
-app.use('/', login);
-app.use('/update', update);
-app.use('/login', login);
-app.use('/profile', profile);
-app.use('/home', home);
-app.use('/help', help);
-app.use('/post', post);
+app.use('/'        , login);
+app.use('/update'  , update);
+app.use('/login'   , login);
+app.use('/profile' , profile);
+app.use('/home'    , home);
+app.use('/help'    , help);
+app.use('/post'    , post);
 
-app.use('/map', map);
-app.use('/users', users);
+app.use('/map'     , map);
+app.use('/users'   , users);
+app.use('/api'     , api);
 
 
 

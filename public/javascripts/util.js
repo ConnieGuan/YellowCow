@@ -2,6 +2,12 @@
  * Created by atomic on 5/12/17.
  */
 
+var data;
+
+$(document).ready(function (event) {
+    console.log('inside util.js');
+});
+
 /**
  * callback function for when vote button is clicked,
  * corresponding post should update votes by value
@@ -15,4 +21,3 @@ function vote(id, value, callback) {
     console.log("value: ", value + ", id: ", id);
     $.post('/update/vote', {'id': id, 'value': value}, callback);
 }
-
