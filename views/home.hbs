@@ -14,11 +14,7 @@
         -->
 
             {{#each features}}
-                <div class="container-fluid row">
-
-                <!--
-                     data-coordinate={{ geo.geometry.coordinates}}>
-                -->
+                <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}}>
 
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
@@ -41,10 +37,6 @@
                         </div>
                     </div>
                     <hr>
-                    <!--
-                    <p class="text-center">Location: {{ geo.geometry.coordinates }} </p>
-                    -->
-
                 </div>
             {{/each}}
 

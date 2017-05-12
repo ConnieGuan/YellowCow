@@ -6,7 +6,7 @@ var id_selected = 0;
 
 $(document).ready(function (event) {
 
-    $(".post").each(setupPosts);
+    $(".row").each(setupPosts);
 
     // Get the button that opens the modal
 
@@ -94,7 +94,12 @@ function setupPosts(i, obj) {
     var map = L.map('map' + i, {
             center: coor,
             zoom: 15,
-            doubleClickZoom: false
+            zoomControl: false,
+            attributionControl: false,
+            boxZoom: false,
+            dragging: false,
+            doubleClickZoom: false,
+            scrollWheelZoom: false
         }
     );
     L.marker(coor).addTo(map);
