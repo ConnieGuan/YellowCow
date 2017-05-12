@@ -7,3 +7,18 @@ html, body, #map {
     height: 100vh;
     width: 100vw;
 }
+
+.custom, .popup-inner {
+    background: rgb(251, 206, 67);
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.btn-vote {
+    margin: 20px;
+}
+
+.leaflet-popup-content-wrapper {
+}

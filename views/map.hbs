@@ -39,7 +39,7 @@
         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    var btnVote = $('<button type="button" class="btn btn-primary btn-lg"/></button>').text('Vote');
+    var btnVote = $('<button type="button" class="btn btn-primary btn-lg btn-vote"/></button>').text('Vote');
     var customOptions = {
         maxWidth: "300",
         className: "custom"
@@ -54,10 +54,10 @@
         // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
             imgPop = $('<img class="popup" src="' + feature.link + '" />');
-            var customPopup = $("<div>").addClass('container modal-dialog')
+            var customPopup = $("<div>").addClass('container popup-inner')
                     .append( "<h1>" + feature.properties.name + "</h1>" )
-                    .append( "<h4> distance : " + feature.dist + "</h4>" )
-                    .append( "<h4> radius : " + feature.radius + "</h4>" )
+//                    .append( "<h4> distance : " + feature.dist + "</h4>" )
+//                    .append( "<h4> radius : " + feature.radius + "</h4>" )
                     .append( $("h3").html( feature.properties.popupContent + "</br>") )
                     .append( imgPop )
                     .append(btnVote);
