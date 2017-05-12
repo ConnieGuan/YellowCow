@@ -111,20 +111,3 @@ function setupPosts(i, obj) {
     }).addTo(map);
 }
 
-/**
- * callback function for when vote button is clicked,
- * corresponding post should update votes by value
- * TODO: move this function to helper module later on
- *
- * @param id:    id of the post
- * @param value: -1,1 depending on whether its upvote or downvote
- *
- */
-function vote(id, value) {
-    console.log("value: ", value + ", id: ", id);
-    $.post('/update/vote', {'id': id, 'value': value},
-        function (result, status) {
-            $(`div.row[data-id=${id}]`).find('p.votes').text('Votes: ' + result.voted);
-        });
-}
-

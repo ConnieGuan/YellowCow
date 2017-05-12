@@ -20,7 +20,7 @@ router.post('/vote', function(req, res, next) {
         if (err) throw err;
         console.log('new post vote: ' + post.id);
     });
-    res.send({voted: post.votes});
+    res.send({'id': id, voted: post.votes});
 });
 
 module.exports = router;
