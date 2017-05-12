@@ -28,8 +28,8 @@ h1 {
 
 #map {
   margin-top: 50px;
-  height: 200px;
-  width: 200px;
+  /*height: 200px;*/
+  /*width: 200px;*/
 }
 /** For home.hbs */
 
@@ -108,14 +108,22 @@ h1 {
 
 /* Styling for the form input on post */
 #form-container {
-  float: left;
   padding-left: 10%;
-  max-width: 90%;
+  padding-right: 10%;
+  max-width: 100%;
 }
 
 .span2 {
   visibility: hidden;
 
+}
+
+/**
+    CSS elements for post.hbs
+ */
+
+#post_graffiti_form {
+  align-content: center;
 }
 
 #form-submit {
@@ -178,6 +186,16 @@ img.popup {
   width: 100px;
 }
 
+
 #postHeading{
   font-family: 'Leckerli One', cursive;
 }
+
+.post_form_info {
+  align-content: center;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+

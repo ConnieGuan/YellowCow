@@ -39,10 +39,19 @@ var ucsd_coor = [32.88044, -117.23758];
 
 var map = L.map('map', {
     // center: ucsd_coor,
-    zoom: 20,
-    doubleClickZoom: false}
-    ).locate({setView: true, maxZoom: 16});
+        zoom: 20,
+        zoomControl: false,
+        attributionControl: false,
+        boxZoom: false,
+        dragging: false,
+        doubleClickZoom: false,
+        scrollWheelZoom: false
+}).locate({setView: true, maxZoom: 16});
 
+var new_marker = L.icon({
+    iconUrl: 'images/marker-new.png',
+    iconSize: [45, 45]
+});
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -51,14 +60,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
-    L.marker(e.latlng).addTo(map)
-        .bindPopup("Your graffiti will be posted within " + radius + " meters from this point").openPopup();
+    L.marker(e.latlng, { icon: new_marker }).addTo(map);
+        // .bindPopup("Your graffiti will be posted within " + radius + " meters from this point").openPopup();
 
     console.log(e.latlng);
     $("#lat").val(e.latlng.lat);
     $("#lng").val(e.latlng.lng);
-
-    L.circle(e.latlng, radius).addTo(map);
 }
 
 function onLocationError(e) {
