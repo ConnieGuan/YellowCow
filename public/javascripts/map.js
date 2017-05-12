@@ -147,7 +147,7 @@ function setupMap(data) {
                 // add custum markers for unexplored graffiti area
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, {icon: icon_unexplored});
+                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel closer to this point to view graffiti.</h4>");
                     },
                     onEachFeature: onEachHiddenFeature
                 }).addTo(map);
