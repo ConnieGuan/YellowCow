@@ -1,5 +1,5 @@
 {
-	"total": 3,
+	"total": 8,
 	"features": [
 		{
 			"id": 0,
@@ -9,7 +9,7 @@
 				"So lit!!",
 				"such WOW!"
 			],
-			"votes": 56,
+			"votes": 69,
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
@@ -159,7 +159,7 @@
 			"comments": [
 				"Ay!!!"
 			],
-			"votes": 30,
+			"votes": 36,
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
@@ -178,7 +178,7 @@
 			}
 		},
 		{
-			"id": 6,
+			"id": 7,
 			"title": "UTC 2",
 			"description": "UTC 2 tag",
 			"comments": [
