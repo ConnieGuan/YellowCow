@@ -18,6 +18,28 @@ $(document).ready(function (event) {
  * used in home.hbs, and map.hbs
  */
 function vote(id, value, callback) {
-    console.log("value: ", value + ", id: ", id);
+    // console.log("value: ", value + ", id: ", id);
     $.post('/update/vote', {'id': id, 'value': value}, callback);
 }
+
+
+/**
+ * Global Configurations
+ * these are data that may be used accross different sites
+ * data that are exclusive to one site should not be included here
+ *
+ */
+var coor_ucsd = [32.88044, -117.23758];
+var icon_you = L.icon({
+    iconUrl: 'images/youstar.png',
+    iconSize: [50, 50]
+});
+
+var icon_unexplored = L.icon({
+    iconUrl: 'images/unexplored.png',
+    iconSize: [45, 45]
+});
+var icon_hot = L.icon({
+    iconUrl: 'images/popular.png',
+    iconSize: [45, 45]
+});

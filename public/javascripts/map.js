@@ -15,25 +15,17 @@ $(document).ready(function (event) {
 
 });
 
+/**
+ * method to set up the map interfaces
+ * (fired after ajax request called for data)
+ *
+ * @param data: the data from server
+ */
 function setupMap(data) {
     var features = data.features;
     var current_pos = null;
     var post_hidden = 0;
-    var you = L.icon({
-        iconUrl: 'images/youstar.png',
-        iconSize: [50, 50]
-    });
 
-    var unexplored = L.icon({
-        iconUrl: 'images/unexplored.png',
-        iconSize: [45, 45]
-    });
-    var hot = L.icon({
-        iconUrl: 'images/popular.png',
-        iconSize: [45, 45]
-    });
-
-    var ucsd_coor = [32.88044, -117.23758];
     var map = L.map('map', {
         zoom: 15,
         doubleClickZoom: false
@@ -62,9 +54,7 @@ function setupMap(data) {
             imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
             var customPopup = $("<div>").addClass('container popup-inner')
                 .append( "<h1>" + feature.properties.name + "</h1>" )
-                .append( "<h3>" + feature.votes + "</h3>" )
-                //                    .append( "<h4> distance : " + feature.dist + "</h4>" )
-                //                    .append( "<h4> radius : " + feature.radius + "</h4>" )
+                .append( "<h3 class='popup-votes'>" + feature.votes + "</h3>" )
                 .append( $("h3").html( feature.properties.popupContent + "</br>") )
                 .append( imgPop )
                 .append(btnVote);
@@ -81,10 +71,15 @@ function setupMap(data) {
         }
     }
 
+    /**
+     * For each post that are beyond their radius coverage, apply some unique styling and options to their marker
+     * @param feature
+     * @param layer
+     */
     function onEachHiddenFeature(feature, layer) {
         layer.on('click', function (e) {
             if (radius_circle) { map.removeLayer(radius_circle); }
-            radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
+            radius_circle = L.circle( e.latlng, { radius: feature.radius, color: 'gray'}).addTo(map);
         }).on('popupclose', function (e) {
             map.removeLayer(radius_circle);
             console.log(e);
@@ -98,8 +93,8 @@ function setupMap(data) {
     function onLocationFound(e) {
         current_pos = e.latlng;
         var radius = e.accuracy / 2;
-//        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
-        L.marker(e.latlng, {icon: you}).addTo(map).bindPopup("<h4>You are here</h4>");
+//        L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
+        L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>");
         L.circle(e.latlng, radius).addTo(map);
         setupFeatures();
 
@@ -111,9 +106,9 @@ function setupMap(data) {
      */
     function onLocationError(e) {
         alert('Location cannot be found because of GPS error. Will center around UCSD.');
-        map.panTo(new L.LatLng(ucsd_coor[0], ucsd_coor[1]));
-        map.setView( ucsd_coor, 15);
-        current_pos = new L.LatLng( ucsd_coor.slice().reverse() );
+        map.panTo(new L.LatLng(coor_ucsd[0], coor_ucsd[1]));
+        map.setView( coor_ucsd, 15);
+        current_pos = new L.LatLng( coor_ucsd.slice().reverse() );
         setupFeatures();    // show markers around UCSD if no GPS detected
     }
 
@@ -138,7 +133,7 @@ function setupMap(data) {
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
                         if (rad >= 1000) {
-                            return L.marker(latlng, {icon: hot});
+                            return L.marker(latlng, {icon: icon_hot});
                         } else { return L.marker(latlng); }
                     },
                     onEachFeature: onEachFeature
@@ -147,7 +142,7 @@ function setupMap(data) {
                 // add custum markers for unexplored graffiti area
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, {icon: unexplored});
+                        return L.marker(latlng, {icon: icon_unexplored});
                     },
                     onEachFeature: onEachHiddenFeature
                 }).addTo(map);
@@ -155,6 +150,7 @@ function setupMap(data) {
             }
         }
     }
+
     /**
      * Callbacks for the GPS detection events
      */
@@ -164,7 +160,14 @@ function setupMap(data) {
         console.log('popup opened');
         $(" button.btn-vote").click( function () {
             console.log('id: ' + $(".popup").data('id'));
-            vote( $(".popup").data('id'), 1, null); // TODO: add callback to update map's vote count
+            vote( $(".popup").data('id'), 1,
+                function (res, req) {
+                    console.log('after vote in map.');
+                    console.log('id voted: ' + res.id + ', val: ' + res.voted);
+                    var post = data.features.find(x => x.id == res.id );
+                    post.votes = parseInt(res.voted);
+                    $(".popup-votes").text(post.votes);
+                });
         });
     });
 
