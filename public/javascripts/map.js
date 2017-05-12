@@ -59,14 +59,22 @@ function setupMap(data) {
                 .append( imgPop )
                 .append(btnVote);
 
-
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
             layer.on('click', function (e) {
                 if (radius_circle) { map.removeLayer(radius_circle); }
+                // popup_table[id].find(".popup-votes").text(post.votes);
+                var post = data.features.find(x => x.id == feature.id );
+
+
+                console.log('actual votes value: ' + post.votes);
+                // TODO: Fix bug with popup value wont update after closed
+                // customPopup.find(".popup-votes").html( post.votes );
+                // console.log(customPopup.html());
+                // layer.bindPopup( customPopup.prop('outerHTML'), customOptions); // gotta update newest layout after vote
+
                 radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
             }).on('popupclose', function (e) {
                 map.removeLayer(radius_circle);
-                console.log(e);
             });
         }
     }
@@ -82,7 +90,6 @@ function setupMap(data) {
             radius_circle = L.circle( e.latlng, { radius: feature.radius, color: 'gray'}).addTo(map);
         }).on('popupclose', function (e) {
             map.removeLayer(radius_circle);
-            console.log(e);
         });
     }
 
@@ -126,8 +133,6 @@ function setupMap(data) {
             features[i].geo.votes = features[i].votes;
 
 
-            console.log('distance from current to post ' + features[i].title + ' : ' + dist + ' meters');
-            console.log('post radius: ' + rad);
 
             if (dist <= rad) {
                 L.geoJSON(features[i].geo, {
@@ -152,21 +157,32 @@ function setupMap(data) {
     }
 
     /**
+     * function to update votes data and html elements after clicked
+     *
+     * @param id
+     * @param votes
+     */
+    function updateVote(id, votes) {
+        var post = data.features.find(x => x.id == id );
+
+        post.votes = parseInt(votes);       // update the data(client side)
+        // update the html tag for the popup
+        $(".popup-votes").text(post.votes);
+        // popup_table[id].find(".popup-votes").text(post.votes);
+    }
+
+    /**
      * Callbacks for the GPS detection events
      */
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
     map.on('popupopen', function (e) {
-        console.log('popup opened');
         $(" button.btn-vote").click( function () {
             console.log('id: ' + $(".popup").data('id'));
             vote( $(".popup").data('id'), 1,
                 function (res, req) {
-                    console.log('after vote in map.');
                     console.log('id voted: ' + res.id + ', val: ' + res.voted);
-                    var post = data.features.find(x => x.id == res.id );
-                    post.votes = parseInt(res.voted);
-                    $(".popup-votes").text(post.votes);
+                    updateVote(res.id, parseInt(res.voted));
                 });
         });
     });
