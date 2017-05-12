@@ -15,7 +15,7 @@ $(document).ready(function (event) {
     var selected_id = 0;
 
     $(".btn-comments").each( function (index) {
-        var $comments = $(this).closest('div.post').find('.comments');  // find the closest comments div
+        var $comments = $(this).closest('div.row').find('.comments');  // find the closest comments div
 
         $(this).on("click", function () {
             selected_id  = $comments.data('id');        // updating the selected_id for later use
@@ -82,7 +82,6 @@ $(document).ready(function (event) {
 function setupPosts(i, obj) {
     var coor = $(this).data('coordinate');
     coor = coor.split(',').map(parseFloat).reverse();
-    console.log(coor);
 
     var postmap = $('<div>', {
         "class": "map",
