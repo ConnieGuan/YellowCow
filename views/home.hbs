@@ -14,7 +14,7 @@
         -->
 
             {{#each features}}
-                <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}}>
+                <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
 
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
@@ -28,9 +28,9 @@
                     <div class="post_header">
                         <div class="strong post_left space">
                             <p >Description: {{ description }}</p>
-                            <p>Votes: {{ votes }}</p>
-                            <button type="button" class="btn btn-primary" onclick="upvote({{id}})">Upvote</button>
-                            <button type="button" class="btn btn-danger" onclick="downvote({{id}})">Downvote</button> <!-- TODO: button doesn't do anything -->
+                            <p class="votes">Votes: {{ votes }}</p>
+                            <button type="button" class="btn voteup btn-primary" onclick="vote({{id}}, 1)">Upvote</button>
+                            <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1)">Downvote</button>
                         </div>
                         <div class="post_right">
                             <img class="icn-comments btn-comments hvr-bounce-in" src="images/comment-bubble.png" alt="" data-id="{{ id }}">

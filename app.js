@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var map = require('./routes/map');
+var update = require('./routes/update');           // common controller function used across different routes
 var post = require('./routes/post');
 var login = require('./routes/login');
 var profile = require('./routes/profile');
@@ -34,6 +35,7 @@ hbs.registerHelper('json', function(context) {
 });
 
 app.use('/', login);
+app.use('/update', update);
 app.use('/login', login);
 app.use('/profile', profile);
 app.use('/home', home);

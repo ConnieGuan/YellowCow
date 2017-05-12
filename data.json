@@ -9,7 +9,7 @@
 				"So lit!!",
 				"such WOW!"
 			],
-			"votes": 69,
+			"votes": 56,
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
@@ -34,7 +34,7 @@
 			"comments": [
 				"Thats nasty!!!"
 			],
-			"votes": 13,
+			"votes": 1,
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
@@ -95,98 +95,112 @@
 				},
 				"geometry": {
 					"type": "Point",
-					"coordinates": [ -117.23326206207277,32.882578515468026 ]
+					"coordinates": [
+						-117.23326206207277,
+						32.882578515468026
+					]
 				}
 			}
 		},
-      {
-        "id": 4,
-        "title": "Revelle",
-        "description": "Revelle tag",
-        "comments": [
-          "Ay!!!"
-        ],
-        "votes": 40,
-        "nsfw": false,
-        "geo": {
-          "type": "Feature",
-          "link": "graffiti/4.jpg",
-          "properties": {
-            "name": "Revelle",
-            "popupContent": "Revelle tag"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [ -117.24111557006837,32.87306353408395 ]
-          }
-        }
-      },
-      {
-        "id": 5,
-        "title": "Village",
-        "description": "Village tag",
-        "comments": [
-          "Ay!!!"
-        ],
-        "votes": 100,
-        "nsfw": false,
-        "geo": {
-          "type": "Feature",
-          "link": "graffiti/5.jpg",
-          "properties": {
-            "name": "Village",
-            "popupContent": "Village tag"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [ -117.2420382499695,32.88771401845524 ]
-          }
-        }
-      },
-      {
-        "id": 6,
-        "title": "UTC",
-        "description": "UTC tag",
-        "comments": [
-          "Ay!!!"
-        ],
-        "votes": 30,
-        "nsfw": false,
-        "geo": {
-          "type": "Feature",
-          "link": "graffiti/6.jpg",
-          "properties": {
-            "name": "UTC",
-            "popupContent": "UTC tag"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [ -117.21086025238039,32.871027051221716 ]
-          }
-        }
-      },
-      {
-        "id": 6,
-        "title": "UTC 2",
-        "description": "UTC 2 tag",
-        "comments": [
-          "Ay!!!"
-        ],
-        "votes": 350,
-        "nsfw": false,
-        "geo": {
-          "type": "Feature",
-          "link": "http://streetartnyc.org/wp-content/uploads/2017/05/Epic-uno-live-painting.png",
-          "properties": {
-            "name": "UTC",
-            "popupContent": "UTC 2 tag"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [ -117.20943868160248,32.870288138795246 ]
-          }
-        }
-      }
-
+		{
+			"id": 4,
+			"title": "Revelle",
+			"description": "Revelle tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 40,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/4.jpg",
+				"properties": {
+					"name": "Revelle",
+					"popupContent": "Revelle tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.24111557006837,
+						32.87306353408395
+					]
+				}
+			}
+		},
+		{
+			"id": 5,
+			"title": "Village",
+			"description": "Village tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 100,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/5.jpg",
+				"properties": {
+					"name": "Village",
+					"popupContent": "Village tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.2420382499695,
+						32.88771401845524
+					]
+				}
+			}
+		},
+		{
+			"id": 6,
+			"title": "UTC",
+			"description": "UTC tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 30,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/6.jpg",
+				"properties": {
+					"name": "UTC",
+					"popupContent": "UTC tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.21086025238039,
+						32.871027051221716
+					]
+				}
+			}
+		},
+		{
+			"id": 6,
+			"title": "UTC 2",
+			"description": "UTC 2 tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 350,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "http://streetartnyc.org/wp-content/uploads/2017/05/Epic-uno-live-painting.png",
+				"properties": {
+					"name": "UTC",
+					"popupContent": "UTC 2 tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.20943868160248,
+						32.870288138795246
+					]
+				}
+			}
+		}
 	]
 }
