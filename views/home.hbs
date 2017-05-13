@@ -7,11 +7,6 @@
 
     
     <div class="container-fluid align-center">
-    
-
-        <!--
-        <h3 class="text-center">List Of Nearby Pinturas</h3>
-        -->
 
             {{#each features}}
                 <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
@@ -23,7 +18,7 @@
                         {{/each}}
                     </div>
 
-                    <h4 class="strong post_left">Title: {{ title }}</h4>
+                    <h3 class="strong post_left">Title: {{ title }}</h3>
                     <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                     <div class="post_header">
                         <div class="strong post_left space">
@@ -36,8 +31,8 @@
                             <img class="icn-comments btn-comments hvr-bounce-in" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
                         </div>
                     </div>
-                    <hr>
                 </div>
+                <hr>
             {{/each}}
 
  
@@ -52,17 +47,14 @@
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
-            <span class="close">&times;</span>
+            <!-- <span class="close">&times;</span> -->
             <h2>Comments</h2>
         </div>
         <div class="modal-body">
         </div>
-        <!--<div class="modal-footer">-->
-            <!--<h3>Modal Footer</h3>-->
-        <!--</div>-->
         <textarea id="modal-cmt-add"    style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
-        <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 4em;">Add Comment</button>
-        <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 4em;">Close</button>
+        <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 2em;">Add Comment</button>
+        <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 2em;">Close</button>
     </div>
 
 </div>

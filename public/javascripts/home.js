@@ -6,7 +6,7 @@ var id_selected = 0;
 
 $(document).ready(function (event) {
 
-    $(".row").each(setupPosts);
+    //$(".row").each(setupPosts);
 
     // Get the button that opens the modal
 
@@ -67,10 +67,15 @@ $(document).ready(function (event) {
 // Get the <span> element that closes the modal
     const span = document.getElementsByClassName("close")[0];
 
+
+/*********************************************************/
 // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    };
+    /*BUGGY---- TO-DO if user clicks (x) then the comments down refresh like how it does when the user clicks the "CLOSE" button */
+
+    // span.onclick = function() {
+    //     modal.style.display = "none";
+    // };
+/*********************************************************/
 
 });
 
@@ -83,11 +88,15 @@ function setupPosts(i, obj) {
     var coor = $(this).data('coordinate');
     coor = coor.split(',').map(parseFloat).reverse();
 
-    var postmap = $('<div>', {
-        "class": "map",
-        "id": "map" + i,
-        "style": "height: 200px; width: auto;"
-    });
+    console.log("indside");
+    console.log(i);
+
+    // var postmap = $('<div>', {
+    //     "class": "map",
+    //     "id": "map" + i,
+    //     "style": "height: 200px; width: auto;"
+    // });
+    var postmap = '<div class="map" id='+'"map'+i+'" style="height: 200px; width: auto;"></div><hr>';
     $(this).append(postmap);
 
     var map = L.map('map' + i, {

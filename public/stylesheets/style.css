@@ -45,17 +45,14 @@ h1 {
 }
 
 .row {
-  /*border: solid 3px black;
-  border-radius: 9px;*/
   background-color: rgba(255, 255, 255, 0.4);
-/*  align-items:center;*/
   margin-top: 5px;
   margin-bottom: 5px; 
 }
 
 .graffiti {
   width: 100%;
-  border: 3px solid #000000;
+  border: 2px solid #000000;
   flex: 3;
 }
 
@@ -199,3 +196,13 @@ img.popup {
   flex-direction: column;
 }
 
+@media only screen and (min-device-width:481px){
+    .container-fluid{
+      width:75%;
+    }
+    .row{
+      margin-left: 12.5%;
+      b/*order: 2px solid black;
+      border-radius: 5px;*/
+    }
+}

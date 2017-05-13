@@ -34,7 +34,7 @@
 			"comments": [
 				"Thats nasty!!!"
 			],
-			"votes": 1,
+			"votes": 0,
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
@@ -157,7 +157,9 @@
 			"title": "UTC",
 			"description": "UTC tag",
 			"comments": [
-				"Ay!!!"
+				"Ay!!!",
+				"sadfasdf",
+				"asdfadf"
 			],
 			"votes": 36,
 			"nsfw": false,
@@ -182,7 +184,8 @@
 			"title": "UTC 2",
 			"description": "UTC 2 tag",
 			"comments": [
-				"Ay!!!"
+				"Ay!!!",
+				"zdfasdf"
 			],
 			"votes": 350,
 			"nsfw": false,
