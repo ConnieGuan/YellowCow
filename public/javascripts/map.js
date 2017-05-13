@@ -54,10 +54,14 @@ function setupMap(data) {
             imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
             var customPopup = $("<div>").addClass('container popup-inner')
                 .append( "<h1>" + feature.properties.name + "</h1>" )
-                .append( "<h3 class='popup-votes'>" + feature.votes + "</h3>" )
-                .append( $("h3").html( feature.properties.popupContent + "</br>") )
+                .append( "<h3 class='popup-votes'>Votes: " + feature.votes + "</h3>" );
+                if (parseInt(200 + 10.0*(feature.votes)) >= 1000){
+                    customPopup.append("<h5>Wow! This post is really popular!</h5>");
+                }
+                customPopup.append( $("h3").html( feature.properties.popupContent + "</br>") )
                 .append( imgPop )
                 .append(btnVote);
+            
 
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
             layer.on('click', function (e) {
