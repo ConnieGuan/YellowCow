@@ -6,7 +6,7 @@ var id_selected = 0;
 
 $(document).ready(function (event) {
 
-    //$(".row").each(setupPosts);
+    $(".row").each(setupPosts);
 
     // Get the button that opens the modal
 
