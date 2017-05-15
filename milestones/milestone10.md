@@ -11,5 +11,4 @@
 //TODO
 
 # Who cares? If you’re successful, what difference will it make?
-
-//TODO
+Property owners all across the world with care. Ideally people would use this app to grafitti/tag virtual and thus keeping physical property clean and and how it's supposed to be. Also artists around the world will have an interactive platform to share their work of arts.
