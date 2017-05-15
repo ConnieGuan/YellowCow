@@ -12,7 +12,7 @@ $(document).ready(function (event) {
     //     data = res;
     //     return res;
     // }).done(setupMap);
-    setupSimpleMap();
+    // setupSimpleMap();
 });
 
 /**
