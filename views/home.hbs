@@ -26,9 +26,10 @@
                             <p class="votes">Votes: {{ votes }}</p>
                             <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
                             <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
+                            <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
                         </div>
                         <div class="post_right">
-                            <img class="icn-comments btn-comments hvr-bounce-in" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
+                            <img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
                         </div>
                     </div>
                 </div>
@@ -63,7 +64,6 @@
 <script>
 
 //    Vote implemented: see javascripts/util.js
-
 /**
  * callback function for the upvote, downvote function
  * see related files: javascript/util.js and route/update.js (server)
@@ -74,23 +74,4 @@ function updateVote(result, status) {
     $(`div.row[data-id=${result.id}]`).find('p.votes').text('Votes: ' + result.voted);
 }
 
-function upvote(xid){
-    var mydata = "data.json";
-    if(mydata){
-        console.log("reading json...");
-        console.log(mydata.features);
-        for(i = 0; i <mydata.total; i++){
-            if(mydata.features[i].id == xid){
-                mydata.features[i].votes += 1;
-                console.log("votes increased");
-            }
-            else{
-                console.log("error upvoting");
-            }
-        }
-    }
-    else{
-        console.log("error reading json");
-    }
-}
 </script>

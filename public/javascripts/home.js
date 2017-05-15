@@ -7,6 +7,7 @@ var id_selected = 0;
 $(document).ready(function (event) {
 
     $(".row").each(setupPosts);
+    $(".map").hide();
 
     // Get the button that opens the modal
 
@@ -24,7 +25,10 @@ $(document).ready(function (event) {
             console.log(selected_id);
             modalBody.html($comments.html());
         });
-    });
+    })
+        .hover(function () {
+            $(this).toggleClass('hvr-grow-rotate');
+        });
 
     var commentShown = false;
 
@@ -88,15 +92,12 @@ function setupPosts(i, obj) {
     var coor = $(this).data('coordinate');
     coor = coor.split(',').map(parseFloat).reverse();
 
-    console.log("indside");
-    console.log(i);
 
-    // var postmap = $('<div>', {
-    //     "class": "map",
-    //     "id": "map" + i,
-    //     "style": "height: 200px; width: auto;"
-    // });
-    var postmap = '<div class="map" id='+'"map'+i+'" style="height: 200px; width: auto;"></div><hr>';
+    var postmap = $('<div>', {
+        "class": "map",
+        "id": "map" + i,
+        "style": "height: 200px; width: auto;"
+    }).after('<hr>');
     $(this).append(postmap);
 
     var map = L.map('map' + i, {
@@ -120,3 +121,11 @@ function setupPosts(i, obj) {
     }).addTo(map);
 }
 
+/**
+ * funtion to show the map view when clicked
+ * @param id
+ */
+function toggleMap(id) {
+    $("#map" + id).slideToggle();
+    $("#map").closest('.btn.showmap').text("Hide");
+}
