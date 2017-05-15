@@ -8,10 +8,28 @@ $(document).ready(function (event) {
      * set up data from server before showing the map view
      */
     var data;
+
     $.get('/api/data', {}, function (res, req) {
         data = res;
+
+        /**
+         * add function to data
+         *
+         * @param id
+         * @returns {*}
+         */
+        data.getFeaturesWithId = function (id) {
+            console.log('getting feature of id ' + id);
+            console.log(this);
+            for(var i in this.features) {
+                if (this.features[i].id == id)
+                    return this.features[i];
+            }
+        };
+
         return res;
     }).done(setupMap);
+
 });
 
 /**
@@ -65,11 +83,11 @@ function setupMap(data) {
             layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
             layer.on('click', function (e) {
                 if (radius_circle) { map.removeLayer(radius_circle); }
-                // popup_table[id].find(".popup-votes").text(post.votes);
-                // var post = data.features.find(x => x.id == feature.id );
 
-
-                // console.log('actual votes value: ' + post.votes);
+                var post = data.getFeaturesWithId(feature.id);
+                console.log('get feature id ' + feature.id);
+                console.log(post);
+                console.log('actual votes value: ' + post.votes);
                 // TODO: Fix bug with popup value wont update after closed
                 // customPopup.find(".popup-votes").html( post.votes );
                 // console.log(customPopup.html());
@@ -166,12 +184,11 @@ function setupMap(data) {
      * @param votes
      */
     function updateVote(id, votes) {
-        // var post = data.features.find(x => x.id == id );
+        console.log('inside updateVote');
+        var post = data.getFeaturesWithId(id);
 
-        // post.votes = parseInt(votes);       // update the data(client side)
-        // update the html tag for the popup
-        // $(".popup-votes").text(post.votes);
-        // popup_table[id].find(".popup-votes").text(post.votes);
+        post.votes = parseInt(votes);                   // update the data(client side)
+        $(".popup-votes").text(post.votes);
     }
 
     /**

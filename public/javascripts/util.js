@@ -23,6 +23,7 @@ function vote(id, value, callback) {
 }
 
 
+
 /**
  * Global Configurations
  * these are data that may be used accross different sites
