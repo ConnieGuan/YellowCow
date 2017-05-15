@@ -6,19 +6,7 @@
     <div id="map"></div>
 </body>
 
-<!--<script src="javascripts/map.js"></script>-->
-<script>
-    <!--var data = {{{ json data }}}-->
-
-    var ucsd_coor = [32.87822, -117.24152];
-
-    var map = L.map('map', {
-        center: ucsd_coor,
-        zoom: 15,
-        doubleClickZoom: false
-    }).locate({setView: true, maxZoom: 16});
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-</script>
+<script src="javascripts/map.js"></script>
+<!--<script>-->
+    <!--&lt;!&ndash;var data = {{{ json data }}}&ndash;&gt;-->
+<!--</script>-->

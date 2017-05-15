@@ -7,12 +7,12 @@ $(document).ready(function (event) {
     /**
      * set up data from server before showing the map view
      */
-    var data;
+    // var data;
     // $.get('/api/data', {}, function (res, req) {
     //     data = res;
     //     return res;
     // }).done(setupMap);
-    // setupSimpleMap();
+    setupSimpleMap();
 });
 
 /**
