@@ -178,18 +178,18 @@ function setupMap(data) {
     /**
      * Callbacks for the GPS detection events
      */
-    map.on('locationfound', onLocationFound);
-    map.on('locationerror', onLocationError);
-    map.on('popupopen', function (e) {
-        $(" button.btn-vote").click( function () {
-            console.log('id: ' + $(".popup").data('id'));
-            vote( $(".popup").data('id'), 1,
-                function (res, req) {
-                    console.log('id voted: ' + res.id + ', val: ' + res.voted);
-                    updateVote(res.id, parseInt(res.voted));
-                });
-        });
-    });
+    // map.on('locationfound', onLocationFound);
+    // map.on('locationerror', onLocationError);
+    // map.on('popupopen', function (e) {
+    //     $(" button.btn-vote").click( function () {
+    //         console.log('id: ' + $(".popup").data('id'));
+    //         vote( $(".popup").data('id'), 1,
+    //             function (res, req) {
+    //                 console.log('id voted: ' + res.id + ', val: ' + res.voted);
+    //                 updateVote(res.id, parseInt(res.voted));
+    //             });
+    //     });
+    // });
 
 
 //    useful to add new sample coordinate data later
