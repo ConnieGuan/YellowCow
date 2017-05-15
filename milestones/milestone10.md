@@ -1,10 +1,14 @@
 # What are you trying to do? Articulate your objectives using absolutely no jargon.
-
-//TODO
+The goal of our app is to allow users to express their creativity while creating
+a sense of community and exploration. Traditional graffiti defaces public
+property, so by moving it to a digital platform, it allows artists to continue
+to express themselves through lawful methods.
 
 # How is it done today, and what are the limits of current practice?
-
-//TODO
+Currently there are platforms such as Snapchat or Instagram that also have similar features to our app.
+However the limits of these platforms is that they are more geared towards simply photosharing amongst
+friends, with less focus on drawing. They also do not heavily incorporate the exploration aspect
+that our app does. 
 
 # What’s new in your approach and why do you think it will be successful?
 
