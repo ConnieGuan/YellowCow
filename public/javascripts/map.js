@@ -147,7 +147,9 @@ function setupMap(data) {
         /** Set callbacks for each graffiti post on the map */
         for(var i in features) {
             var dist = current_pos.distanceTo(features[i].geo.geometry.coordinates.slice().reverse());
-            var rad  = parseInt(200 + 10.0*(features[i].votes));
+            var rad  = Math.abs(parseInt(200 + 10.0*(features[i].votes)));
+
+
             features[i].geo.dist = parseInt(dist);
             features[i].geo.radius = rad;        // store on global data variable for easier access in callback function
             features[i].geo.id = features[i].id;        // a workaroud for popup events later on
