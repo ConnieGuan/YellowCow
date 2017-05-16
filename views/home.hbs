@@ -27,7 +27,8 @@
                             <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
                             <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
                             <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
-                                   <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
+                            <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
+                            <button type="button" class="btn delete btn-danger" onclick="removePost({{id}})">Map</button>
                         </div>
  
                      
@@ -73,6 +74,18 @@
  */
 function updateVote(result, status) {
     $(`div.row[data-id=${result.id}]`).find('p.votes').text('Votes: ' + result.voted);
+}
+
+/**
+ * function that remove a post (may be changed to automatic deletion later on
+ *
+ * @param result
+ * @param status
+ */
+function removePost(id) {
+    deletePost(id, function (result) {
+        console.log('index in the list to be deleted: ' + result.index);
+    });
 }
 
 </script>

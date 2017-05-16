@@ -76,5 +76,10 @@ router.post('/submit', function (req, res, next) {
     res.redirect('/home');
 });
 
-
+router.post('/delete', function (req, res) {
+    let id = req.body.id;
+    let i = data.features.findIndex(item => item.id === id);
+    console.log('index of the list to delete: ' + i);
+    res.send( {index: i} );
+});
 module.exports = router;

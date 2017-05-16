@@ -22,6 +22,9 @@ function vote(id, value, callback) {
     $.post('/update/vote', {'id': id, 'value': value}, callback);
 }
 
+function deletePost(id, callback) {
+    $.post('/post/delete', {'id': id}, callback);
+}
 
 
 /**
