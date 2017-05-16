@@ -8,31 +8,33 @@
             <h2 class="strong post_left">Post History</h2>
 
                 {{#each features}}
-                    <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+                    {{#if user}}
+                        <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
 
-                        <!--This is hidden (comments shown using modal)-->
-                        <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
-                            {{#each comments}}
-                                <p class="list-group-item">{{ this }}</p>
-                            {{/each}}
-                        </div>
+                            <!--This is hidden (comments shown using modal)-->
+                            <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
+                                {{#each comments}}
+                                    <p class="list-group-item">{{ this }}</p>
+                                {{/each}}
+                            </div>
 
-                        <h3 class="strong post_left">Title: {{ title }}</h3>
-                        <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
-                        <div class="post_header">
-                            <div class="strong post_left space">
-                                <p >Description: {{ description }}</p>
-                                <p class="votes">Votes: {{ votes }}</p>
-                                <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
-                                <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
-                                <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
-                            </div>
-                            <div class="post_right">
-                                <img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
+                            <h3 class="strong post_left">Title: {{ title }}</h3>
+                            <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
+                            <div class="post_header">
+                                <div class="strong post_left space">
+                                    <p >Description: {{ description }}</p>
+                                    <p class="votes">Votes: {{ votes }}</p>
+                                    <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
+                                    <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
+                                    <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
+                                </div>
+                                <div class="post_right">
+                                    <img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
+                        <hr>
+                    {{/if}}
                 {{/each}}
 
      

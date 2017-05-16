@@ -46,6 +46,7 @@ router.post('/submit', function (req, res, next) {
     data.features.push( {
         "id": data.total,
         "title": title,
+        "user": "me",
         "description": description,
         "comments": [],
         "votes": 0,
