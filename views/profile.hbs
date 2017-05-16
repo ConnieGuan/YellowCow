@@ -1,49 +1,68 @@
-<h1 id="postHeading" class="text-center">Your Profile</h1>
-<div class="container jumbotron">
-    {{#with data}}
+<h1 id="mainHeading" class="text-center">Your Profile</h1>
 
-        
-        <div class="container-fluid align-center">
+{{#with data}}
 
-            <h2 class="strong post_left">Post History</h2>
+    
+    <div class="container-fluid align-center">
 
-                {{#each features}}
-                    {{#if user}}
-                        <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+        <h2>Post History</h2>
 
-                            <!--This is hidden (comments shown using modal)-->
-                            <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
-                                {{#each comments}}
-                                    <p class="list-group-item">{{ this }}</p>
-                                {{/each}}
+            {{#each features}}
+                {{#if user}}
+                    <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+
+                        <!--This is hidden (comments shown using modal)-->
+                        <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
+                            {{#each comments}}
+                                <p class="list-group-item">{{ this }}</p>
+                            {{/each}}
+                        </div>
+
+                        <h3 class="strong post_left">Title: {{ title }}</h3>
+                        <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
+                        <div class="post_header">
+                            <div class="strong post_left space">
+                                <p >Description: {{ description }}</p>
+                                <p class="votes">Votes: {{ votes }}</p>
+                                <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
+                                <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
+                                <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
                             </div>
-
-                            <h3 class="strong post_left">Title: {{ title }}</h3>
-                            <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
-                            <div class="post_header">
-                                <div class="strong post_left space">
-                                    <p >Description: {{ description }}</p>
-                                    <p class="votes">Votes: {{ votes }}</p>
-                                    <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
-                                    <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
-                                    <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
-                                </div>
-                                <div class="post_right">
-                                    <img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
-                                </div>
+                            <div class="post_right">
+                                <img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
                             </div>
                         </div>
-                        <hr>
-                    {{/if}}
-                {{/each}}
+                    </div>
+                    <hr>
+                {{/if}}
+            {{/each}}
 
-     
+ 
+    </div>
+
+
+{{/with}}
+
+
+<!-- The Modal for Comments -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <!-- <span class="close">&times;</span> -->
+            <h2>Comments</h2>
         </div>
-
-
-    {{/with}}
+        <div class="modal-body">
+        </div>
+        <textarea id="modal-cmt-add"    style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
+        <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 2em;">Add Comment</button>
+        <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 2em;">Close</button>
+    </div>
 
 </div>
+
+
 
 <script src="javascripts/home.js"></script>
 <script>
