@@ -35,7 +35,10 @@ var icon_you = L.icon({
     iconUrl: 'images/youstar.png',
     iconSize: [50, 50]
 });
-
+var icon_pin = L.icon({
+    iconUrl: 'images/pin.png',
+    iconSize: [45, 45]
+});
 var icon_unexplored = L.icon({
     iconUrl: 'images/unexplored.png',
     iconSize: [45, 45]

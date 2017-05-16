@@ -160,7 +160,7 @@ function setupMap(data) {
                     pointToLayer: function (feature, latlng) {
                         if (rad >= 1000) {
                             return L.marker(latlng, {icon: icon_hot});
-                        } else { return L.marker(latlng); }
+                        } else { return L.marker(latlng, {icon: icon_pin}); }
                     },
                     onEachFeature: onEachFeature
                 }).addTo(map);
