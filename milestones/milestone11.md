@@ -15,6 +15,7 @@ Jorenne:
 - Added popup text to icons on map to clarify what the icons are
 - Modified profile page so that when user submits new pintura, all of their own pinturas will be displayed on their profile
 - Profile page also shows message if user hasn't created any pinturas; button links to post page
+- Updated help page to include modified info and map icons
 
 ---
 
