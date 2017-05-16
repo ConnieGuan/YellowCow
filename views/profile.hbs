@@ -8,7 +8,7 @@
 
         <h2>Post History</h2>
 
-            {{#if total}}
+            {{#unless total}}
 
                 <h3 class="strong post_left">You haven't posted any pinturas yet!</h3>
                 <p><button class="btn voteup btn-primary" onclick="window.location.href='/post'">Post one now!</button></p>
@@ -45,7 +45,7 @@
                     {{/if}}
                 {{/each}}
 
-            {{/if}}
+            {{/unless}}
 
  
     </div>
