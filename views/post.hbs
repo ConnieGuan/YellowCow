@@ -10,13 +10,19 @@
         <!-- Canvas -->
         <div id="canvas-container">
           <div class='tools'>
-            <a href="#myCanvas" data-tool="marker">Marker</a>
-            <a href="#myCanvas" data-tool="eraser">Erase</a>
-            <a href="#myCanvas" data-size="3"> Small </a>
-            <a href="#myCanvas" data-size="10"> Medium </a>
-            <a href="#myCanvas" data-size="30"> Large </a>
-            <a href="#myCanvas" data-clear="clear">Clear</a>
-            <a href="#myCanvas" data-upload="jpg">Take/Select A Photo!</a> 
+            <!-- Marker -->
+            <a href="#myCanvas" class="btn btn-info" data-tool="marker"><span class="glyphicon glyphicon-pencil"></span> </a>
+            <!-- Eraser -->
+            <a href="#myCanvas" class="btn btn-info" data-tool="eraser"><span class="glyphicon glyphicon-erase"></span></a>
+            <a href="#myCanvas" class="btn btn-info" id="clear-btn" data-clear="clear">Clear</a>
+            <a href="#myCanvas" class="btn btn-info" data-upload="jpg"><span class="glyphicon glyphicon-camera"></span></a> 
+            <br />
+            <div id="tool-size">
+            <a href="#myCanvas" class="btn btn-info" data-size="3"> Small </a>
+            <a href="#myCanvas" class="btn btn-info" data-size="10"> Medium </a>
+            <a href="#myCanvas" class="btn btn-info" data-size="30"> Large </a>
+            </div>
+
           </div>
         <div style="width: 0; height: 0; overflow: hidden;"> 
             <input type="file" id="PhotoPicker">
