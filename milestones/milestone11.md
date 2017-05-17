@@ -1,7 +1,14 @@
 # Description of what each team member has done since Milestone 9:
 
 Tony:
-- TODO
+- Implemented voting system for each post
+- Added dynamic voting radius to map according to vote counts
+- Added persistent post deletion feature
+- Added sign up mechanism to the app
+- User now have separate sessions (Client Session)
+- Updated home page posts map to be optional as per feedback
+- Fix mobile map view caused by ES6 incompatibility
+
 
 ---
 
