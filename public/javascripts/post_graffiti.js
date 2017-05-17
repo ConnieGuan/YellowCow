@@ -81,7 +81,7 @@ function onLocationFound(e) {
 
     var radius = e.accuracy / 2;
 
-    L.marker(e.latlng, { icon: new_marker }).addTo(map).bindPopup("<h4>Your graffiti will be posted here.</h4>").openPopup();
+    L.marker(e.latlng, { icon: new_marker }).addTo(map).bindPopup("<h4>Your pintura will be posted here.</h4>").openPopup();
 
     console.log('location: e.latlng');
 }

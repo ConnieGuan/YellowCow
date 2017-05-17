@@ -7,47 +7,51 @@
     <div class="container-fluid align-center">
 
         <h2>Post History</h2>
+            <script>var ownposts = 0;</script>
 
-            {{#unless total}}
+            {{#each features}}
+                {{#if user}}
+                    <script>ownposts++;</script>
+                    <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
 
-                <h3 class="strong post_left">You haven't posted any pinturas yet!</h3>
-                <p><button class="btn voteup btn-primary" onclick="window.location.href='/post'">Post one now!</button></p>
-
-            {{else}}
-
-                {{#each features}}
-                    {{#if user}}
-                        <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
-
-                            <!--This is hidden (comments shown using modal)-->
-                            <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
-                                {{#each comments}}
-                                    <p class="list-group-item">{{ this }}</p>
-                                {{/each}}
-                            </div>
-
-                            <h3 class="strong post_left">Title: {{ title }}</h3>
-                            <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
-                            <div class="post_header">
-                                <div class="strong post_left space">
-                                    <p >Description: {{ description }}</p>
-                                    <p class="votes">Votes: {{ votes }}</p>
-                                    <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
-                                    <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
-                                    <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
-                                    <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
-                                    <button type="button" class="btn delete btn-danger" onclick="removePost({{id}})">Delete</button>
-                                </div>
-         
-                             
-                                    <!--<img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}"> -->
-                            </div>
+                        <!--This is hidden (comments shown using modal)-->
+                        <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
+                            {{#each comments}}
+                                <p class="list-group-item">{{ this }}</p>
+                            {{/each}}
                         </div>
-                        <hr>
-                    {{/if}}
-                {{/each}}
 
-            {{/unless}}
+                        <h3 class="strong post_left">Title: {{ title }}</h3>
+                        <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
+                        <div class="post_header">
+                            <div class="strong post_left space">
+                                <p >Description: {{ description }}</p>
+                                <p class="votes">Votes: {{ votes }}</p>
+                                <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
+                                <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
+                                <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
+                                <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
+                                <button type="button" class="btn delete btn-danger" onclick="removePost({{id}})">Delete</button>
+                            </div>
+     
+                         
+                                <!--<img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}"> -->
+                        </div>
+                    </div>
+                    <hr>
+                {{/if}}
+            {{/each}}
+            <h3 class="text-center" class="strong post_left" id="noposts"></h3>
+            <p><button id="nopostsbtn" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'"></button></p>
+            <script>
+                if(ownposts == 0){
+                    document.getElementById("noposts").innerHTML = "You haven't posted any pinturas yet!";
+                    document.getElementById("nopostsbtn").innerHTML = "Post one now!";
+                }
+                else{
+                    document.getElementById("nopostsbtn").innerHTML = "Post a new pintura";
+                }
+            </script>
 
  
     </div>
