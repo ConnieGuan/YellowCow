@@ -38,3 +38,9 @@ Description: The new help page shows updated information along with relevant ima
 
 ![alt tag](/images/milestone11_4.jpg)
 Description: Posts are now able to be deleted (in both home and profile view) along with a confirmation popup.
+
+![alt tag](/images/milestone11_home.png)
+Description: Newly styled home feed page with colorful buttons!
+
+![alt tag](/images/milestone11_post.png)
+Description: Newly styled post page with icon buttons
