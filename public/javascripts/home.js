@@ -150,7 +150,10 @@ function updateVote(result, status) {
  * @param status
  */
 function removePost(id) {
-    deletePost(id, function (result) {
-        $(`div.row[data-id=${id}]`).slideToggle();
-    });
+    var del = confirm("Are you sure you want to delete this pintura?");
+    if(del == true){
+        deletePost(id, function (result) {
+            $(`div.row[data-id=${id}]`).slideToggle();
+        });
+    }
 }
