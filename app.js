@@ -16,6 +16,8 @@ var help    = require('./routes/help');
 var users   = require('./routes/users');
 var api     = require('./routes/api');
 
+var helpers = require('./helper/data.js');
+
 var app = express();
 
 // view engine setup
