@@ -31,7 +31,8 @@ Jorenne:
 ---
 
 Chang:
-- TODO
+- Made the home feed mobile, tablet, and desktop friendly
+- Made the canvas responsive to different screen sizes
 
 ---
 
