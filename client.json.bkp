@@ -1,14 +1,34 @@
 {
-  "accounts" : [
-    {
-      "username": "tony",
-      "password": "1234",
-      "posts": [ 0,2 ]
-    },
-    {
-      "username": "chuck",
-      "password": "4321",
-      "posts": [ 1,3 ]
-    }
-  ]
+	"accounts": [
+		{
+			"username": "tony",
+			"password": "1234",
+			"posts": [
+				0
+			]
+		},
+		{
+			"username": "chuck",
+			"password": "4321",
+			"posts": [
+				1,
+				3
+			]
+		},
+		{
+			"username": "obama",
+			"password": "1234",
+			"posts": [ 2 ]
+		},
+		{
+			"username": "trump",
+			"password": "1234",
+			"posts": [ 4 ]
+		},
+		{
+			"username": "ucsdkid",
+			"password": "1234",
+			"posts": [ 5, 6, 7 ]
+		}
+	]
 }
