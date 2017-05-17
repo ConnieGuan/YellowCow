@@ -4,7 +4,7 @@
 		{
 			"id": 0,
 			"title": "Home",
-			"user": "",
+			"user": "tony",
 			"description": "My Home Graffiti",
 			"comments": [
 				"So lit!!",
@@ -31,7 +31,7 @@
 		{
 			"id": 1,
 			"title": "Ralph",
-			"user": "",
+			"user": "chuck",
 			"description": "Ralph graffiti",
 			"comments": [
 				"Thats nasty!!!"
@@ -57,7 +57,7 @@
 		{
 			"id": 2,
 			"title": "Geisel Graffiti",
-			"user": "",
+			"user": "obama",
 			"description": "Geisel tag",
 			"comments": [
 				"Ay!!!"
@@ -83,7 +83,7 @@
 		{
 			"id": 3,
 			"title": "Warren",
-			"user": "",
+			"user": "chuck",
 			"description": "Warren tag",
 			"comments": [
 				"Ay!!!"
@@ -109,7 +109,7 @@
 		{
 			"id": 4,
 			"title": "Revelle",
-			"user": "",
+			"user": "trump",
 			"description": "Revelle tag",
 			"comments": [
 				"Ay!!!"
@@ -135,7 +135,7 @@
 		{
 			"id": 5,
 			"title": "Village",
-			"user": "",
+			"user": "ucsdkid",
 			"description": "Village tag",
 			"comments": [
 				"Ay!!!"
@@ -161,7 +161,7 @@
 		{
 			"id": 6,
 			"title": "UTC",
-			"user": "",
+			"user": "ucsdkid",
 			"description": "UTC tag",
 			"comments": [
 				"Ay!!!",
@@ -189,7 +189,7 @@
 		{
 			"id": 7,
 			"title": "UTC 2",
-			"user": "",
+			"user": "ucsdkid",
 			"description": "UTC 2 tag",
 			"comments": [
 				"Ay!!!",
