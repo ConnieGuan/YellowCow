@@ -3,6 +3,17 @@ var __slice = Array.prototype.slice;
 (function($) {
   var Sketch;
   var img;
+
+  var canvasId = document.getElementById('myCanvas'),
+            context = canvasId.getContext('2d');
+
+  window.addEventListener('resize', resizeCanvas, false);
+
+  function resizeCanvas(){
+    canvasId.width = (window.innerWidth*.67).toFixed();
+    canvasId.height = (window.innerHeight*.63).toFixed();
+    //canvasId.height = (window.innerHeight*.5).toFixed();
+
   $.fn.sketch = function() {
     var args, key, sketch;
     key = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
@@ -29,6 +40,10 @@ var __slice = Array.prototype.slice;
       return this;
     }
   };
+
+  }
+
+  resizeCanvas();
 
   Sketch = (function() {
     function Sketch(el, opts) {
@@ -87,10 +102,7 @@ var __slice = Array.prototype.slice;
 
     Sketch.prototype.upload = function(format) {
       var can = this;
-      console.log(can);
-      console.log("in this bih");
       $('#PhotoPicker').trigger('click');
-      console.log("nooooooooo");
       //return false;
 
       $('#PhotoPicker').on('change', function(e) {

@@ -24,17 +24,17 @@
 
         <!-- Leave styling in canvas. Only way it works -->
         <div id="canvas-slider">
-                    <div id="slider-container">
-                <a href="#myCanvas" id="box" data-color="#ff0000" ></a>
+                <div id="slider-container">
+                    <a href="#myCanvas" id="box" data-color="#ff0000" ></a>
                 <div id="slider"></div>
             </div>
-        <canvas id="myCanvas" width="320" height="320"> </canvas>
-
-            </div>
+            <!-- <canvas id="myCanvas" width="320" height="320"> </canvas> -->
+            <canvas id="myCanvas"> </canvas>
         </div>
 
         <!-- End canvas -->
-        <div class="post_form_info form-group panel panel-default jumbotron" id="form-container">
+        <!-- <div class="post_form_info form-group panel panel-default container" id="form-container"> -->
+        <div class="form-group panel-default container" id="form-container">
             <div class="row">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" placeholder="Post Title">
@@ -43,18 +43,12 @@
                 <label for="description"> Description </label>
                 <textarea class="comment-box form-control" rows="4" name="description" id="description" placeholder="Say something about this graffiti"></textarea>
             </div>
-            <!--<div class="input-prepend" hidden="hidden">-->
-                <!--<label for="lat"></label><input class="span2" id="lat" type="number" step="0.01" name="lat" readonly>-->
-                <!--<label for="lng"></label><input class="span2" id="lng" type="number" step="0.01" name="lng" readonly>-->
-            <!--</div>-->
         </div>
 
         <div id="map" style="height: 50vh;width: 100%; margin-top: 0"></div> <!--DO NOT UNCOMMENT THIS, this is for map view-->
 
-        <!--<div id="form-submit">-->
-            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Post">
-            <!--<a href="/home"><input type="button" id="cancel_post" class="btn-add-activity btn" value="Cancel"/> </a>-->
-        <!--</div>-->
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Post">
+
     </div>
 </form>
 
