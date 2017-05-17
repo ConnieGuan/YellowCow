@@ -47,7 +47,7 @@ router.post('/submit', function (req, res, next) {
     data.features.push( {
         "id": data.total,
         "title": title,
-        "user": "me",
+        "user": req.session.user,
         "description": description,
         "comments": [],
         "votes": 0,
@@ -67,6 +67,7 @@ router.post('/submit', function (req, res, next) {
             }
         }
     });
+    helpers.addPost(req.session.user, data.total);
     data.total = data.total + 1;
 
     helpers.updateData(data);
