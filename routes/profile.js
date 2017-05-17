@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var data = require('../data.json');
+var helpers = require('../helper/data');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,11 +17,16 @@ router.get('/', function(req, res, next) {
         req.session.errors = null;
     }
 
-    res.render('profile', { title: 'Profile', 'data': data });
+    // get user's post id
+    var post_ids = helpers.getUser(req.session.user).posts;
+    var userposts = data.features.filter(x => post_ids.indexOf(x.id) > -1 );
+
+    console.log(userposts);
+    res.render('profile', { title: 'Profile', 'user_posts' : userposts, 'post_exists': (userposts.length > 0)});
 });
 
 /**
- * check if session is on
+ * API check if session is on
  */
 router.get('/board', function (req, res, next) {
     console.log(req.session.user + ' is on /board');
