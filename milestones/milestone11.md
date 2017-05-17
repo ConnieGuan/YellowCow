@@ -13,9 +13,10 @@ Connie:
 Jorenne:
 - Created and updated more understandable cohesive map icons based on peer feedback
 - Added popup text to icons on map to clarify what the icons are
-- Modified profile page so that when user submits new pintura, all of their own pinturas will be displayed on their profile
-- Profile page also shows message if user hasn't created any pinturas; button links to post page
-- Updated help page to include modified info and map icons
+- Modified profile page so that when user submits new pintura, all of their own pinturas will be displayed on their profile along with the same buttons and functionality
+- Alternate profile page shows message if user hasn't created any pinturas; button links to post page
+- Updated help page to include modified info as well as useful images
+- Added a confirmation popup for deleting pinturas to satisfy error prevention heuristic
 
 ---
 
@@ -26,5 +27,14 @@ Chang:
 
 # Screenshots 
 
-//TODO
-Description: TODO
+![alt tag](/images/milestone11_2.JPG)
+Description: The new profile page shows all of the pinturas that the user has created.
+
+![alt tag](/images/milestone11_1.JPG)
+Description: This alternate profile page shows a message to the user along with a button that tells the user to post a new pintura.
+
+![alt tag](/images/milestone11_3.JPG)
+Description: The new help page shows updated information along with relevant images.
+
+![alt tag](/images/milestone11_4.JPG)
+Description: Posts are now able to be deleted (in both home and profile view) along with a confirmation popup.
