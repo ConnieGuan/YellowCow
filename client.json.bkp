@@ -1,0 +1,14 @@
+{
+  "accounts" : [
+    {
+      "username": "tony",
+      "password": "1234",
+      "posts": [ 0,2 ]
+    },
+    {
+      "username": "chuck",
+      "password": "4321",
+      "posts": [ 1,3 ]
+    }
+  ]
+}
