@@ -11,6 +11,17 @@ router.get('/', function(req, res, next) {
     res.render('profile', { title: 'Profile', 'data': data });
 });
 
+/**
+ * check if session is on
+ */
+router.get('/board', function (req, res, next) {
+    if (!req.session.user) {
+        return res.status(401).send();
+    }
+
+    return res.status(200).send();
+});
+
 router.post('/add_comments', function (req, res, next) {
     console.log('id: ' + req.body.id);
     console.log('comment: ' + req.body.comment);

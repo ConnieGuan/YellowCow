@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/submit', function (req, res, next) {
     // check validity
-    req.check('username', 'Invalid username').isEmail();
+    // req.check('username', 'Invalid username').isEmail();
     req.check('password', 'Password is invalid').isLength({min:4});
 
     var errors = req.validationErrors();
@@ -22,6 +22,16 @@ router.post('/submit', function (req, res, next) {
     }
     console.log('--- login successful, go to home page');
     res.redirect('/home');
+});
+
+router.post('/login', function (req, res) {
+    var user = req.body.username,
+        pass = req.body.password;
+
+    // TODO: add checking whether user is in the database
+
+    req.session.user = user;
+    return res.status(200).send({sid: req.sessionID });
 });
 
 router.post('/signup', function (req, res, next) {
