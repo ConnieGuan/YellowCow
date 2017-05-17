@@ -84,7 +84,7 @@ function updateVote(result, status) {
  */
 function removePost(id) {
     deletePost(id, function (result) {
-        console.log('index in the list to be deleted: ' + result.index);
+        $(`div.row[data-id=${id}]`).slideToggle();
     });
 }
 
