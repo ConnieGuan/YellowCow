@@ -45,4 +45,9 @@ router.post('/add_comments', function (req, res, next) {
     res.redirect('/home');
 });
 
+router.get('/logout', function (req, res, next) {
+    req.session.destroy();
+    res.redirect('/login');
+});
+
 module.exports = router;
