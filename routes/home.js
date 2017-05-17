@@ -5,6 +5,7 @@ var data = require('../data.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log('--- on /home page, user: ' + req.session.user);
     res.render('home', { title: 'Home', 'data': data });
 });
 

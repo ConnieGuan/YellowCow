@@ -8,6 +8,14 @@ var data = require('../data.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log('--- on /profile page, user: ' + req.session.user);
+
+    /** Anonymous should not have profile page */
+    if (!req.session.user) {
+        res.redirect('/login');
+        req.session.errors = null;
+    }
+
     res.render('profile', { title: 'Profile', 'data': data });
 });
 

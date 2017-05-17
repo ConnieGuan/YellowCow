@@ -4,6 +4,7 @@ var helpers = require('../helper/data');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log('--- on / page, user: ' + req.session.user);
     if (!req.session.user) {
         res.render('login', { layout: false, title: 'Login', success: req.session.success , errors: req.session.errors });
         req.session.errors = null;

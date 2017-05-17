@@ -6,6 +6,13 @@ var helpers = require("../helper/data.js");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    /** not sure */
+    if (!req.session.user) {
+        res.redirect('/login');
+        req.session.errors = null;
+    }
+
+    console.log('--- on /post page, user: ' + req.session.user);
     res.render('post', { title: 'Post Graffiti' });
 });
 
