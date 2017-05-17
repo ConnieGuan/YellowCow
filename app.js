@@ -33,8 +33,18 @@ app.use(bodyParser.urlencoded({ extended: false, limit: '20mb'}));
 app.use(expressValidator({
     customValidators: {
         isNewUser: function (username) {
-            console.log('return : ' + (typeof helpers.getUser(username)));
             return (typeof helpers.getUser(username) === "undefined");
+        },
+        isUserExists: function (username) {
+            return (typeof helpers.getUser(username) !== "undefined");
+        },
+        loginSuccess: function (username, password) {
+            console.log('inside loginSuccess');
+            if (helpers.getUser(username)) {
+                return helpers.getUser(username).password === password;
+            } else {
+                return false;
+            }
         }
     }
 }));

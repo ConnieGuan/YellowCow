@@ -16,15 +16,18 @@ $(document).ready(function () {
 
 
     $("#login-signup-form").submit(function (event) {
-
+        event.preventDefault();
         var $form = $(this);
 
         $.post( $form.attr('action'), $form.serialize(),
             function (data, status) {
-                console.log(data);
-                console.log(status);
-                // $(".omb_loginform").after('<p class="text-info"> Signup Successful</p>');
-                // document.getElementById('id01').style.display='none';
-            });
+                // console.log(data);
+                // console.log(status);
+                // console.log(status.code);
+                $(".omb_loginform").after('<h2 class="text-info text-success"> Signup Successful</h2>');
+                document.getElementById('id01').style.display='none';
+            }).fail(function (err) {
+                alert(err.responseText);
+        });
     });
 });

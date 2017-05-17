@@ -4,32 +4,48 @@ var helpers = require('../helper/data');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('login', { layout: false, title: 'Login', success: req.session.success , errors: req.session.errors });
-    req.session.errors = null;
-});
-
-router.post('/submit', function (req, res, next) {
-    // check validity
-    // req.check('username', 'Invalid username').isEmail();
-    req.check('password', 'Password is invalid').isLength({min:4});
-
-    var errors = req.validationErrors();
-    if (errors) {
-        req.session.errors = errors;
-        req.session.success = false;
-        res.redirect('/');
+    if (!req.session.user) {
+        res.render('login', { layout: false, title: 'Login', success: req.session.success , errors: req.session.errors });
+        req.session.errors = null;
     } else {
-        req.session.success = true;
+        res.redirect('/home');
     }
-    console.log('--- login successful, go to home page');
-    res.redirect('/home');
 });
 
-router.post('/login', function (req, res) {
+/**
+ * Login entry for main login page
+ */
+router.post('/submit', function (req, res, next) {
     var user = req.body.username,
         pass = req.body.password;
 
-    // TODO: add checking whether user is in the database
+    console.log('before checking');
+    req.check('username', 'User does not exists').isUserExists();
+    req.check('username', 'Invalid password').loginSuccess(pass);
+    req.check('password', 'Password must be more than 4 characters').isLength({min:4});
+
+    console.log('after checking');
+    var errors = req.validationErrors();
+    console.log(errors);
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        // res.redirect('/');
+        res.status(409).redirect('/' );
+    } else {
+        req.session.success = true;
+    }
+
+    req.session.user = user;
+    res.redirect('/home');
+});
+
+/**
+ * api entry with no interface
+ */
+router.post('/login', function (req, res) {
+    var user = req.body.username,
+        pass = req.body.password;
 
     req.session.user = user;
     console.log('--- inside login: session is ...');
@@ -39,6 +55,7 @@ router.post('/login', function (req, res) {
 
 router.post('/signup', function (req, res, next) {
 
+    console.log(req.body);
     req.check('username','Username taken').isNewUser();
     req.check('password', 'Password must be more than 4 characters').isLength({min:4});
     req.check('password', 'Confirmed password is not equal').equals(req.body.pswrepeat);
@@ -48,13 +65,14 @@ router.post('/signup', function (req, res, next) {
     if (errors) {
         req.session.errors = errors;
         req.session.success = false;
+        console.log('return 409 because of errors + ' +  errors);
         return res.status(409).send( errors );
     } else {
         req.session.success = true;
         helpers.createUser(req.body.username, req.body.password);
         console.log('--- id creation successful');
+        res.send({success: true, user: req.body.username});
     }
-    res.send({success: true, user: req.body.username});
 });
 
 

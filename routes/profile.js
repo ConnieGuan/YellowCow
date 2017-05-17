@@ -19,7 +19,6 @@ router.get('/board', function (req, res, next) {
     if (!req.session.user) {
         return res.status(401).send();
     }
-
     //noinspection JSUnresolvedVariable
     return res.status(200).send( { user: req.session.user, sid: req.sessionID });
 });
