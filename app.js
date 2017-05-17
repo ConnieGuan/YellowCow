@@ -30,7 +30,14 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '20mb'}));
 app.use(bodyParser.urlencoded({ extended: false, limit: '20mb'}));
-app.use(expressValidator());
+app.use(expressValidator({
+    customValidators: {
+        isNewUser: function (username) {
+            console.log('return : ' + (typeof helpers.getUser(username)));
+            return (typeof helpers.getUser(username) === "undefined");
+        }
+    }
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));

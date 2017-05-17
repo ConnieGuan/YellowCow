@@ -15,11 +15,13 @@ router.get('/', function(req, res, next) {
  * check if session is on
  */
 router.get('/board', function (req, res, next) {
+    console.log(req.session.user + ' is on /board');
     if (!req.session.user) {
         return res.status(401).send();
     }
 
-    return res.status(200).send();
+    //noinspection JSUnresolvedVariable
+    return res.status(200).send( { user: req.session.user, sid: req.sessionID });
 });
 
 router.post('/add_comments', function (req, res, next) {

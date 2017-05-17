@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var helpers = require('../helper/data');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -31,32 +32,29 @@ router.post('/login', function (req, res) {
     // TODO: add checking whether user is in the database
 
     req.session.user = user;
-    return res.status(200).send({sid: req.sessionID });
+    console.log('--- inside login: session is ...');
+    console.log(req.session);
+    return res.status(200).send({"user": req.session.user , sid: req.sessionID });
 });
 
 router.post('/signup', function (req, res, next) {
-    // check validity
 
-    console.log(req.body);
-    req.check('username', 'Invalid username').isEmail();
-    req.check('password', 'Password is invalid').isLength({min:4}).equals(req.body.pswrepeat);
+    req.check('username','Username taken').isNewUser();
+    req.check('password', 'Password must be more than 4 characters').isLength({min:4});
+    req.check('password', 'Confirmed password is not equal').equals(req.body.pswrepeat);
 
     var errors = req.validationErrors();
+    console.log(errors);
     if (errors) {
         req.session.errors = errors;
         req.session.success = false;
-        res.redirect('/');
+        return res.status(409).send( errors );
     } else {
         req.session.success = true;
+        helpers.createUser(req.body.username, req.body.password);
+        console.log('--- id creation successful');
     }
-    console.log(errors);
-    console.log('--- id creation successful, go to home page');
-
-    // TODO: for now save user id,pass to file
-
-
-    // res.redirect('/home');
-    res.send({success: true});
+    res.send({success: true, user: req.body.username});
 });
 
 

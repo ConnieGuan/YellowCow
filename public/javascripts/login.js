@@ -20,9 +20,11 @@ $(document).ready(function () {
         var $form = $(this);
 
         $.post( $form.attr('action'), $form.serialize(),
-            function (data) {
-                $(".omb_loginform").after('<p class="text-info"> Signup Successful</p>');
-                document.getElementById('id01').style.display='none';
+            function (data, status) {
+                console.log(data);
+                console.log(status);
+                // $(".omb_loginform").after('<p class="text-info"> Signup Successful</p>');
+                // document.getElementById('id01').style.display='none';
             });
     });
 });
