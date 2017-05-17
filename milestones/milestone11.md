@@ -27,14 +27,14 @@ Chang:
 
 # Screenshots 
 
-![alt tag](/images/milestone11_2.JPG)
+![alt tag](/images/milestone11_2.jpg)
 Description: The new profile page shows all of the pinturas that the user has created.
 
-![alt tag](/images/milestone11_1.JPG)
+![alt tag](/images/milestone11_1.jpg)
 Description: This alternate profile page shows a message to the user along with a button that tells the user to post a new pintura.
 
-![alt tag](/images/milestone11_3.JPG)
+![alt tag](/images/milestone11_3.jpg)
 Description: The new help page shows updated information along with relevant images.
 
-![alt tag](/images/milestone11_4.JPG)
+![alt tag](/images/milestone11_4.jpg)
 Description: Posts are now able to be deleted (in both home and profile view) along with a confirmation popup.
