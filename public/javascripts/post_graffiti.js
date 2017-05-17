@@ -12,11 +12,10 @@ $(document).ready(function (event) {
         var $form = $(this);
         var dataURL = canvas.toDataURL('image/png');
         /* stop form from submitting (handle manually) */
-        var canvasUpload = "/post/submit_canvas";
 
         $.ajax({
             type: "POST",
-            url: canvasUpload,
+            url: "/post/submit_canvas",
             data: {
                 testSend: 'stuff',
                 imgBase64: dataURL

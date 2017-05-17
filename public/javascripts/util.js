@@ -19,7 +19,7 @@ $(document).ready(function (event) {
  */
 function vote(id, value, callback) {
     // console.log("value: ", value + ", id: ", id);
-    $.post('/update/vote', {'id': id, 'value': value}, callback);
+    $.post('/post/vote', {'id': id, 'value': value}, callback);
 }
 
 function deletePost(id, callback) {
