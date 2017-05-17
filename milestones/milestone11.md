@@ -6,7 +6,10 @@ Tony:
 ---
 
 Connie:
-- TODO
+- Changed post marker, eraser, photo, size links to buttons with added icons
+- Removed the old comment button and changed it to a better looking one
+- Added a make post button to the home page
+- Working on making a modal/horizontal view for the color picker so it won't be as in the way
 
 ---
 
