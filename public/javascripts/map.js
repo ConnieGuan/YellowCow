@@ -123,7 +123,7 @@ function setupMap(data) {
         var radius = e.accuracy / 2;
 //        L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
         L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>");
-        L.circle(e.latlng, radius).addTo(map);
+        //L.circle(e.latlng, radius).addTo(map); //this is kinda pointless right?
         setupFeatures();
 
         console.log('post hidden: ' + post_hidden);
@@ -170,7 +170,7 @@ function setupMap(data) {
                 // add custum markers for unexplored graffiti area
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel closer to this point to view graffiti.</h4>");
+                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
                     },
                     onEachFeature: onEachHiddenFeature
                 }).addTo(map);
