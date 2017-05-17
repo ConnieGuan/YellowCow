@@ -123,7 +123,7 @@ function setupMap(data) {
         var radius = e.accuracy / 2;
 //        L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
         L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>");
-        L.circle(e.latlng, radius).addTo(map);
+        //L.circle(e.latlng, radius).addTo(map); //this is kinda pointless right?
         setupFeatures();
 
         console.log('post hidden: ' + post_hidden);
@@ -147,7 +147,9 @@ function setupMap(data) {
         /** Set callbacks for each graffiti post on the map */
         for(var i in features) {
             var dist = current_pos.distanceTo(features[i].geo.geometry.coordinates.slice().reverse());
-            var rad  = parseInt(200 + 10.0*(features[i].votes));
+            var rad  = Math.abs(parseInt(200 + 10.0*(features[i].votes)));
+
+
             features[i].geo.dist = parseInt(dist);
             features[i].geo.radius = rad;        // store on global data variable for easier access in callback function
             features[i].geo.id = features[i].id;        // a workaroud for popup events later on
@@ -160,7 +162,7 @@ function setupMap(data) {
                     pointToLayer: function (feature, latlng) {
                         if (rad >= 1000) {
                             return L.marker(latlng, {icon: icon_hot});
-                        } else { return L.marker(latlng); }
+                        } else { return L.marker(latlng, {icon: icon_pin}); }
                     },
                     onEachFeature: onEachFeature
                 }).addTo(map);
@@ -168,7 +170,7 @@ function setupMap(data) {
                 // add custum markers for unexplored graffiti area
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel closer to this point to view graffiti.</h4>");
+                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
                     },
                     onEachFeature: onEachHiddenFeature
                 }).addTo(map);

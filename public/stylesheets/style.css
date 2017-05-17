@@ -178,6 +178,25 @@ img.popup {
     display: inline-block;
 }
 /** End Canvas Styling */
+#home-post-btn {
+  text-align: center;
+
+}
+
+
+/** Styling for the Tools */
+.tools {
+  padding-bottom: 10px;
+}
+
+#tool-size {
+  padding-top: 10px;
+}
+
+#clear-btn {
+  background-color: #d80000;
+  border-color:  #d80000;
+}
 .icn-comments {
   height: 100px;
   width: 100px;

@@ -1,16 +1,83 @@
-<h1>Your Profile Information</h1>
-<div class="container jumbotron">
-    <ul>
-        <li>Name: CHARNAME</li>
-        <ul>
-            <h3>Post History</h3>
-            <li>
-                <p>Post 1</p>
-                <img src="https://i.imgur.com/QjurNdW.jpg" alt="">
-            </li>
-            <li>
-                <p>Etc...</p>
-            </li>
-        </ul>
-    </ul>
+<h1 id="mainHeading" class="text-center">Your Profile</h1>
+<hr>
+
+{{#with data}}
+
+    
+    <div class="container-fluid align-center">
+
+        <h2>Post History</h2>
+            <script>var ownposts = 0;</script>
+
+            {{#each features}}
+                {{#if user}}
+                    <script>ownposts++;</script>
+                    <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+
+                        <!--This is hidden (comments shown using modal)-->
+                        <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
+                            {{#each comments}}
+                                <p class="list-group-item">{{ this }}</p>
+                            {{/each}}
+                        </div>
+
+                        <h3 class="strong post_left">Title: {{ title }}</h3>
+                        <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
+                        <div class="post_header">
+                            <div class="strong post_left space">
+                                <p >Description: {{ description }}</p>
+                                <p class="votes">Votes: {{ votes }}</p>
+                                <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
+                                <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
+                                <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
+                                <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
+                                <button type="button" class="btn delete btn-danger" onclick="removePost({{id}})">Delete</button>
+                            </div>
+     
+                         
+                                <!--<img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}"> -->
+                        </div>
+                    </div>
+                    <hr>
+                {{/if}}
+            {{/each}}
+            <h3 class="text-center" class="strong post_left" id="noposts"></h3>
+            <p><button id="nopostsbtn" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'"></button></p>
+            <script>
+                if(ownposts == 0){
+                    document.getElementById("noposts").innerHTML = "You haven't posted any pinturas yet!";
+                    document.getElementById("nopostsbtn").innerHTML = "Post one now!";
+                }
+                else{
+                    document.getElementById("nopostsbtn").innerHTML = "Post a Pintura!";
+                }
+            </script>
+
+ 
+    </div>
+
+
+{{/with}}
+
+
+<!-- The Modal for Comments -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <!-- <span class="close">&times;</span> -->
+            <h2>Comments</h2>
+        </div>
+        <div class="modal-body">
+        </div>
+        <textarea id="modal-cmt-add"    style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
+        <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 2em;">Add Comment</button>
+        <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 2em;">Close</button>
+    </div>
+
 </div>
+
+
+
+<script src="javascripts/home.js"></script>

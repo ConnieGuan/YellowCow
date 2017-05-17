@@ -1,7 +1,3 @@
-<!--TODO:
- 1. Account validation
--->
-
 <html>
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -9,6 +5,7 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/signup.css">
 
 
     <!--external API javascript library-->
@@ -17,15 +14,20 @@
 
     <!--client side utility scripts-->
     <script src="/javascripts/util.js"></script>
-    <script src="/javascripts/login.js"></script>
 
+    <style>
+        /*override style from login.css*/
+        input.form-control {
+            z-index: 1;
+        }
+    </style>
 </head>
 
 <body>
 <div id="login-bg"></div>
 <div class="container">
     <div class="omb_login">
-        <h1 class="omb_authTitle"> Pintura </h1>
+        <img src="images/logo-dark.png" alt="Pintura" height="100px">
         <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
         <div class="row omb_row-sm-offset-3 omb_socialButtons">
             <div class="col-xs-4 col-sm-2">
@@ -57,20 +59,32 @@
 
         <div class="row omb_row-sm-offset-3">
             <div class="col-xs-12 col-sm-6">
-                <form class="omb_loginForm" action="/login" autocomplete="off" method="POST">
+                {{# if success }}
+                    <section class="alert-success">
+                        <h2>Success Validation!</h2>
+                    </section>
+                {{ else }}
+                    {{# if errors }}
+                        {{# each errors }}
+                            <li>{{ this.msg }}</li>
+                        {{/each}}
+                    {{/if}}
+                {{/if}}
+                <form class="omb_loginForm" action="/login/submit" autocomplete="off" method="POST">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" name="username" placeholder="email address">
+                        <input type="text" class="form-control" name="username" placeholder="username" style="z-index: 1;">
                     </div>
                     <span class="help-block"></span>
 
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input  type="password" class="form-control" name="password" placeholder="Password">
+                        <input  type="password" class="form-control" name="password" placeholder="Password" style="z-index: 1;">
                     </div>
-                    <span class="help-block">Password error</span>
+                    <!--<span class="help-block">Password error</span>-->
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    <a class="btn btn-lg btn-success btn-block" onclick="document.getElementById('id01').style.display='block'">Sign Up</a>
                 </form>
             </div>
         </div>
@@ -87,7 +101,32 @@
             </div>
         </div>
     </div>
+
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+        <form id="login-signup-form" class="modal-content" action="/login/signup" method="POST">
+            <div class="container box-signup">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="username" name="username" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <label><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="pswrepeat" required>
+                <input type="checkbox" checked="checked"> I Agree
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
+<script src="/javascripts/login.js"></script>
 </body>
 </html>
 

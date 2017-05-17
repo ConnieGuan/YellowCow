@@ -19,9 +19,12 @@ $(document).ready(function (event) {
  */
 function vote(id, value, callback) {
     // console.log("value: ", value + ", id: ", id);
-    $.post('/update/vote', {'id': id, 'value': value}, callback);
+    $.post('/post/vote', {'id': id, 'value': value}, callback);
 }
 
+function deletePost(id, callback) {
+    $.post('/post/delete', {'id': id}, callback);
+}
 
 
 /**
@@ -35,7 +38,10 @@ var icon_you = L.icon({
     iconUrl: 'images/youstar.png',
     iconSize: [50, 50]
 });
-
+var icon_pin = L.icon({
+    iconUrl: 'images/pin.png',
+    iconSize: [45, 45]
+});
 var icon_unexplored = L.icon({
     iconUrl: 'images/unexplored.png',
     iconSize: [45, 45]

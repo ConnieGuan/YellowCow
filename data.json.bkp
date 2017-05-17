@@ -1,9 +1,10 @@
 {
-	"total": 3,
+	"total": 8,
 	"features": [
 		{
 			"id": 0,
 			"title": "Home",
+			"user": "",
 			"description": "My Home Graffiti",
 			"comments": [
 				"So lit!!",
@@ -30,11 +31,12 @@
 		{
 			"id": 1,
 			"title": "Ralph",
+			"user": "",
 			"description": "Ralph graffiti",
 			"comments": [
 				"Thats nasty!!!"
 			],
-			"votes": 13,
+			"votes": 0,
 			"nsfw": false,
 			"geo": {
 				"type": "Feature",
@@ -55,6 +57,7 @@
 		{
 			"id": 2,
 			"title": "Geisel Graffiti",
+			"user": "",
 			"description": "Geisel tag",
 			"comments": [
 				"Ay!!!"
@@ -73,6 +76,139 @@
 					"coordinates": [
 						-117.23758578300477,
 						32.88109637198742
+					]
+				}
+			}
+		},
+		{
+			"id": 3,
+			"title": "Warren",
+			"user": "",
+			"description": "Warren tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 60,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/3.jpg",
+				"properties": {
+					"name": "Warren",
+					"popupContent": "Warren tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.23326206207277,
+						32.882578515468026
+					]
+				}
+			}
+		},
+		{
+			"id": 4,
+			"title": "Revelle",
+			"user": "",
+			"description": "Revelle tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 40,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/4.jpg",
+				"properties": {
+					"name": "Revelle",
+					"popupContent": "Revelle tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.24111557006837,
+						32.87306353408395
+					]
+				}
+			}
+		},
+		{
+			"id": 5,
+			"title": "Village",
+			"user": "",
+			"description": "Village tag",
+			"comments": [
+				"Ay!!!"
+			],
+			"votes": 100,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/5.jpg",
+				"properties": {
+					"name": "Village",
+					"popupContent": "Village tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.2420382499695,
+						32.88771401845524
+					]
+				}
+			}
+		},
+		{
+			"id": 6,
+			"title": "UTC",
+			"user": "",
+			"description": "UTC tag",
+			"comments": [
+				"Ay!!!",
+				"sadfasdf",
+				"asdfadf"
+			],
+			"votes": 36,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "graffiti/6.jpg",
+				"properties": {
+					"name": "UTC",
+					"popupContent": "UTC tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.21086025238039,
+						32.871027051221716
+					]
+				}
+			}
+		},
+		{
+			"id": 7,
+			"title": "UTC 2",
+			"user": "",
+			"description": "UTC 2 tag",
+			"comments": [
+				"Ay!!!",
+				"zdfasdf"
+			],
+			"votes": 350,
+			"nsfw": false,
+			"geo": {
+				"type": "Feature",
+				"link": "http://streetartnyc.org/wp-content/uploads/2017/05/Epic-uno-live-painting.png",
+				"properties": {
+					"name": "UTC",
+					"popupContent": "UTC 2 tag"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						-117.20943868160248,
+						32.870288138795246
 					]
 				}
 			}

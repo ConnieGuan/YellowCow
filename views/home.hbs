@@ -1,6 +1,13 @@
 
+<head>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
 
 <h1 id="mainHeading" class="text-center">Pintura Home Feed</h1>
+<div id="home-post-btn">
+    <a href="/post" class="btn btn-primary"> Post a Pintura! </a>
+    </div>
 <hr>
 
 {{#with data}}
@@ -27,10 +34,12 @@
                             <button type="button" class="btn voteup btn-primary" onclick="vote({{id}},   1, updateVote)">Upvote</button>
                             <button type="button" class="btn votedown btn-danger" onclick="vote({{id}}, -1, updateVote)">Downvote</button>
                             <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
+                            <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
+                            <button type="button" class="btn delete btn-danger" onclick="removePost({{id}})">Delete</button>
                         </div>
-                        <div class="post_right">
-                            <img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}">
-                        </div>
+ 
+                     
+                            <!--<img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}"> -->
                     </div>
                 </div>
                 <hr>
@@ -61,17 +70,3 @@
 </div>
 
 <script src="javascripts/home.js"></script>
-<script>
-
-//    Vote implemented: see javascripts/util.js
-/**
- * callback function for the upvote, downvote function
- * see related files: javascript/util.js and route/update.js (server)
- * @param result
- * @param status
- */
-function updateVote(result, status) {
-    $(`div.row[data-id=${result.id}]`).find('p.votes').text('Votes: ' + result.voted);
-}
-
-</script>

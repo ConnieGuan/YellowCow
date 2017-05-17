@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var data = require('../data.json');
+var helpers = require("../helper/data.js");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -36,16 +37,10 @@ router.post('/submit', function (req, res, next) {
     // var url = myCanvas.toDataURL();
 
 
-    console.log('inside submit');
-    console.log('title: '  + title);
-    console.log('description: ' + description);
-    console.log('lat:  ' + lat);
-    console.log('lng:  ' + lng);
-    // console.log('url: ' + url);
-
     data.features.push( {
         "id": data.total,
         "title": title,
+        "user": "me",
         "description": description,
         "comments": [],
         "votes": 0,
@@ -67,13 +62,32 @@ router.post('/submit', function (req, res, next) {
     });
     data.total = data.total + 1;
 
-    fs.writeFile('data.json', JSON.stringify(data, null, '\t'), function (err) {
-        if (err) throw err;
-        console.log('New graffiti is saved');
-    });
-
+    helpers.updateData(data);
     res.redirect('/home');
 });
 
+router.post('/delete', function (req, res) {
+    let id = parseInt(req.body.id);
+    let i = data.features.findIndex(item => item.id === id);
+    let deleted = data.features.splice(i, 1);
+    console.log(`--- index of id : ${id} list to delete: ${i}`);
+    console.log('--- total data before deletion: ' + helpers.totalPost() );
+    helpers.updateData(data);
+    console.log('--- total data after deletion: ' + helpers.totalPost() );
+    res.send( {index: i, title: deleted.title, post: deleted} );
+});
+
+router.post('/vote', function(req, res, next) {
+    let value = req.body.value,
+        id = req.body.id;
+
+    console.log('inside /post/vote, id=' + id + ', val:' + value);
+
+    var post = data.features.find(x => x.id == id );
+    post.votes = parseInt(post.votes) + parseInt(value);
+
+    helpers.updateData(data);
+    res.send({'id': post.id, voted: post.votes});
+});
 
 module.exports = router;

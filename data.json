@@ -4,6 +4,7 @@
 		{
 			"id": 0,
 			"title": "Home",
+			"user": "",
 			"description": "My Home Graffiti",
 			"comments": [
 				"So lit!!",
@@ -30,6 +31,7 @@
 		{
 			"id": 1,
 			"title": "Ralph",
+			"user": "",
 			"description": "Ralph graffiti",
 			"comments": [
 				"Thats nasty!!!"
@@ -55,6 +57,7 @@
 		{
 			"id": 2,
 			"title": "Geisel Graffiti",
+			"user": "",
 			"description": "Geisel tag",
 			"comments": [
 				"Ay!!!"
@@ -80,6 +83,7 @@
 		{
 			"id": 3,
 			"title": "Warren",
+			"user": "",
 			"description": "Warren tag",
 			"comments": [
 				"Ay!!!"
@@ -105,6 +109,7 @@
 		{
 			"id": 4,
 			"title": "Revelle",
+			"user": "",
 			"description": "Revelle tag",
 			"comments": [
 				"Ay!!!"
@@ -130,6 +135,7 @@
 		{
 			"id": 5,
 			"title": "Village",
+			"user": "",
 			"description": "Village tag",
 			"comments": [
 				"Ay!!!"
@@ -155,6 +161,7 @@
 		{
 			"id": 6,
 			"title": "UTC",
+			"user": "",
 			"description": "UTC tag",
 			"comments": [
 				"Ay!!!",
@@ -182,6 +189,7 @@
 		{
 			"id": 7,
 			"title": "UTC 2",
+			"user": "",
 			"description": "UTC 2 tag",
 			"comments": [
 				"Ay!!!",

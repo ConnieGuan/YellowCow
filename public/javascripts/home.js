@@ -129,3 +129,31 @@ function toggleMap(id) {
     $("#map" + id).slideToggle();
     $("#map").closest('.btn.showmap').text("Hide");
 }
+
+
+
+//    Vote implemented: see javascripts/util.js
+/**
+ * callback function for the upvote, downvote function
+ * see related files: javascript/util.js and route/post.js (server)
+ * @param result
+ * @param status
+ */
+function updateVote(result, status) {
+    $(`div.row[data-id=${result.id}]`).find('p.votes').text('Votes: ' + result.voted);
+}
+
+/**
+ * function that remove a post (may be changed to automatic deletion later on
+ *
+ * @param result
+ * @param status
+ */
+function removePost(id) {
+    var del = confirm("Are you sure you want to delete this pintura?");
+    if(del == true){
+        deletePost(id, function (result) {
+            $(`div.row[data-id=${id}]`).slideToggle();
+        });
+    }
+}

@@ -81,3 +81,11 @@ opacity:0.9;
         margin-top:10px;
     }
 }
+
+img {
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    max-width: 25%;
+    height: auto;
+}

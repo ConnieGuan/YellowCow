@@ -5,9 +5,10 @@ var logger       = require('morgan');
 var hbs          = require('hbs');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var expressValidator = require('express-validator');
+var expressSession = require('express-session');
 
 var map     = require('./routes/map');
-var update  = require('./routes/update');           // common controller function used across different routes
 var post    = require('./routes/post');
 var login   = require('./routes/login');
 var profile = require('./routes/profile');
@@ -15,6 +16,8 @@ var home    = require('./routes/home');
 var help    = require('./routes/help');
 var users   = require('./routes/users');
 var api     = require('./routes/api');
+
+var helpers = require('./helper/data.js');
 
 var app = express();
 
@@ -27,16 +30,18 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '20mb'}));
 app.use(bodyParser.urlencoded({ extended: false, limit: '20mb'}));
+app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use(expressSession({secret: 'youcantseethis', saveUninitialized: false, resave: false}));
+/** resave true if you want to save information after each request */
 
 hbs.registerHelper('json', function(context) {
     return JSON.stringify(context);
 });
 
 app.use('/'        , login);
-app.use('/update'  , update);
 app.use('/login'   , login);
 app.use('/profile' , profile);
 app.use('/home'    , home);
