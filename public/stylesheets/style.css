@@ -178,6 +178,11 @@ img.popup {
     display: inline-block;
 }
 /** End Canvas Styling */
+#home-post-btn {
+  text-align: center;
+
+}
+
 
 /** Styling for the Tools */
 .tools {
