@@ -8,12 +8,14 @@
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "bower": "^1.8.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-session": "^1.15.2",
+    "express-validator": "^3.2.0",
     "hbs": "~4.0.1",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2",
-    "bower": "^1.8.0"
+    "serve-favicon": "~2.4.2"
   }
 }
