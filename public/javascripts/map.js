@@ -69,7 +69,7 @@ function setupMap(data) {
         // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
             imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
-            var customPopup = $("<div>").addClass('container popup-inner')
+            var customPopup = $("<div>").addClass('popup-inner')
                 .append( "<h1>" + feature.properties.name + "</h1>" )
                 .append( "<h3 class='popup-votes'>Votes: " + feature.votes + "</h3>" );
                 if (parseInt(200 + 10.0*(feature.votes)) >= 1000){
