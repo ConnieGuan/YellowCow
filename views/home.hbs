@@ -13,10 +13,10 @@
 {{#with data}}
 
     
-    <div class="container-fluid align-center">
+    <div class="container-fluid align-center post_list">
 
             {{#each features}}
-                <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+                <div class="container-fluid row post" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
 
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
