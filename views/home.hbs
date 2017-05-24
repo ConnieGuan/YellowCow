@@ -16,7 +16,7 @@
     <div class="container-fluid align-center post_list">
 
             {{#each features}}
-                <div class="container-fluid row post" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+                <div class="container-fluid post row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
 
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
@@ -25,17 +25,23 @@
                         {{/each}}
                     </div>
 
-                    <h3 class="strong post_left">{{ title }}</h3>
+                    <div class="post_header">
+                        <h3 class="strong post_left">{{ title }}</h3>
+                        <h3 class="post_right user">{{ user }} - {{ toLocalTime time }}</h3>
+                    </div>
                     <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                     <div class="post_header">
-                        <div class="strong post_left space">
-                            <p >Description: {{ description }}</p>
+                        <div class="strong post_left">
+                            <p class="text-info" style="font-weight: 100;" >Description: {{ description }}</p>
                             <p class="votes">Votes: {{ votes }}</p>
-                            <a class="btn fa fa-thumbs-up fa-3x" onclick="vote({{id}}, 1, updateVote)"></a>
-                            <a class="btn fa fa-thumbs-down fa-3x" onclick="vote({{id}}, -1, updateVote)"></a>
-                            <br><br>
                             <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
                             <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
+                        </div>
+                        <div class="post_right">
+                            <div class="">
+                                <a class="btn fa fa-thumbs-up fa-3x" onclick="vote({{id}}, 1, updateVote)"></a>
+                                <a class="btn fa fa-thumbs-down fa-3x" onclick="vote({{id}}, -1, updateVote)"></a>
+                            </div>
                         </div>
                     </div>
                 </div>

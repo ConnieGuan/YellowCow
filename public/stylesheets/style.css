@@ -40,14 +40,11 @@ h1 {
   font-weight: bold;
 }
 
-.space{
-  margin-top: 7px;
-}
-
 .row {
   background-color: rgba(255, 255, 255, 0.4);
+  outline: 3px solid darkgray;
   margin-top: 5px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 
 .graffiti {
@@ -64,10 +61,15 @@ h1 {
 .post_header {
   display: flex;
   flex-direction: row;
+  margin-top: 7px;
   margin-bottom: 1em;
 }
 .post_left {
-  flex: 3;
+  position: relative;
+  flex: 1;
+    align-content: center;
+  align-self: center;
+  vertical-align: middle;
 }
 .post_right {
   flex: 1;
@@ -309,4 +311,9 @@ img.popup {
     width: 20%;
     flex-grow: 1;
   }
+}
+
+.user {
+  font-size: small;
+  text-align: right;
 }
