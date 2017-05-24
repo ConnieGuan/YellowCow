@@ -62,7 +62,7 @@ h1 {
   display: flex;
   flex-direction: row;
   margin-top: 7px;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 .post_left {
   position: relative;
@@ -73,6 +73,7 @@ h1 {
 }
 .post_right {
   flex: 1;
+    text-align: right;
 }
 
 .map {

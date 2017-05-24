@@ -27,7 +27,10 @@
 
                     <div class="post_header">
                         <h3 class="strong post_left">{{ title }}</h3>
-                        <h3 class="post_right user">{{ user }} - {{ toLocalTime time }}</h3>
+                        <div class="post_right user">
+                            <p class="post_right user">{{ user }}</p>
+                            <p>{{ toLocalTime time }}</p>
+                        </div>
                     </div>
                     <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                     <div class="post_header">
@@ -39,8 +42,8 @@
                         </div>
                         <div class="post_right">
                             <div class="">
-                                <a class="btn fa fa-thumbs-up fa-3x" onclick="vote({{id}}, 1, updateVote)"></a>
-                                <a class="btn fa fa-thumbs-down fa-3x" onclick="vote({{id}}, -1, updateVote)"></a>
+                                <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
+                                <a class="btn fa fa-thumbs-down fa-3x" style="flex: 1;" onclick="vote({{id}}, -1, updateVote)"></a>
                             </div>
                         </div>
                     </div>
