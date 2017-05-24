@@ -27,7 +27,7 @@ Chang:
 ---
 
 # Screenshots 
-Newly styled comments modal
+Newly styled comments modal that matches color scheme.
 ![alt_tag](/images/milestone13_connie.jpg)
 
 Canvas resizing with Breakpoints. First one is a large desktop view and smaller one is the mobile.
