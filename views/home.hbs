@@ -31,8 +31,8 @@
                         <div class="strong post_left space">
                             <p >Description: {{ description }}</p>
                             <p class="votes">Votes: {{ votes }}</p>
-                            <a class="fa fa-thumbs-up fa-3x" onclick="vote({{id}},   1, updateVote)"></a>
-                            <a class="fa fa-thumbs-down fa-3x" onclick="vote({{id}},   1, updateVote)"></a>
+                            <a class="btn fa fa-thumbs-up fa-3x" onclick="vote({{id}}, 1, updateVote)"></a>
+                            <a class="btn fa fa-thumbs-down fa-3x" onclick="vote({{id}}, -1, updateVote)"></a>
                             <br><br>
                             <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
                             <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>

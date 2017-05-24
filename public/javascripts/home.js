@@ -3,6 +3,7 @@
  */
 
 var id_selected = 0;
+var voted = 0;
 
 $(document).ready(function (event) {
 
