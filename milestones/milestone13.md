@@ -29,3 +29,7 @@ Chang:
 # Screenshots 
 Newly styled comments modal
 ![alt_tag](/images/milestone13_connie.jpg)
+
+Canvas resizing with Breakpoints. First one is a large desktop view and smaller one is the mobile.
+![alt_tag](/images/milestone13_connie1.jpg)
+![alt_tag](/images/milestone13_connie2.jpg)
