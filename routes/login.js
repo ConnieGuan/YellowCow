@@ -21,9 +21,9 @@ router.post('/submit', function (req, res, next) {
         pass = req.body.password;
 
     console.log('before checking');
-    req.check('username', 'User does not exists').isUserExists();
+    req.check('username', 'User does not exist').isUserExists();
     req.check('username', 'Invalid password').loginSuccess(pass);
-    req.check('password', 'Password must be more than 4 characters').isLength({min:4});
+    req.check('password', 'Password must be at least 4 characters').isLength({min:4});
 
     console.log('after checking');
     var errors = req.validationErrors();
