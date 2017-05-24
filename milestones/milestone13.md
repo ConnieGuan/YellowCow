@@ -27,7 +27,5 @@ Chang:
 ---
 
 # Screenshots 
-
-![alt tag](/images/TODO)
-
-Description: TODO
+Newly styled comments modal
+![alt_tag](/images/milestone13_connie.jpg)
