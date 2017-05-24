@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var moment = require('moment');
 var data = require('../data.json');
 var helpers = require("../helper/data.js");
 
@@ -20,6 +21,11 @@ router.get('/test', function (req, res, next) {
     res.redirect('/home');
 });
 
+router.get('/gtime', function (req, res, next) {
+    console.log('inside gtime');
+    res.status(200).send({ 'time': moment(), 'formatted': moment().format('LLL') });
+});
+
 router.post('/submit_canvas', function (req, res, next) {
     let dataURL = req.body.imgBase64;
     dataURL =  dataURL.replace(/^data:image\/\w+;base64,/, "");
@@ -32,6 +38,7 @@ router.post('/submit_canvas', function (req, res, next) {
     });
     res.end();
 });
+
 
 router.post('/submit', function (req, res, next) {
 
