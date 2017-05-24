@@ -1,7 +1,11 @@
 # Description of what each team member has done since Milestone 11:
 
 Tony:
-- TODO
+- Changed home page views to display rows on desktop and columns on mobile based on TA feedback
+- Allow each posts are associated with certain users
+- Profile page shows users post history unique to the user
+- Visitor cannot post and check profile without login in to the app (automatic redirection)
+
 
 ---
 
