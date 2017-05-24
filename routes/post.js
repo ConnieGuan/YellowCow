@@ -44,7 +44,7 @@ router.post('/submit', function (req, res, next) {
     // var url = myCanvas.toDataURL();
 
 
-    data.features.push( {
+    data.features.unshift( {
         "id": data.total,
         "title": title,
         "user": req.session.user,
