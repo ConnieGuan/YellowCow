@@ -19,7 +19,7 @@ var __slice = Array.prototype.slice;
 
     if(viewport > 600 && viewport < 850) {
       canvasId.width = 500;
-      canvasId.height = 500s;
+      canvasId.height = 500;
     }
 
     if(viewport > 850){
