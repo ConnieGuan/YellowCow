@@ -63,7 +63,7 @@ hbs.registerHelper({
     toLocalTime: function(time) {
         // NOTE: this is not right, server time zone should not be used by client
         console.log('time : ' + moment(time).format('LLL'));
-        return moment(time).local().startOf('day').fromNow();
+        return moment(time).local().startOf('hour').fromNow();
     }
 });
 
