@@ -18,17 +18,25 @@
 		{
 			"username": "obama",
 			"password": "1234",
-			"posts": [ 2 ]
+			"posts": [
+				2
+			]
 		},
 		{
 			"username": "trump",
 			"password": "1234",
-			"posts": [ 4 ]
+			"posts": [
+				4
+			]
 		},
 		{
 			"username": "ucsdkid",
 			"password": "1234",
-			"posts": [ 5, 6, 7 ]
+			"posts": [
+				5,
+				6,
+				7
+			]
 		}
 	]
 }
