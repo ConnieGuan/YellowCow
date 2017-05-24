@@ -25,7 +25,7 @@
                         {{/each}}
                     </div>
 
-                    <h3 class="strong post_left">Title: {{ title }}</h3>
+                    <h3 class="strong post_left">{{ title }}</h3>
                     <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                     <div class="post_header">
                         <div class="strong post_left space">
@@ -52,6 +52,7 @@
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
+    <div class="modal-dialogue">
     <div class="modal-content">
         <div class="modal-header">
             <!-- <span class="close">&times;</span> -->
@@ -59,13 +60,16 @@
         </div>
         <div class="modal-body">
         </div>
-        <textarea id="modal-cmt-add"    style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
-        <button   id="modal-btn-add"    class="btn btn-lg btn-primary" style="width:100%;">Add Comment</button>
-        <button   id="modal-btn-close"  class="btn btn-lg btn-danger" style="width:100%;">Close</button>
+        <div class = "modal-tools">
+            <textarea id="modal-cmt-add"    rows="4" cols="50"></textarea>
+            <button   id="modal-btn-add"    class="btn btn-primary">Add Comments </button>
+            <button   id="modal-btn-close"  class="btn btn-danger">Close</button>
+        </div>
         <!-- <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 2em;">Add Comment</button> -->
         <!-- <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 2em;">Close</button> -->
     </div>
-
+</div>
 </div>
 
+<script src="javascripts/bootbox.min.js"></script>
 <script src="javascripts/home.js"></script>
