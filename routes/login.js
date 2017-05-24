@@ -46,6 +46,10 @@ router.post('/login', function (req, res) {
     var user = req.body.username,
         pass = req.body.password;
 
+    if (user) {
+        res.status(409).send({'error': 'You already logged in' });
+    }
+
     req.session.user = user;
     req.check('username', 'User does not exist').isUserExists();
     req.check('username', 'Invalid password').loginSuccess(pass);
@@ -60,6 +64,11 @@ router.post('/login', function (req, res) {
         req.session.success = true;
         return res.status(200).send({"user": req.session.user , sid: req.sessionID });
     }
+});
+
+router.get('/logout', function (req, res, next) {
+    req.session.destroy();
+    return res.status(200);
 });
 
 router.post('/signup', function (req, res, next) {

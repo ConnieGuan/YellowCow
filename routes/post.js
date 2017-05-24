@@ -17,12 +17,8 @@ router.get('/', function(req, res, next) {
     res.render('post', { title: 'Post Graffiti' });
 });
 
-router.get('/test', function (req, res, next) {
-    res.redirect('/home');
-});
-
+// Test get server time (Heroku server uses UTC time)
 router.get('/gtime', function (req, res, next) {
-    console.log('inside gtime');
     res.status(200).send({ 'time': moment(), 'formatted': moment().format('LLL') });
 });
 
@@ -59,7 +55,7 @@ router.post('/submit', function (req, res, next) {
         "comments": [],
         "votes": 0,
         "nsfw": false,
-
+        "time": moment(),
 
         "geo": {
             "type": "Feature",
