@@ -6,7 +6,9 @@ Tony:
 ---
 
 Connie:
-- TODO
+- Updated the canvas resize to only resize at breakpoints (mobile, tablet, desktop) to mitigate canvas related bugs
+- Styling of the comments modal to be more attractive looking (size, color, buttons)
+- Working on a fix of the canvas rotation bug 
 
 ---
 
