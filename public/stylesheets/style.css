@@ -197,6 +197,41 @@ img.popup {
   background-color: #d80000;
   border-color:  #d80000;
 }
+
+/** end styling for tools */
+
+/* Styling for the comments */
+#modal-cmt-add {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#modal-btn-add {
+  display: inline-block;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 10px;
+}
+#modal-btn-close {
+  display: inline-block;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 10px;
+}
+
+
+.modal-dialogue {
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle;
+}
+
+.modal-header {
+  background-color: #fbce43;
+  border-color: #fbce43;
+  font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 .icn-comments {
   height: 100px;
   width: 100px;
