@@ -10,8 +10,26 @@ var __slice = Array.prototype.slice;
   window.addEventListener('resize', resizeCanvas, false);
 
   function resizeCanvas(){
-    canvasId.width = (window.innerWidth*.67).toFixed();
-    canvasId.height = (window.innerHeight*.63).toFixed();
+    var viewport = $(window).width();
+
+    if(viewport <= 600) {
+      canvasId.width = 230;
+      canvasId.height = 230;
+    }
+
+    if(viewport > 600 && viewport < 850) {
+      canvasId.width = 500;
+      canvasId.height = 500s;
+    }
+
+    if(viewport > 850){
+      canvasId.width = 640;
+      canvasId.height = 640;
+    }
+
+    console.log("The canvas width is " + canvasId.width)
+    //canvasId.width = (window.innerWidth*.67).toFixed();
+    //canvasId.height = (window.innerHeight*.63).toFixed();
     //canvasId.height = (window.innerHeight*.5).toFixed();
 
   $.fn.sketch = function() {
@@ -41,7 +59,7 @@ var __slice = Array.prototype.slice;
     }
   };
 
-  }
+  }(jQuery, ResponsiveBootstrapToolkit);
 
   resizeCanvas();
 
