@@ -30,6 +30,9 @@ Chang:
 Newly styled comments modal that matches color scheme.
 ![alt_tag](/images/milestone13_connie.jpg)
 
-Canvas resizing with Breakpoints. First one is a large desktop view and smaller one is the mobile.
+Canvas resizing with breakpoints. First one is a large desktop view and smaller one is the mobile.
 ![alt_tag](/images/milestone13_connie2.jpg)
 ![alt_tag](/images/milestone13_connie3.jpg)
+
+New modal for login page for when users forget their password. Includes CAPTCHA certification, but still need to fix bugs for this.
+![alt_tag](/images/milestone13_forgetpassword.jpg)
