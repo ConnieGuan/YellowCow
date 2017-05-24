@@ -2,9 +2,11 @@
 
 Tony:
 - Changed home page views to display rows on desktop and columns on mobile based on TA feedback
-- Allow each posts are associated with certain users
 - Profile page shows users post history unique to the user
 - Visitor cannot post and check profile without login in to the app (automatic redirection)
+- Implemented time system to keep track of posting times
+- Added time posted of each post in home page (relative time)
+- Added author of post on each post in home page
 
 
 ---
