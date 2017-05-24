@@ -3,6 +3,7 @@
  */
 
 var data;
+var voteval = new Array(); //stores whether or not user has voted on a post
 
 $(document).ready(function (event) {
     console.log('inside util.js');
@@ -15,11 +16,17 @@ $(document).ready(function (event) {
  * @param id:    id of the post
  * @param value: -1,1 depending on whether its upvote or downvote
  *
- * used in home.hbs, and map.hbs
+ * used in home.hbs, profile.hbs, and map.hbs
  */
 function vote(id, value, callback) {
     // console.log("value: ", value + ", id: ", id);
-    $.post('/post/vote', {'id': id, 'value': value}, callback);
+    while(id > voteval.length){ //increases size of array if id is too big
+        voteval.push(0); //0 means haven't voted at all yet; 1 is upvoted; -1 is downvoted
+    }
+    if(voteval[id] == 0 || voteval[id] != value){
+        $.post('/post/vote', {'id': id, 'value': value}, callback);
+        voteval[id] = value;
+    }
 }
 
 function deletePost(id, callback) {
