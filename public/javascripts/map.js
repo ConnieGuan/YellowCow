@@ -132,7 +132,7 @@ function setupMap(data) {
      * @param e
      */
     function onLocationError(e) {
-        alert('Location cannot be found because of GPS error. Will center around UCSD.');
+        bootbox.alert('Location cannot be found because of GPS error. Will center around UCSD.');
         current_pos = new L.LatLng( coor_ucsd[0], coor_ucsd[1]); // ( coor_ucsd.slice().reverse() );
         console.log(current_pos);
         L.marker(current_pos, {icon: icon_you}).addTo(map).bindPopup("<h4>Default location</h4>");
