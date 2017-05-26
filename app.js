@@ -8,6 +8,8 @@ var bodyParser   = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
 
+var moment = require('moment');
+
 var map     = require('./routes/map');
 var post    = require('./routes/post');
 var login   = require('./routes/login');
@@ -54,8 +56,15 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(expressSession({secret: 'youcantseethis', saveUninitialized: false, resave: false}));
 /** resave true if you want to save information after each request */
 
-hbs.registerHelper('json', function(context) {
-    return JSON.stringify(context);
+hbs.registerHelper({
+    json: function(context) {
+        return JSON.stringify(context);
+    },
+    toLocalTime: function(time) {
+        // NOTE: this is not right, server time zone should not be used by client
+        console.log('time : ' + moment(time).format('LLL'));
+        return moment(time).local().startOf('hour').fromNow();
+    }
 });
 
 app.use('/'        , login);

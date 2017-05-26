@@ -1,7 +1,13 @@
 # Description of what each team member has done since Milestone 11:
 
 Tony:
-- TODO
+- Changed home page views to display rows on desktop and columns on mobile based on TA feedback
+- Profile page shows users post history unique to the user
+- Visitor cannot post and check profile without login in to the app (automatic redirection)
+- Implemented time system to keep track of posting times
+- Added time posted of each post in home page (relative time)
+- Added author of post on each post in home page
+
 
 ---
 
@@ -27,5 +33,15 @@ Chang:
 ---
 
 # Screenshots 
-Newly styled comments modal
+Newly styled comments modal that matches color scheme.
+
 ![alt_tag](/images/milestone13_connie.jpg)
+
+Canvas resizing with breakpoints. First one is a large desktop view and smaller one is the mobile.
+
+![alt_tag](/images/milestone13_connie2.jpg)
+![alt_tag](/images/milestone13_connie3.jpg)
+
+New modal for login page for when users forget their password. Includes CAPTCHA certification, but still need to fix bugs for this.
+
+![alt_tag](/images/milestone13_forgetpassword.jpg)

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var moment = require('moment');
 var data = require('../data.json');
 var helpers = require("../helper/data.js");
 
@@ -16,8 +17,9 @@ router.get('/', function(req, res, next) {
     res.render('post', { title: 'Post Graffiti' });
 });
 
-router.get('/test', function (req, res, next) {
-    res.redirect('/home');
+// Test get server time (Heroku server uses UTC time)
+router.get('/gtime', function (req, res, next) {
+    res.status(200).send({ 'time': moment(), 'formatted': moment().format('LLL') });
 });
 
 router.post('/submit_canvas', function (req, res, next) {
@@ -32,6 +34,7 @@ router.post('/submit_canvas', function (req, res, next) {
     });
     res.end();
 });
+
 
 router.post('/submit', function (req, res, next) {
 
@@ -52,7 +55,7 @@ router.post('/submit', function (req, res, next) {
         "comments": [],
         "votes": 0,
         "nsfw": false,
-
+        "time": moment(),
 
         "geo": {
             "type": "Feature",

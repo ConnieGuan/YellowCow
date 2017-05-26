@@ -12,6 +12,7 @@
 			],
 			"votes": 69,
 			"nsfw": false,
+			"time": "2017-05-24T10:31:14-07:00",
 			"geo": {
 				"type": "Feature",
 				"link": "graffiti/0.jpg",
@@ -38,6 +39,7 @@
 			],
 			"votes": 0,
 			"nsfw": false,
+			"time": "2017-05-24T09:32:18-07:00",
 			"geo": {
 				"type": "Feature",
 				"link": "https://i.ytimg.com/vi/zJkcjp1AjUI/hqdefault.jpg",
@@ -64,6 +66,7 @@
 			],
 			"votes": 45,
 			"nsfw": false,
+			"time": "2017-05-23T19:32:46-07:00",
 			"geo": {
 				"type": "Feature",
 				"link": "https://i.ytimg.com/vi/su9GR8xxI-Q/maxresdefault.jpg",
@@ -90,6 +93,7 @@
 			],
 			"votes": 60,
 			"nsfw": false,
+			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
 				"link": "graffiti/3.jpg",
@@ -116,6 +120,7 @@
 			],
 			"votes": 40,
 			"nsfw": false,
+			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
 				"link": "graffiti/4.jpg",
@@ -142,6 +147,7 @@
 			],
 			"votes": 100,
 			"nsfw": false,
+			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
 				"link": "graffiti/5.jpg",
@@ -170,6 +176,7 @@
 			],
 			"votes": 36,
 			"nsfw": false,
+			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
 				"link": "graffiti/6.jpg",
@@ -197,6 +204,7 @@
 			],
 			"votes": 350,
 			"nsfw": false,
+			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
 				"link": "http://streetartnyc.org/wp-content/uploads/2017/05/Epic-uno-live-painting.png",

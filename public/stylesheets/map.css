@@ -22,3 +22,23 @@ html, body, #map {
 
 .leaflet-popup-content-wrapper {
 }
+
+.modal-footer {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fbce43;
+}
+
+.modal-header{
+    background-color: #fbce43;
+}
+.modal-title {
+    text-align: center;
+    font-size: 2em;
+    background-color: #fbce43;
+}
+
+.bootbox-body {
+    text-align: center;
+}

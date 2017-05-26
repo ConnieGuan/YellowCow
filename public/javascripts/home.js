@@ -90,18 +90,19 @@ $(document).ready(function (event) {
  * @param obj
  */
 function setupPosts(i, obj) {
+    var id = $(this).data('id');
     var coor = $(this).data('coordinate');
     coor = coor.split(',').map(parseFloat).reverse();
 
 
     var postmap = $('<div>', {
         "class": "map",
-        "id": "map" + i,
+        "id": "map" + id,
         "style": "height: 200px; width: auto;"
     }).after('<hr>');
     $(this).append(postmap);
 
-    var map = L.map('map' + i, {
+    var map = L.map('map' + id, {
             center: coor,
             zoom: 15,
             zoomControl: false,

@@ -30,6 +30,7 @@ h1 {
   margin-top: 50px;
   /*height: 200px;*/
   /*width: 200px;*/
+    z-index: 0;     /* needed for bootbox to work correctly */
 }
 /** For home.hbs */
 
@@ -40,14 +41,11 @@ h1 {
   font-weight: bold;
 }
 
-.space{
-  margin-top: 7px;
-}
-
 .row {
   background-color: rgba(255, 255, 255, 0.4);
+  /*outline: 3px solid darkgray;*/
   margin-top: 5px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 
 .graffiti {
@@ -64,13 +62,19 @@ h1 {
 .post_header {
   display: flex;
   flex-direction: row;
-  margin-bottom: 1em;
+  margin-top: 7px;
+  margin-bottom: 0.5em;
 }
 .post_left {
-  flex: 3;
+  position: relative;
+  flex: 1;
+    align-content: center;
+  align-self: center;
+  vertical-align: middle;
 }
 .post_right {
   flex: 1;
+    text-align: right;
 }
 
 .map {
@@ -309,4 +313,21 @@ img.popup {
     width: 20%;
     flex-grow: 1;
   }
+}
+.post:after {
+  /*outline: 3px solid darkgray;*/
+  content: "\a0";
+  display: block;
+  padding: 2px 0;
+  line-height: 1px;
+  /*border-top: 1px dashed #000000;*/
+}
+
+.user {
+  font-size: small;
+  text-align: right;
+}
+
+.modal-backdrop.fade.in {
+    z-index: 0;
 }

@@ -54,10 +54,10 @@ $(document).ready(function (event) {
 });
 
 
-var coor = [32.88044, -117.23758]; // temporary
+var coor = [-117.23758, 32.88044]; // UCSD default
 
 var map = L.map('map', {
-    // center: ucsd_coor,
+    center: coor.slice().reverse(),
         zoom: 20,
         zoomControl: false,
         attributionControl: false,
@@ -88,7 +88,7 @@ function onLocationFound(e) {
 
 function onLocationError(e) {
     alert('Location cannot be found because of GPS error. Will center around UCSD');
-    map.panTo( ucsd_coor, 15);
+    map.panTo( coor, 15);
 }
 
 map.on('locationfound', onLocationFound);

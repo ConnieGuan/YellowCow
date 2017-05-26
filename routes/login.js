@@ -25,9 +25,7 @@ router.post('/submit', function (req, res, next) {
     req.check('username', 'Invalid password').loginSuccess(pass);
     req.check('password', 'Password must be at least 4 characters').isLength({min:4});
 
-    console.log('after checking');
     var errors = req.validationErrors();
-    console.log(errors);
     if (errors) {
         req.session.errors = errors;
         req.session.success = false;
@@ -48,10 +46,29 @@ router.post('/login', function (req, res) {
     var user = req.body.username,
         pass = req.body.password;
 
+    if (user) {
+        res.status(409).send({'error': 'You already logged in' });
+    }
+
     req.session.user = user;
-    console.log('--- inside login: session is ...');
-    console.log(req.session);
-    return res.status(200).send({"user": req.session.user , sid: req.sessionID });
+    req.check('username', 'User does not exist').isUserExists();
+    req.check('username', 'Invalid password').loginSuccess(pass);
+    req.check('password', 'Password must be at least 4 characters').isLength({min:4});
+    var errors = req.validationErrors();
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        // res.redirect('/');
+        res.status(409).send({ 'errors': errors});
+    } else {
+        req.session.success = true;
+        return res.status(200).send({"user": req.session.user , sid: req.sessionID });
+    }
+});
+
+router.get('/logout', function (req, res, next) {
+    req.session.destroy();
+    return res.status(200);
 });
 
 router.post('/signup', function (req, res, next) {
