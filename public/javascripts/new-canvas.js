@@ -119,7 +119,7 @@ var __slice = Array.prototype.slice;
     };
 
     Sketch.prototype.upload = function(format) {
-      var can = this;
+       var can = this;
       $('#PhotoPicker').trigger('click');
       //return false;
 
@@ -137,12 +137,19 @@ var __slice = Array.prototype.slice;
 
         var tf = this.files;
 
+
         function readImage(theFile) {
           if ( theFile && theFile[0] ) {
           var FR= new FileReader();
            FR.onload = function(e) {
              img = new Image();
              img.onload = function() {
+               /* Image rotation */
+               /* EXIF.getData(img, function() {
+                console.log("help");
+                var orientation = EXIF.TiffTags.getTag(this, "Orientation");
+                console.log("orientation is " + orientation); 
+               }); */
                context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
              };
             img.src = e.target.result;
@@ -155,7 +162,7 @@ var __slice = Array.prototype.slice;
         }
 
         el("PhotoPicker").addEventListener("change", readImage(tf), false);
-      });
+      }); 
 
     };
 
