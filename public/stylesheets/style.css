@@ -43,7 +43,7 @@ h1 {
 
 .row {
   background-color: rgba(255, 255, 255, 0.4);
-  outline: 3px solid darkgray;
+  /*outline: 3px solid darkgray;*/
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -313,6 +313,14 @@ img.popup {
     width: 20%;
     flex-grow: 1;
   }
+}
+.post:after {
+  /*outline: 3px solid darkgray;*/
+  content: "\a0";
+  display: block;
+  padding: 2px 0;
+  line-height: 1px;
+  /*border-top: 1px dashed #000000;*/
 }
 
 .user {
