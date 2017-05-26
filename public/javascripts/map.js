@@ -3,7 +3,6 @@
  */
 $(document).ready(function (event) {
 
-
     /**
      * set up data from server before showing the map view
      */
@@ -134,9 +133,13 @@ function setupMap(data) {
      */
     function onLocationError(e) {
         alert('Location cannot be found because of GPS error. Will center around UCSD.');
+        current_pos = new L.LatLng( coor_ucsd[0], coor_ucsd[1]); // ( coor_ucsd.slice().reverse() );
+        console.log(current_pos);
+        L.marker(current_pos, {icon: icon_you}).addTo(map).bindPopup("<h4>Default location</h4>");
+
+        var radius = e.accuracy / 2;
         map.panTo(new L.LatLng(coor_ucsd[0], coor_ucsd[1]));
         map.setView( coor_ucsd, 15);
-        current_pos = new L.LatLng( coor_ucsd.slice().reverse() );
         setupFeatures();    // show markers around UCSD if no GPS detected
     }
 
