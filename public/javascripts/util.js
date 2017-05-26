@@ -4,6 +4,7 @@
 
 var data;
 var voteval = new Array(); //stores whether or not user has voted on a post
+                            // TODO: track it persistently across session later
 
 $(document).ready(function (event) {
     console.log('inside util.js');
@@ -19,7 +20,8 @@ $(document).ready(function (event) {
  * used in home.hbs, profile.hbs, and map.hbs
  */
 function vote(id, value, callback) {
-    // console.log("value: ", value + ", id: ", id);
+    console.log("value: ", value + ", id: ", id);
+    // TODO: use dictionary if possible
     while(id > voteval.length){ //increases size of array if id is too big
         voteval.push(0); //0 means haven't voted at all yet; 1 is upvoted; -1 is downvoted
     }

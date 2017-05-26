@@ -12,7 +12,7 @@ $(document).ready(function (event) {
         data = res;
 
         /**
-         * add function to data
+         * Given an id of the post, get the post features object
          *
          * @param id
          * @returns {*}
@@ -28,7 +28,6 @@ $(document).ready(function (event) {
 
         return res;
     }).done(setupMap);
-
 });
 
 /**
@@ -59,6 +58,7 @@ function setupMap(data) {
 
     var radius_circle = null;       // global to keep track which circle is opened
     var btnVote = $('<button type="button" class="btn btn-primary btn-lg btn-vote"/></button>').text('Vote');
+    var chosen_id = null;
 
 
     /**
@@ -69,22 +69,22 @@ function setupMap(data) {
         if (feature.properties && feature.properties.popupContent) {
             imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
             var customPopup = $("<div>").addClass('popup-inner')
-                .append( "<h1>" + feature.properties.name + "</h1>" )
                 .append( "<h3 class='popup-votes'>Votes: " + feature.votes + "</h3>" );
                 if (parseInt(200 + 10.0*(feature.votes)) >= 1000){
                     customPopup.append("<h5>Wow! This post is really popular!</h5>");
                 }
                 customPopup.append( $("h3").html( feature.properties.popupContent + "</br>") )
-                .append( imgPop )
-                .append(btnVote);
+                .append( imgPop );
+                // .append(btnVote);
 
 
-            layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
+            // layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
+
             layer.on('click', function (e) {
+                chosen_id = feature.id;
                 if (radius_circle) { map.removeLayer(radius_circle); }
-
                 var post = data.getFeaturesWithId(feature.id);
-                console.log('get feature id ' + feature.id);
+
                 console.log(post);
                 console.log('actual votes value: ' + post.votes);
                 // TODO: Fix bug with popup value wont update after closed
@@ -92,12 +92,38 @@ function setupMap(data) {
                 // console.log(customPopup.html());
                 // layer.bindPopup( customPopup.prop('outerHTML'), customOptions); // gotta update newest layout after vote
 
+                bootbox.confirm({
+                    size: 'large',
+                    title: feature.properties.name,
+                    message: customPopup.html(),
+                    buttons: {
+                        confirm: {
+                            label: '<i class="fa fa-thumbs-up fa-3x"></i>',
+                            className: 'btn-success'
+                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
+                        },
+                        cancel: {
+                            label: '<i class="fa fa-thumbs-down fa-3x"></i>',
+                            className: 'btn-danger'
+                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            vote(chosen_id, 1, updateVote);
+                        } else {
+                            vote(chosen_id, -1, updateVote);
+                        }
+                    },
+                    backdrop: true
+                });
                 radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
             }).on('popupclose', function (e) {
                 map.removeLayer(radius_circle);
             });
         }
     }
+
 
     /**
      * For each post that are beyond their radius coverage, apply some unique styling and options to their marker
@@ -191,12 +217,11 @@ function setupMap(data) {
      * @param id
      * @param votes
      */
-    function updateVote(id, votes) {
-        console.log('inside updateVote');
-        var post = data.getFeaturesWithId(id);
+    function updateVote(res, status) {
+        console.log('inside updateVote : ' + res.id + ', votes: ', res.voted);
+        var post = data.getFeaturesWithId(res.id);
 
-        post.votes = parseInt(votes);                   // update the data(client side)
-        $(".popup-votes").text(post.votes);
+        post.votes = parseInt(res.voted);                   // update the data(client side)
     }
 
     /**
@@ -205,14 +230,14 @@ function setupMap(data) {
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
     map.on('popupopen', function (e) {
-        $(" button.btn-vote").click( function () {
-            console.log('id: ' + $(".popup").data('id'));
-            vote( $(".popup").data('id'), 1,
-                function (res, req) {
-                    console.log('id voted: ' + res.id + ', val: ' + res.voted);
-                    updateVote(res.id, parseInt(res.voted));
-                });
-        });
+        // $(" button.btn-vote").click( function () {
+        //     console.log('id: ' + $(".popup").data('id'));
+        //     vote( $(".popup").data('id'), 1,
+        //         function (res, req) {
+        //             console.log('id voted: ' + res.id + ', val: ' + res.voted);
+        //             updateVote(res.id, parseInt(res.voted));
+        //         });
+        // });
     });
 
 
