@@ -133,6 +133,26 @@ function setupMap(data) {
     function onEachHiddenFeature(feature, layer) {
         layer.on('click', function (e) {
             if (radius_circle) { map.removeLayer(radius_circle); }
+            var customPopup = $("<div>").addClass('popup-inner')
+                .append( "<h3 class='popup-votes'>You must travel within this radius to view this pintura.</h3>" );
+
+            bootbox.alert({
+                    size: 'large',
+                    title: '',
+                    message: customPopup.html(),
+                    buttons: {
+                        ok: {
+                            label: 'Close',
+                            className: 'btn-danger'
+                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
+                        }
+                    },
+                    callback: function (result) { },
+                    backdrop: true
+                });
+
+
+
             radius_circle = L.circle( e.latlng, { radius: feature.radius, color: 'gray'}).addTo(map);
         }).on('popupclose', function (e) {
             map.removeLayer(radius_circle);
@@ -199,10 +219,10 @@ function setupMap(data) {
                     onEachFeature: onEachFeature
                 }).addTo(map);
             } else {
-                // add custum markers for unexplored graffiti area
+                // add custom markers for unexplored graffiti area
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
+                        return L.marker(latlng, {icon: icon_unexplored}); //.bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
                     },
                     onEachFeature: onEachHiddenFeature
                 }).addTo(map);
