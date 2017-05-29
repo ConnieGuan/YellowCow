@@ -14,7 +14,8 @@ Connie:
 ---
 
 Jorenne:
-- TODO
+- Added centered popup modal to unexplored and current location
+- Added a button linking to post page on current location icon (based on TA's feedback)
 
 
 ---
