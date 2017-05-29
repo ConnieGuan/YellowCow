@@ -31,18 +31,18 @@
 		},
 		{
 			"id": 1,
-			"title": "Ralph",
-			"user": "chuck",
-			"description": "Ralph graffiti",
+			"title": "Disneyland",
+			"user": "mickey",
+			"description": "fake fireworks",
 			"comments": [
-				"Thats nasty!!!"
+				"qt"
 			],
-			"votes": 0,
+			"votes": 15806,
 			"nsfw": false,
 			"time": "2017-05-24T09:32:18-07:00",
 			"geo": {
 				"type": "Feature",
-				"link": "https://i.ytimg.com/vi/zJkcjp1AjUI/hqdefault.jpg",
+				"link": "graffiti/2.jpg",
 				"properties": {
 					"name": "Office",
 					"popupContent": "Office post"
@@ -50,8 +50,8 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [
-						"-117.23156",
-						"32.8673151"
+						"-117.8715465",
+						"33.7777656"
 					]
 				}
 			}
@@ -96,7 +96,7 @@
 			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/3.jpg",
+				"link": "graffiti/3.jpeg",
 				"properties": {
 					"name": "Warren",
 					"popupContent": "Warren tag"
