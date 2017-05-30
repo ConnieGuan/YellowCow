@@ -44,10 +44,14 @@
                                 <a class="btn fa fa-thumbs-down fa-3x" style="flex: 1;" onclick="vote({{id}}, -1, updateVote)"></a>
                             </div>
                         </div>
-                        <div style="display: flex; flex-direction: row-reverse"
-                            <button style="flex: 1" type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
-                            <button style="flex: 1" type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
-                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: row-reverse">
+                            <button style="flex: 1" type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">
+                                Map
+                            </button>
+                            <button style="flex: 1" type="button" class="btn-comments btn btn-primary" data-id="{{ id }}">
+                                <span class="glyphicon glyphicon-comment"></span>Comments 
+                            </button>
                     </div>
                 </div>
                 <hr>
