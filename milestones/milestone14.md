@@ -21,7 +21,7 @@ Jorenne:
 ---
 
 Chang:
-- TODO
+- Fixed image reload on canvas bug
 
 
 ---
