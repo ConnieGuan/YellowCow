@@ -27,7 +27,7 @@ var __slice = Array.prototype.slice;
       canvasId.height = 640;
     }
 
-    console.log("The canvas width is " + canvasId.width)
+    console.log("The canvas width is " + canvasId.width);
     //canvasId.width = (window.innerWidth*.67).toFixed();
     //canvasId.height = (window.innerHeight*.63).toFixed();
     //canvasId.height = (window.innerHeight*.5).toFixed();
