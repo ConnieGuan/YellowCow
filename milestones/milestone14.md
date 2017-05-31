@@ -35,18 +35,18 @@ Chang:
 
 
 Feature:
-![alt_tag](/images/milestone14_login.jpg)
+![alt_tag](/images/milestone14_login.png)
 
 Description: TODO
 Restyled log in page
 
 Feature: 
-![alt_tag](/images/milestone14_home.jpg)
+![alt_tag](/images/milestone14_home.png)
 Description: 
 Restyled home feed page
 
 Feature:
-![alt_tag](/images/milestone14_create.jpg)
+![alt_tag](/images/milestone14_create.png)
 Description: 
 Restyled make a post page
 
