@@ -37,7 +37,7 @@ Chang:
 Feature:
 ![alt_tag](/images/milestone14_login.png)
 
-Description: TODO
+Description: 
 Restyled log in page
 
 Feature: 
