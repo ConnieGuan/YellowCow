@@ -83,6 +83,11 @@ h1 {
   text-align: right;
 }
 
+#post-btn {
+  background-color: #fbce43;
+  border-color: #fbce43;
+}
+
 .map {
   z-index: 1;
 }
