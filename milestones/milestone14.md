@@ -10,7 +10,6 @@ Tony:
 Connie:
 - Restyled the main log in screen to remove buggy icons
 - Restyling of the "Sign up" modal text boxes and mobile responsiveness
-- Restyling of the "Forgot Password" pop up and mobile responsiveness
 - Work around for the mobile responsiveness bug for the canvas
 - Restyling the image border for the home page feed
 - Styling of the buttons on the home page feed
@@ -35,14 +34,23 @@ Chang:
 # Features of the app
 
 
-Feature: TODO
+Feature:
+![alt_tag](/images/milestone14_login.png)
 
-Description: TODO
+Description: 
+Restyled log in page
+
+Feature: 
+![alt_tag](/images/milestone14_home.png)
+Description: 
+Restyled home feed page
+
+Feature:
+![alt_tag](/images/milestone14_create.png)
+Description: 
+Restyled make a post page
 
 
-Feature: TODO
-
-Description: TODO
 
 
 //add more
