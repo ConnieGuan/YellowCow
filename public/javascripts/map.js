@@ -64,9 +64,12 @@ function setupMap(data) {
      * Call back function used on each graffiti post
      */
     function onEachFeature(feature, layer) {
+        var id = feature.id;
+        var votes = feature.votes;
+
         // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
-            imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
+            imgPop = $(`<img class="popup post-content graffiti img-rounded img-responsive" src="${feature.link}" data-id=${feature.id}>`);
 
 
             /*
@@ -82,16 +85,21 @@ function setupMap(data) {
 
 
             
-            var customPopup = $("<div>").addClass('popup-inner')
-                .append( "<h3 class='popup-votes'  style='line-height: 50%;'>" + feature.votes + " votes</h3>" );
-                if (parseInt(200 + 10.0*(feature.votes)) >= 1000){
+            var customPopup = $("<div>").addClass('popup-inner');
+                // .append( "<h3 class='popup-votes'  style='line-height: 50%;'>" + votes + " votes</h3>" );
+                if (parseInt(200 + 10.0*(votes)) >= 1000){
                     customPopup.append("<h5>Wow! This post is really popular!</h5>");
                 }
-                customPopup.append( $("h3").html( feature.properties.popupContent + "<br>") )
-                .append( imgPop );
-                customPopup.append( "<br><br><p style='font-weight: 100;'><b>Description: </b>" + feature.properties.popupContent + "</p>" );
-                // .append(btnVote);
-            
+                customPopup .append( $("h3")
+                            .html( feature.properties.popupContent + "<br>") )
+                            .append( imgPop )
+                            .append( "<br><br><p style='font-weight: 100;'><b>Description: </b>" + feature.properties.popupContent + "</p>" )
+                            .append( `<div>
+                                        <a id="upbtn" class="btn fa fa-caret-up fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, 1, updateVote)"></a>
+                                        <p class="votes" style="text-align: center; line-height: 100%;">${ votes } votes</p>
+                                        <a id="downbtn" class="btn fa fa-caret-down fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, -1, updateVote)"></a>
+                                </div>`);
+
 
 
             // layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
@@ -103,35 +111,11 @@ function setupMap(data) {
 
                 console.log('actual votes value: ' + post.votes);
                 // TODO: Fix bug with popup value wont update after closed
-                // customPopup.find(".popup-votes").html( post.votes );
-                // console.log(customPopup.html());
-                // layer.bindPopup( customPopup.prop('outerHTML'), customOptions); // gotta update newest layout after vote
 
-                bootbox.confirm({
+                bootbox.alert({
                     size: 'large',
                     title: feature.properties.name,
                     message: customPopup.html(),
-                    buttons: {
-                        confirm: {
-                            label: 'Upvote',
-                            //label: '<i class="btn fa fa-caret-up fa-2x"></i>',
-                            className: 'btn-success'
-                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
-                        },
-                        cancel: {
-                            label: 'Downvote',
-                            //label: '<i class="btn fa fa-caret-down fa-2x"></i>',
-                            className: 'btn-danger'
-                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            vote(chosen_id, 1, updateVote);
-                        } else {
-                            vote(chosen_id, -1, updateVote);
-                        }
-                    },
                     backdrop: true
                 });
                 radius_circle = L.circle( e.latlng, feature.radius).addTo(map);
@@ -244,7 +228,6 @@ function setupMap(data) {
                     ok: {
                         label: 'Close',
                         className: 'btn-danger'
-                        // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
                     }
                 },
                 callback: function (result) { },
@@ -331,4 +314,14 @@ function setupMap(data) {
     map.on('click', function(e) {
         console.log(e.latlng.lng + ',' + e.latlng.lat);
     });
+}
+
+/**
+ * @param result
+ * @param status
+ *
+ * updateVote
+ */
+function updateVote(result, status) {
+    $(`div.row[data-id=${result.id}]`).find('p.votes').text(result.voted + ' votes');
 }
