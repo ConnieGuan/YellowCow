@@ -6,6 +6,7 @@ Tony:
 - Restyle home page button size
 - App map feature works when GPS not detected
 - Home posts only shows nearby post
+- Fix map post upvotes to be responsive (update both front and back end)
 
 
 ---
