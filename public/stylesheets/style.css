@@ -199,6 +199,9 @@ img.popup {
 
 }
 
+#commentBtn {
+  margin-right: 10px;
+}
 
 /** Styling for the Tools */
 .tools {
