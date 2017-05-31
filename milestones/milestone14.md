@@ -20,6 +20,12 @@ Connie:
 Jorenne:
 - Added centered popup modal to unexplored and current location
 - Added a button linking to post page on current location icon (based on TA's feedback)
+- Redid the styling of the home page so that elements within each post are better laid out
+- Finalized help page
+- Fixed bug with voting so that users can upvote or downvote properly and also cancel their votes
+- Redid the styling of the modals in map view for more cohesiveness
+- Styled profile page to match home page
+- Fixed some buttons and UI elements for overall cohesiveness and to match color themes
 
 
 ---
