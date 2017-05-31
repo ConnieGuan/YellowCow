@@ -105,7 +105,7 @@ function setupMap(data) {
                         .append( "<br><br><p style='font-weight: 100;'><b>Description: </b>" + feature.properties.popupContent + "</p>" )
                         .append( `<div class="modal-votes">
                                     <a id="upbtn" class="btn fa fa-caret-up fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, 1, updateVote)"></a>
-                                    <p class="votes" style="text-align: center; font-weight: bold; line-height: 100%;">${ votes }</p>
+                                    <p class="votes" style="text-align: center; font-weight: bold; line-height: 100%;">${ votes } votes</p>
                                     <a id="downbtn" class="btn fa fa-caret-down fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, -1, updateVote)"></a>
                             </div>`);
 
@@ -148,7 +148,7 @@ function setupMap(data) {
 
             bootbox.alert({
                     size: 'large',
-                    title: '',
+                    title: 'Close',
                     message: customPopup.html(),
                     buttons: {
                         ok: {
