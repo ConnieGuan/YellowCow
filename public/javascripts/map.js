@@ -29,6 +29,13 @@ $(document).ready(function (event) {
     }).done(setupMap);
 });
 
+var current_popup;  // to be used as reference to update vote number later on
+function updateVote(result, status) {
+    console.log(result);
+    $('p.votes').text(result.voted);                    // update the current display value
+    current_popup.find('p.votes').text(result.voted);   // update the saved display value
+}
+
 /**
  * method to set up the map interfaces
  * (fired after ajax request called for data)
@@ -84,27 +91,29 @@ function setupMap(data) {
             */
 
 
-            
-            var customPopup = $("<div>").addClass('popup-inner');
-                // .append( "<h3 class='popup-votes'  style='line-height: 50%;'>" + votes + " votes</h3>" );
-                if (parseInt(200 + 10.0*(votes)) >= 1000){
-                    customPopup.append("<h5>Wow! This post is really popular!</h5>");
-                }
-                customPopup .append( $("h3")
-                            .html( feature.properties.popupContent + "<br>") )
-                            .append( imgPop )
-                            .append( "<br><br><p style='font-weight: 100;'><b>Description: </b>" + feature.properties.popupContent + "</p>" )
-                            .append( `<div>
-                                        <a id="upbtn" class="btn fa fa-caret-up fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, 1, updateVote)"></a>
-                                        <p class="votes" style="text-align: center; line-height: 100%;">${ votes } votes</p>
-                                        <a id="downbtn" class="btn fa fa-caret-down fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, -1, updateVote)"></a>
-                                </div>`);
 
+
+            var customPopup = $("<div>").addClass('popup-inner');
+            if (parseInt(200 + 10.0*(votes)) >= 1000){
+                customPopup.append("<h5>Wow! This post is really popular!</h5>");
+            }
+
+
+            customPopup .append( $("h3")
+                        .html( feature.properties.popupContent + "<br>") )
+                        .append( imgPop )
+                        .append( "<br><br><p style='font-weight: 100;'><b>Description: </b>" + feature.properties.popupContent + "</p>" )
+                        .append( `<div class="modal-votes">
+                                    <a id="upbtn" class="btn fa fa-caret-up fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, 1, updateVote)"></a>
+                                    <p class="votes" style="text-align: center; font-weight: bold; line-height: 100%;">${ votes }</p>
+                                    <a id="downbtn" class="btn fa fa-caret-down fa-2x" style="color: #C8C8C8;" onclick="vote(${id}, -1, updateVote)"></a>
+                            </div>`);
 
 
             // layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
 
             layer.on('click', function (e) {
+                current_popup = customPopup;
                 chosen_id = feature.id;
                 if (radius_circle) { map.removeLayer(radius_circle); }
                 var post = data.getFeaturesWithId(feature.id);
@@ -280,18 +289,6 @@ function setupMap(data) {
         }
     }
 
-    /**
-     * function to update votes data and html elements after clicked
-     *
-     * @param id
-     * @param votes
-     */
-    function updateVote(res, status) {
-        console.log('inside updateVote : ' + res.id + ', votes: ', res.voted);
-        var post = data.getFeaturesWithId(res.id);
-
-        post.votes = parseInt(res.voted);                   // update the data(client side)
-    }
 
     /**
      * Callbacks for the GPS detection events
@@ -316,12 +313,3 @@ function setupMap(data) {
     });
 }
 
-/**
- * @param result
- * @param status
- *
- * updateVote
- */
-function updateVote(result, status) {
-    $(`div.row[data-id=${result.id}]`).find('p.votes').text(result.voted + ' votes');
-}
