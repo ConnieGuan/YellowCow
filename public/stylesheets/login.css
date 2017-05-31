@@ -67,6 +67,10 @@ opacity:0.9;
     text-align: center;
 }
 
+#password-input {
+    width: 100%;
+}
+
 .omb_login .omb_loginForm .input-group.i {
     width: 2em;
 }
@@ -74,6 +78,10 @@ opacity:0.9;
     color: red;
 }
 
+.input-group-addon {
+    height: .5em;
+
+}
 
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
@@ -110,6 +118,14 @@ img {
     -webkit-border-radius: 4px;
     border-radius: 4px;
     }
+
+#pass-input {
+    width: 100%;
+}
+
+#user-input {
+    width: 100%;
+}
 
 #CaptchaDiv {
     font: bold 17px verdana, arial, sans-serif;
