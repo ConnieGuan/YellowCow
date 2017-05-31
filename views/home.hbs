@@ -31,7 +31,7 @@
                     <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                     <div class="post_header">
                         <div class="strong post_left">
-                            <p style="text-align: left; line-height: 50%;">posted {{ toLocalTime time }}</p>
+                            <p style="text-align: left; line-height: 50%;">Posted {{ toLocalTime time }}</p>
                             <p style="text-align: left; line-height: 50%;">by {{ user }}</p>
                             <p style="font-weight: 100; text-align: left;">{{ description }}</p>
                         </div>
@@ -47,7 +47,7 @@
                             <button style="flex: 1" type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">
                                 Map
                             </button>
-                            <button style="flex: 1" type="button" class="btn-comments btn btn-primary" data-id="{{ id }}">
+                            <button style="flex: 1" type="button" id="commentBtn" class="btn-comments btn btn-primary" data-id="{{ id }}">
                                 <span class="glyphicon glyphicon-comment"></span> Comments 
                             </button>
                     </div>
@@ -74,7 +74,7 @@
         <div class="modal-body">
         </div>
         <div class = "modal-tools">
-            <textarea id="modal-cmt-add"    rows="4" cols="50"></textarea>
+            <textarea id="modal-cmt-add"    rows="4"></textarea>
             <button   id="modal-btn-add"    class="btn btn-primary">Add Comments </button>
             <button   id="modal-btn-close"  class="btn btn-danger">Close</button>
         </div>
