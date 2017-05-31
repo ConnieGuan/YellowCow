@@ -68,14 +68,31 @@ function setupMap(data) {
         // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
             imgPop = $(`<img class="popup" src="${feature.link}" data-id=${feature.id}>`);
+
+
+            /*
+            var grafPopup = $("<div>").addClass('popup-inner')
+                .append( $("h3").html( feature.properties.popupContent + "</br>") ).append( imgPop );
+            var leftPopup = $("<div>").addClass('popup-inner')
+                .append( "<p style='font-weight: 100;'>Description: " + feature.properties.popupContent + "</p>" );
+            var rightPopup = $("<div>")
+                .append( "<a id='upbtn' class='btn fa fa-caret-up fa-2x' style='color: #C8C8C8;'' onclick='vote(chosen_id, 1, updateVote)'></a>" )
+                .append( "<p class='votes' style='text-align: center; line-height: 100%;'>" + feature.votes + " votes</p>" )
+                .append( "<a id='downbtn' class='btn fa fa-caret-down fa-2x' style='color: #C8C8C8;'' onclick='vote(chosen_id, -1, updateVote)'></a>" );
+            */
+
+
+            
             var customPopup = $("<div>").addClass('popup-inner')
-                .append( "<h3 class='popup-votes'>Votes: " + feature.votes + "</h3>" );
+                .append( "<h3 class='popup-votes'  style='line-height: 50%;'>" + feature.votes + " votes</h3>" );
                 if (parseInt(200 + 10.0*(feature.votes)) >= 1000){
                     customPopup.append("<h5>Wow! This post is really popular!</h5>");
                 }
-                customPopup.append( $("h3").html( feature.properties.popupContent + "</br>") )
+                customPopup.append( $("h3").html( feature.properties.popupContent + "<br>") )
                 .append( imgPop );
+                customPopup.append( "<br><br><p style='font-weight: 100;'><b>Description: </b>" + feature.properties.popupContent + "</p>" );
                 // .append(btnVote);
+            
 
 
             // layer.bindPopup( customPopup.prop('outerHTML'), customOptions);
@@ -98,12 +115,14 @@ function setupMap(data) {
                     message: customPopup.html(),
                     buttons: {
                         confirm: {
-                            label: '<i class="fa fa-thumbs-up fa-3x"></i>',
+                            label: 'Upvote',
+                            //label: '<i class="btn fa fa-caret-up fa-2x"></i>',
                             className: 'btn-success'
                             // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
                         },
                         cancel: {
-                            label: '<i class="fa fa-thumbs-down fa-3x"></i>',
+                            label: 'Downvote',
+                            //label: '<i class="btn fa fa-caret-down fa-2x"></i>',
                             className: 'btn-danger'
                             // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
                         }
