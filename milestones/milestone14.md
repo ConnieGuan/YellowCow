@@ -8,7 +8,12 @@ Tony:
 ---
 
 Connie:
-- TODO
+- Restyled the main log in screen to remove buggy icons
+- Restyling of the "Sign up" modal text boxes and mobile responsiveness
+- Restyling of the "Forgot Password" pop up and mobile responsiveness
+- Work around for the mobile responsiveness bug for the canvas
+- Restyling the image border for the home page feed
+- Styling of the buttons on the home page feed
 
 
 ---
