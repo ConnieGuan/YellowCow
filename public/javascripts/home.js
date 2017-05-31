@@ -7,6 +7,16 @@ var voted = 0;
 
 $(document).ready(function (event) {
 
+    var current_pos;
+    var map = L.map('map', {
+        zoom: 15,
+        doubleClickZoom: false
+    }).locate({setView: true, maxZoom: 16});
+    map.on('locationfound', function (e) {
+        current_pos = e.latlng;
+        console.log('current_pos : ' + current_pos);
+    });
+
     $(".row").each(setupPosts);
     $(".map").hide();
 
