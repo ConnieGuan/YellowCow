@@ -2,7 +2,10 @@
 
 
 Tony:
-- TODO
+- Replaced map modal pop-up with bootbox
+- Restyle home page button size
+- App map feature works when GPS not detected
+- Home posts only shows nearby post
 
 
 ---
