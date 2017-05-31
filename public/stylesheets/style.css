@@ -63,6 +63,10 @@ h1 {
   border: 1px solid #D3D3D3
 }
 
+#modal-cmt-add {
+  width: 70%;
+}
+
 .post_header {
   display: flex;
   flex-direction: row;
