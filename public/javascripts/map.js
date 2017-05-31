@@ -296,14 +296,14 @@ function setupMap(data) {
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
     map.on('popupopen', function (e) {
-        // $(" button.btn-vote").click( function () {
-        //     console.log('id: ' + $(".popup").data('id'));
-        //     vote( $(".popup").data('id'), 1,
-        //         function (res, req) {
-        //             console.log('id voted: ' + res.id + ', val: ' + res.voted);
-        //             updateVote(res.id, parseInt(res.voted));
-        //         });
-        // });
+    });
+    map.on('zoomend', function (e) {
+        // TODO: implement question mark post when zoom too big
+        if (this.getZoom() <= 10) {
+
+        } else {
+
+        }
     });
 
 
