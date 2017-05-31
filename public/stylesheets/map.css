@@ -42,3 +42,13 @@ html, body, #map {
 .bootbox-body {
     text-align: center;
 }
+
+img.graffiti {
+    transition:transform 0.25s ease;
+}
+
+img.graffiti:hover {
+    z-index: 5;
+    -webkit-transform:scale(2.5);
+    transform:scale(2.5);
+}
