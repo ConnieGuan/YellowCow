@@ -285,6 +285,7 @@ img.popup {
     }
     .row{
       margin-left: 12.5%;
+      max-width: 300px;
     }
 }
 
