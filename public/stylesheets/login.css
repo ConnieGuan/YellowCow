@@ -1,4 +1,3 @@
-
 #login-bg {
     position: absolute;
     height: 100%;
@@ -6,6 +5,8 @@
     background: url("/images/login-background.png") center no-repeat;
     opacity: 0.4;
     filter: alpha(opacity=40);
+    transform: translate3d(0,0,0);  
+
 }
 
 

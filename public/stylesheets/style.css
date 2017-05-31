@@ -63,9 +63,6 @@ h1 {
   border: 1px solid #D3D3D3
 }
 
-#modal-cmt-add {
-  width: 70%;
-}
 
 .post_header {
   display: flex;
@@ -230,7 +227,9 @@ img.popup {
   margin-right: auto;
   margin-left: auto;
   font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  width: 70%;
 }
+
 #modal-btn-add {
   display: inline-block;
   margin-right: auto;
@@ -244,6 +243,9 @@ img.popup {
   margin: 10px;
 }
 
+#user-sign-up {
+  width: 70%;
+}
 
 .modal-dialogue {
   display: inline-block;

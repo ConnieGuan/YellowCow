@@ -1,6 +1,6 @@
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    width: 100%;
+
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -16,7 +16,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    
 }
 
 #login-btn {
@@ -30,13 +30,18 @@ button {
 }
 
 /* Extra styles for the cancel button */
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
+.btn-cancel {
+    width: 10%;
 }
 
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn,.signupbtn {float:left;width:50%}
+.btn-signup {
+    width:10%;
+}
+
+.sign-up {
+    width: 50%;
+}
+
 
 /* Add padding to container elements */
 .container {
