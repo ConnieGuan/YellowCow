@@ -19,6 +19,16 @@ button {
     width: 100%;
 }
 
+#login-btn {
+  border-color: #fbce43;
+  background-color: #fbce43;
+}
+
+#signup-btn {
+  border-color: #fbce43;
+  background-color: #fbce43;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;
