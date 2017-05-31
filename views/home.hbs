@@ -37,9 +37,9 @@
                         </div>
                         <div class="post_right">
                             <div class="">
-                                <a class="btn fa fa-caret-up fa-2x" onclick="vote({{id}}, 1, updateVote)"></a>
+                                <a id="upbtn" class="btn fa fa-caret-up fa-2x" style="color: #C8C8C8;" onclick="vote({{id}}, 1, updateVote)"></a>
                                 <p class="votes" style="text-align: center; line-height: 100%;">{{ votes }} votes</p>
-                                <a class="btn fa fa-caret-down fa-2x" onclick="vote({{id}}, -1, updateVote)"></a>
+                                <a id="downbtn" class="btn fa fa-caret-down fa-2x" style="color: #C8C8C8;" onclick="vote({{id}}, -1, updateVote)"></a>
                             </div>
                         </div>
                     </div>

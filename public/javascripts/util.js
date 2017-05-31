@@ -3,7 +3,7 @@
  */
 
 var data;
-var voteval = new Array(); //stores whether or not user has voted on a post
+var voteval = new Array(); //stores what user has voted on a post
                             // TODO: track it persistently across session later
 
 $(document).ready(function (event) {
@@ -25,9 +25,48 @@ function vote(id, value, callback) {
     while(id > voteval.length){ //increases size of array if id is too big
         voteval.push(0); //0 means haven't voted at all yet; 1 is upvoted; -1 is downvoted
     }
-    if(voteval[id] == 0 || voteval[id] != value){
+    if(!voteval[id] || voteval[id] != value){ //updates only if different
+
+        /* Updates button colors
+        if(value == 1){
+            document.getElementById("upbtn").style.color = "#110275";
+        }
+        else{
+            document.getElementById("downbtn").style.color = "#110275";
+        }
+        */
+
+        var origVal = value;
+        if(voteval[id]){ //changed vote to opposite
+            value += value;
+
+            /* Updates button colors
+            if(value == 1){
+                document.getElementById("downbtn").style.color = "#C8C8C8";
+            }
+            else{
+                document.getElementById("upbtn").style.color = "#C8C8C8";
+            }
+            */
+
+        }
         $.post('/post/vote', {'id': id, 'value': value}, callback);
-        voteval[id] = value;
+        voteval[id] = origVal;
+    }
+    else if(voteval[id] && voteval[id] == value){ //undo vote
+
+        /* Updates button colors back to original
+        if(value == 1){
+            document.getElementById("upbtn").style.color = "#C8C8C8";
+        }
+        else{
+            document.getElementById("downbtn").style.color = "#C8C8C8";
+        }
+        */
+
+        value = -value;
+        $.post('/post/vote', {'id': id, 'value': value}, callback);
+        voteval[id] = 0;
     }
 }
 
