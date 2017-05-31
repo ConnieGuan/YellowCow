@@ -124,7 +124,7 @@ var __slice = Array.prototype.slice;
       //return false;
 
       $('#PhotoPicker').on('change', function(e) {
-        console.log("in this bih2");
+        // console.log("in this bih2");
         e.preventDefault();
         if(this.files.length === 0) return;
 
@@ -140,24 +140,35 @@ var __slice = Array.prototype.slice;
 
         function readImage(theFile) {
           if ( theFile && theFile[0] ) {
-          var FR= new FileReader();
-           FR.onload = function(e) {
-             img = new Image();
-             img.onload = function() {
-               /* Image rotation */
-               /* EXIF.getData(img, function() {
-                console.log("help");
-                var orientation = EXIF.TiffTags.getTag(this, "Orientation");
-                console.log("orientation is " + orientation); 
-               }); */
-               context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
-             };
-            img.src = e.target.result;
-          };       
+            var orientation;
+            /* Image rotation */
+            EXIF.getData(theFile[0], function() {
+              orientation = EXIF.getTag(this, "Orientation"); // EXIF.TiffTags.getTag
+              console.log("orientation is " + orientation);  
 
-          console.log(theFile[0]);
+            }); 
+            var FR = new FileReader();
+            FR.onload = function(e) {
+              img = new Image();
+              img.onload = function() {
+                // transform context before drawing image
+                switch (orientation) {
+                  case 2: context.transform(-1, 0, 0, 1, canvasId.width, 0); break;
+                  case 3: context.transform(-1, 0, 0, -1, canvasId.width, canvasId.height ); break;
+                  case 4: context.transform(1, 0, 0, -1, 0, canvasId.height ); break;
+                  case 5: context.transform(0, 1, 1, 0, 0, 0); break;
+                  case 6: context.transform(0, 1, -1, 0, canvasId.height , 0); break;
+                  case 7: context.transform(0, -1, -1, 0, canvasId.height , canvasId.width); break;
+                  case 8: context.transform(0, -1, 1, 0, 0, canvasId.width); break;
+                  default: break;
+                }
+                context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+              };
+              img.src = e.target.result;
 
-          FR.readAsDataURL( theFile[0] );
+            };       
+
+            FR.readAsDataURL( theFile[0] );
           }
         }
 
