@@ -232,7 +232,27 @@ function setupMap(data) {
         });
         current_pos = new L.LatLng( coor_ucsd[0], coor_ucsd[1]); // ( coor_ucsd.slice().reverse() );
         console.log(current_pos);
-        L.marker(current_pos, {icon: icon_you}).addTo(map).bindPopup("<h4>Default location</h4>");
+        var mylocation = L.marker(current_pos, {icon: icon_you}).addTo(map); //.bindPopup("<h4>Default location</h4>");
+
+        mylocation.on('click', function (e) {
+            var customPopup = $("<div>").addClass('popup-inner')
+                .append( "<h3 class='popup-votes'>You are set at the default location.</h3>" );
+
+            bootbox.alert({
+                size: 'large',
+                title: 'Default Location',
+                message: customPopup.html(),
+                buttons: {
+                    ok: {
+                        label: 'Close',
+                        className: 'btn-danger'
+                        // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
+                    }
+                },
+                callback: function (result) { },
+                backdrop: true
+            });
+        }).on('popupclose', function (e) { });
 
         var radius = e.accuracy / 2;
         map.panTo(new L.LatLng(coor_ucsd[0], coor_ucsd[1]));
