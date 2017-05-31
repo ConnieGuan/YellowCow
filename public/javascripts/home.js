@@ -142,7 +142,7 @@ function toggleMap(id) {
  * @param status
  */
 function updateVote(result, status) {
-    $(`div.row[data-id=${result.id}]`).find('p.votes').text('Votes: ' + result.voted);
+    $(`div.row[data-id=${result.id}]`).find('p.votes').text(result.voted + ' votes');
 }
 
 /**

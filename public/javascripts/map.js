@@ -133,6 +133,26 @@ function setupMap(data) {
     function onEachHiddenFeature(feature, layer) {
         layer.on('click', function (e) {
             if (radius_circle) { map.removeLayer(radius_circle); }
+            var customPopup = $("<div>").addClass('popup-inner')
+                .append( "<h3 class='popup-votes'>You must travel within this radius to view this pintura.</h3>" );
+
+            bootbox.alert({
+                    size: 'large',
+                    title: '',
+                    message: customPopup.html(),
+                    buttons: {
+                        ok: {
+                            label: 'Close',
+                            className: 'btn-danger'
+                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
+                        }
+                    },
+                    callback: function (result) { },
+                    backdrop: true
+                });
+
+
+
             radius_circle = L.circle( e.latlng, { radius: feature.radius, color: 'gray'}).addTo(map);
         }).on('popupclose', function (e) {
             map.removeLayer(radius_circle);
@@ -147,12 +167,41 @@ function setupMap(data) {
         current_pos = e.latlng;
         var radius = e.accuracy / 2;
 //        L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>").openPopup(); // open pop up kinda annoying <-- I agree
-        L.marker(e.latlng, {icon: icon_you}).addTo(map).bindPopup("<h4>You are here</h4>");
+        var mylocation = L.marker(e.latlng, {icon: icon_you}).addTo(map); //.bindPopup("<h4>You are here</h4>");
+
+        mylocation.on('click', function (e) {
+            var customPopup = $("<div>").addClass('popup-inner')
+                .append( "<h3 class='popup-votes'>Would you like to post a pintura at your current location?</h3>" );
+
+            bootbox.confirm({
+                    size: 'large',
+                    title: 'Your Location',
+                    message: customPopup.html(),
+                    buttons: {
+                        confirm: {
+                            label: 'Post',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Close',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            document.location.href ="/post";
+                        }
+                    },
+                    backdrop: true
+                });
+        }).on('popupclose', function (e) { });
+
         //L.circle(e.latlng, radius).addTo(map); //this is kinda pointless right?
         setupFeatures();
 
         console.log('post hidden: ' + post_hidden);
     }
+
     /**
      * Fires when GPS fail to locate, or user does not allow to detect location
      * @param e
@@ -199,10 +248,10 @@ function setupMap(data) {
                     onEachFeature: onEachFeature
                 }).addTo(map);
             } else {
-                // add custum markers for unexplored graffiti area
+                // add custom markers for unexplored graffiti area
                 L.geoJSON(features[i].geo, {
                     pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, {icon: icon_unexplored}).bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
+                        return L.marker(latlng, {icon: icon_unexplored}); //.bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
                     },
                     onEachFeature: onEachHiddenFeature
                 }).addTo(map);
