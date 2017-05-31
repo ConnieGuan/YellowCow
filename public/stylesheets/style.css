@@ -52,7 +52,10 @@ h1 {
 }
 
 .graffiti {
+  margin: auto;
   width: 100%;
+  max-width: 250px;
+  max-height: 250px;
   border: 2px solid #000000;
   flex: 3;
 }
