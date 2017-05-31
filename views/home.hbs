@@ -6,7 +6,7 @@
 
 <h1 id="mainHeading" class="text-center">Pintura Home Feed</h1>
 <div id="home-post-btn">
-    <a href="/post" class="btn btn-primary btn-block"> Post a Pintura! </a>
+    <p><button class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'">Post a Pintura!</button></p>
     </div>
 <hr>
 
@@ -27,21 +27,20 @@
 
                     <div class="post_header">
                         <h3 class="strong post_left">{{ title }}</h3>
-                        <div class="post_right user">
-                            <p class="post_right user">{{ user }}</p>
-                            <p>{{ toLocalTime time }}</p>
-                        </div>
                     </div>
                     <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                     <div class="post_header">
                         <div class="strong post_left">
-                            <p class="text-info" style="font-weight: 100;" >Description: {{ description }}</p>
-                            <p class="votes">Votes: {{ votes }}</p>
+                            <p style="text-align: left;">posted {{ toLocalTime time }}</p>
+                            <p style="text-align: left;">by {{ user }}</p>
+                            <br>
+                            <p style="font-weight: 100; text-align: left;">{{ description }}</p>
                         </div>
                         <div class="post_right">
                             <div class="">
-                                <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
-                                <a class="btn fa fa-thumbs-down fa-3x" style="flex: 1;" onclick="vote({{id}}, -1, updateVote)"></a>
+                                <a class="btn fa fa-caret-up fa-2x" onclick="vote({{id}}, 1, updateVote)"></a>
+                                <p class="votes" style="text-align: center; line-height: 100%;">{{ votes }} votes</p>
+                                <a class="btn fa fa-caret-down fa-2x" onclick="vote({{id}}, -1, updateVote)"></a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +49,7 @@
                                 Map
                             </button>
                             <button style="flex: 1" type="button" class="btn-comments btn btn-primary" data-id="{{ id }}">
-                                <span class="glyphicon glyphicon-comment"></span>Comments 
+                                <span class="glyphicon glyphicon-comment"></span> Comments 
                             </button>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ body {
   padding-top: 3.1em;
   font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color: white;
+  line-height: 50%;
 }
 
 a {
@@ -67,14 +68,17 @@ h1 {
 }
 .post_left {
   position: relative;
-  flex: 1;
-    align-content: center;
+  flex: 3;
+  align-content: center;
   align-self: center;
   vertical-align: middle;
 }
 .post_right {
+  position: relative;
   flex: 1;
-    text-align: right;
+  align-content: center;
+  align-items: center;
+  text-align: right;
 }
 
 .map {
