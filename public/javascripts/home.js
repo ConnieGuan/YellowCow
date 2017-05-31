@@ -27,9 +27,7 @@ $(document).ready(function (event) {
             modalBody.html($comments.html());
         });
     })
-        .hover(function () {
-            $(this).toggleClass('hvr-grow-rotate');
-        });
+
 
     var commentShown = false;
 
