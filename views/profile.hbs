@@ -3,66 +3,82 @@
 </head>
 
 <h1 id="mainHeading" class="text-center">Your Profile</h1>
-<hr>
+<p><button id="nopostsbtn" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'"></button></p>
+<br>
+<h2>Post History</h2>
+<script>var ownposts = 0;</script>
 
-<div class="container-fluid align-center">
+<div class="container-fluid align-center post_list">
 
-    <h2>Post History</h2>
-    <script>var ownposts = 0;</script>
 
     {{#if post_exists}}
     {{#each user_posts}}
             <script>ownposts++;</script>
-            <div class="container-fluid row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+
+            <div class="container-fluid post row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
 
                 <!--This is hidden (comments shown using modal)-->
                 <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
                     {{#each comments}}
-                        <p class="list-group-item">{{ this }}</p>
+                        <p class="list-group-item" style="font-family: 'Bree Serif', serif;">{{ this }}</p>
                     {{/each}}
                 </div>
 
-                <h3 class="strong post_left">Title: {{ title }}</h3>
+                <div class="post_header">
+                    <h3 class="strong post_left">{{ title }}</h3>
+                </div>
                 <img class="post-content graffiti img-rounded img-responsive" src={{ geo.link }} alt="graffiti 1 s drawing"></dt>
                 <div class="post_header">
-                    <div class="strong post_left space">
-                        <p>Description: {{ description }}</p>
-                            <p class="votes">Votes: {{ votes }}</p>
-                            <a class="btn fa fa-thumbs-up fa-3x" onclick="vote({{id}}, 1, updateVote)"></a>
-                            <a class="btn fa fa-thumbs-down fa-3x" onclick="vote({{id}}, -1, updateVote)"></a>
-                            <br><br>
-                            <button type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">Map</button>
-                            <button type="button" class="btn-comments btn btn-primary" data-id="{{ id }}"><span class="glyphicon glyphicon-comment"></span> Comments </button>
-                        <button type="button" class="btn delete btn-danger" onclick="removePost({{id}})">Delete</button>
+                    <div class="strong post_left">
+                        <p style="text-align: left; line-height: 50%;">Posted {{ toLocalTime time }}</p>
+                        <p style="text-align: left; line-height: 50%;">by {{ user }}</p>
+                        <p style="font-weight: 100; text-align: left;">{{ description }}</p>
                     </div>
-
-
-                    <!--<img class="icn-comments btn-comments" src="images/comment-bubble.png" alt="" data-id="{{ id }}"> -->
+                    <div class="post_right">
+                        <div class="">
+                            <a id="upbtn" class="btn fa fa-caret-up fa-2x" style="color: #C8C8C8;" onclick="vote({{id}}, 1, updateVote)"></a>
+                            <p class="votes" style="text-align: center; line-height: 100%;">{{ votes }} votes</p>
+                            <a id="downbtn" class="btn fa fa-caret-down fa-2x" style="color: #C8C8C8;" onclick="vote({{id}}, -1, updateVote)"></a>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row-reverse">
+                        <button style="flex: 1" type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">
+                            Map
+                        </button>
+                        <button style="flex: 1" type="button" id="commentBtn" class="btn-comments btn btn-primary" data-id="{{ id }}">
+                            <span class="glyphicon glyphicon-comment"></span> Comments 
+                        </button>
+                        <button style="flex: 1; margin-right: 10px;" type="button" class="btn delete btn-danger" onclick="removePost({{id}})">
+                            Delete
+                        </button>
                 </div>
             </div>
             <hr>
+
     {{/each}}
     {{ else }}
         <h3 class="text-center" class="strong post_left" id="noposts"></h3>
     {{/if}}
-    <p><button id="nopostsbtn" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'"></button></p>
-    <script>
-        if(ownposts == 0){
-            document.getElementById("noposts").innerHTML = "You haven't posted any pinturas yet!";
-            document.getElementById("nopostsbtn").innerHTML = "Post one now!";
-        }
-        else{
-            document.getElementById("nopostsbtn").innerHTML = "Post a Pintura!";
-        }
-    </script>
-
 
 </div>
+
+<script>
+    if(ownposts == 0){
+        document.getElementById("noposts").innerHTML = "You haven't posted any pinturas yet!";
+        document.getElementById("nopostsbtn").innerHTML = "Post one now!";
+    }
+    else{
+        document.getElementById("nopostsbtn").innerHTML = "Post a Pintura!";
+    }
+</script>
+
 
 <!-- The Modal for Comments -->
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
+    <div class="modal-dialogue">
     <div class="modal-content">
         <div class="modal-header">
             <!-- <span class="close">&times;</span> -->
@@ -70,15 +86,19 @@
         </div>
         <div class="modal-body">
         </div>
-        <textarea id="modal-cmt-add"    style="width: 100%;" hidden="hidden" rows="4" cols="50"></textarea>
-        <button   id="modal-btn-add"    class="btn btn-lg btn-primary" style="width:100%;">Add Comment</button>
-        <button   id="modal-btn-close"  class="btn btn-lg btn-danger" style="width:100%;">Close</button>
+        <div class = "modal-tools">
+            <textarea id="modal-cmt-add"    rows="4"></textarea>
+            <button   id="modal-btn-add"    class="btn btn-primary">Add Comments </button>
+            <button   id="modal-btn-close"  class="btn btn-danger">Close</button>
+        </div>
         <!-- <button   id="modal-btn-add"    style="display: block; width: 100%; font-size: 2em;">Add Comment</button> -->
         <!-- <button   id="modal-btn-close"  style="display: block; width: 100%; font-size: 2em;">Close</button> -->
     </div>
-
+</div>
 </div>
 
 
 
+<script type="text/javascript" src="/bower_components/bootbox.js/bootbox.js"></script>
+<script type="text/javascript" src="/bower_components/moment/moment.js"></script>
 <script src="javascripts/home.js"></script>
