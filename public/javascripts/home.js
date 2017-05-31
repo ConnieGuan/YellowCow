@@ -4,10 +4,10 @@
 
 var id_selected = 0;
 var voted = 0;
+var current_pos;
 
 $(document).ready(function (event) {
 
-    var current_pos;
     var map = L.map('map', {
         zoom: 15,
         doubleClickZoom: false
@@ -15,10 +15,14 @@ $(document).ready(function (event) {
     map.on('locationfound', function (e) {
         current_pos = e.latlng;
         console.log('current_pos : ' + current_pos);
+        $(".row").each(setupPosts);
+        $(".map").hide();
+    }).on('locationerror', function (e) {
+        current_pos = new L.LatLng( coor_ucsd[0], coor_ucsd[1]); // ( coor_ucsd.slice().reverse() );
+        $(".row").each(setupPosts);
+        $(".map").hide();
     });
 
-    $(".row").each(setupPosts);
-    $(".map").hide();
 
     // Get the button that opens the modal
 
@@ -100,7 +104,18 @@ $(document).ready(function (event) {
 function setupPosts(i, obj) {
     var id = $(this).data('id');
     var coor = $(this).data('coordinate');
+    var votes = parseInt($(this).data('votes'));
     coor = coor.split(',').map(parseFloat).reverse();
+
+    // var dist = current_pos.distanceTo(features[i].geo.geometry.coordinates.slice().reverse());
+    var dist = current_pos.distanceTo( coor.slice() );
+    var rad = Math.abs(200 + 10.0*(votes));
+
+    if (dist > rad) {
+        $(this).hide();
+    }
+    // console.log('post :', id, ', rad: ' + rad, ', dist: ' + dist);
+
 
 
     var postmap = $('<div>', {

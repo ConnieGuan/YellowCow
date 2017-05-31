@@ -19,7 +19,6 @@ $(document).ready(function (event) {
          */
         data.getFeaturesWithId = function (id) {
             console.log('getting feature of id ' + id);
-            console.log(this);
             for(var i in this.features) {
                 if (this.features[i].id == id)
                     return this.features[i];
@@ -102,7 +101,6 @@ function setupMap(data) {
                 if (radius_circle) { map.removeLayer(radius_circle); }
                 var post = data.getFeaturesWithId(feature.id);
 
-                console.log(post);
                 console.log('actual votes value: ' + post.votes);
                 // TODO: Fix bug with popup value wont update after closed
                 // customPopup.find(".popup-votes").html( post.votes );

@@ -18,7 +18,7 @@
     <div class="container-fluid align-center post_list">
 
             {{#each features}}
-                <div class="container-fluid post row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }}>
+                <div class="container-fluid post row" data-coordinate={{ geo.geometry.coordinates}} data-id={{ id }} data-votes={{ votes }}>
 
                     <!--This is hidden (comments shown using modal)-->
                     <div class="comments list-group" hidden="hidden" data-id="{{ id }}">
