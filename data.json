@@ -15,7 +15,7 @@
 			"time": "2017-05-24T10:31:14-07:00",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/0.jpg",
+				"link": "/graffiti/0.jpg",
 				"properties": {
 					"name": "Home",
 					"popupContent": "My Home Graffiti"
@@ -42,7 +42,7 @@
 			"time": "2017-05-24T09:32:18-07:00",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/2.jpg",
+				"link": "/graffiti/2.jpg",
 				"properties": {
 					"name": "Office",
 					"popupContent": "Office post"
@@ -96,7 +96,7 @@
 			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/3.jpeg",
+				"link": "/graffiti/3.jpeg",
 				"properties": {
 					"name": "Warren",
 					"popupContent": "Warren tag"
@@ -118,12 +118,12 @@
 			"comments": [
 				"Ay!!!"
 			],
-			"votes": 375393,
+			"votes": 375392,
 			"nsfw": false,
 			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/4.jpg",
+				"link": "/graffiti/4.jpg",
 				"properties": {
 					"name": "Revelle",
 					"popupContent": "Revelle tag"
@@ -150,7 +150,7 @@
 			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/5.jpg",
+				"link": "/graffiti/5.jpg",
 				"properties": {
 					"name": "Village",
 					"popupContent": "Village tag"
@@ -179,7 +179,7 @@
 			"time": "2017-05-19T19:10:18.134Z",
 			"geo": {
 				"type": "Feature",
-				"link": "graffiti/6.jpg",
+				"link": "/graffiti/6.jpg",
 				"properties": {
 					"name": "UTC",
 					"popupContent": "UTC tag"

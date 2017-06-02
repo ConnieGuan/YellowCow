@@ -12,7 +12,7 @@ var moment = require('moment');
 
 var map     = require('./routes/map');
 var post    = require('./routes/post');
-var login   = require('./routes/login');
+var main   = require('./routes/main');
 var profile = require('./routes/profile');
 var home    = require('./routes/home');
 var help    = require('./routes/help');
@@ -67,8 +67,8 @@ hbs.registerHelper({
     }
 });
 
-app.use('/'        , login);
-app.use('/login'   , login);
+app.use('/'        , main);
+app.use('/login'   , main);
 app.use('/profile' , profile);
 app.use('/home'    , home);
 app.use('/help'    , help);

@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
     }
 });
 
+
 /**
  * Login entry for main login page
  */
@@ -68,7 +69,7 @@ router.post('/login', function (req, res) {
 
 router.get('/logout', function (req, res, next) {
     req.session.destroy();
-    return res.status(200);
+    return res.status(200).redirect('/');
 });
 
 router.post('/signup', function (req, res, next) {
