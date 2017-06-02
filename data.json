@@ -112,9 +112,9 @@
 		},
 		{
 			"id": 4,
-			"title": "popular",
+			"title": "Vegas",
 			"user": "galinda",
-			"description": "view from my window",
+			"description": "Poker and blackjack",
 			"comments": [
 				"Ay!!!"
 			],
@@ -125,8 +125,8 @@
 				"type": "Feature",
 				"link": "/graffiti/4.jpg",
 				"properties": {
-					"name": "Revelle",
-					"popupContent": "Revelle tag"
+					"name": "Vegas",
+					"popupContent": "Poker and blackjack"
 				},
 				"geometry": {
 					"type": "Point",
