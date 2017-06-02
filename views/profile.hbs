@@ -8,7 +8,7 @@
 <h2>Post History</h2>
 <script>var ownposts = 0;</script>
 
-<div class="container-fluid align-center post_list">
+<div class="container container-fluid align-center post_list">
 
 
     {{#if post_exists}}
@@ -43,12 +43,13 @@
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: row-reverse">
-                        <button style="flex: 1" type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">
-                            Map
-                        </button>
-                        <button style="flex: 1" type="button" id="commentBtn" class="btn-comments btn btn-primary" data-id="{{ id }}">
-                            <span class="glyphicon glyphicon-comment"></span> Comments 
-                        </button>
+                        <!--TODO: dynamic scripts from home page is still not implemented here, cant show map, or comment, yet-->
+                        <!--<button style="flex: 1" type="button" class="btn showmap btn-success" onclick="toggleMap({{id}})">-->
+                            <!--Map-->
+                        <!--</button>-->
+                        <!--<button style="flex: 1" type="button" id="commentBtn" class="btn-comments btn btn-primary" data-id="{{ id }}">-->
+                            <!--<span class="glyphicon glyphicon-comment"></span> Comments -->
+                        <!--</button>-->
                         <button style="flex: 1; margin-right: 10px;" type="button" class="btn delete btn-danger" onclick="removePost({{id}})">
                             Delete
                         </button>
