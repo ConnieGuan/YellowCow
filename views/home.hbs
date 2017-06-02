@@ -1,6 +1,17 @@
 
 <head>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <style>
+        img.graffiti {
+            transition:transform 0.25s ease;
+        }
+
+        img.graffiti:hover {
+            z-index: 10;
+            -webkit-transform:scale(1.5);
+            transform:scale(1.5);
+        }
+    </style>
 </head>
 
 <div id="map" hidden="true"></div>

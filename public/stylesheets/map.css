@@ -48,7 +48,7 @@ img.graffiti {
 }
 
 img.graffiti:hover {
-    z-index: 5;
+    z-index: 10;
     -webkit-transform:scale(2.5);
     transform:scale(2.5);
 }
