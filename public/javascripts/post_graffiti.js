@@ -1,3 +1,4 @@
+
 $(document).ready(function (event) {
     // http://stackoverflow.com/questions/34048093/submit-canvas-data-in-an-html-form
     var canvas = document.getElementById('myCanvas');
@@ -51,45 +52,42 @@ $(document).ready(function (event) {
     });
     // $(document).on('submit', '#post_graffiti_form', function(event) {
     // });
-});
 
+    var coor = [-117.23758, 32.88044]; // UCSD default
 
-var coor = [-117.23758, 32.88044]; // UCSD default
-
-var map = L.map('map', {
-    center: coor.slice().reverse(),
-        zoom: 20,
+    var map = L.map('map', {
+        center: coor.slice().reverse(),
+        zoom: 15,
         zoomControl: false,
         attributionControl: false,
         boxZoom: false,
         dragging: false,
         doubleClickZoom: false,
         scrollWheelZoom: false
-}).locate({setView: true, maxZoom: 16});
+    }).locate({setView: true, maxZoom: 16});
 
-var new_marker = L.icon({
-    iconUrl: 'images/marker-new.png',
-    iconSize: [45, 45]
+    var new_marker = L.icon({
+        iconUrl: 'images/marker-new.png',
+        iconSize: [45, 45]
+    });
+
+    L.tileLayer(openstreetUrl, openstreetAttribution).addTo(map);
+
+    function onLocationFound(e) {
+        coor = [e.latlng.lng, e.latlng.lat];
+
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng, { icon: new_marker }).addTo(map).bindPopup("<h4>Your pintura will be posted here.</h4>").openPopup();
+
+        console.log('location: e.latlng');
+    }
+
+    function onLocationError(e) {
+        alert('Location cannot be found because of GPS error. Will center around UCSD');
+        map.panTo( coor, 15);
+    }
+
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
 });
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-function onLocationFound(e) {
-    coor = [e.latlng.lng, e.latlng.lat];
-
-    var radius = e.accuracy / 2;
-
-    L.marker(e.latlng, { icon: new_marker }).addTo(map).bindPopup("<h4>Your pintura will be posted here.</h4>").openPopup();
-
-    console.log('location: e.latlng');
-}
-
-function onLocationError(e) {
-    alert('Location cannot be found because of GPS error. Will center around UCSD');
-    map.panTo( coor, 15);
-}
-
-map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);

@@ -6,6 +6,10 @@ var data;
 var voteval = new Array(); //stores what user has voted on a post
                             // TODO: track it persistently across session later
 
+var mapboxUrl = 'https://api.mapbox.com/styles/v1/twsalim/cj201s4ev001q2soz3o0zvcsg/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHdzYWxpbSIsImEiOiJjajFoNGpsd2owMGI0MzNvaGNxeWN5ZTJ3In0.X-Mp23YcMlZIfXak5KzKvg';
+var openstreetUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var openstreetAttribution = { attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'};
+
 $(document).ready(function (event) {
     console.log('inside util.js');
 });

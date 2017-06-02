@@ -47,15 +47,20 @@ function setupMap(data) {
     var current_pos = null;
     var post_hidden = 0;
 
+    var hiddenpost = new L.LayerGroup();
+    var openstreet = L.tileLayer(openstreetUrl, openstreetAttribution);
+    var mapbox = L.tileLayer(mapboxUrl);
+    var baseMap    = { "OpenStreet": openstreet, "MapBox": mapbox };
+    var overlayMap = { "Hidden": hiddenpost };
+
     var map = L.map('map', {
         zoom: 15,
-        doubleClickZoom: false
+        doubleClickZoom: false,
+        layers: [hiddenpost, openstreet]
     }).locate({setView: true, maxZoom: 16});
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
+    // NOTE: uncomment below to choose map tile
+    // L.control.layers(baseMap, overlayMap).addTo(map);
 
     var customOptions = {
         maxWidth: "300",
@@ -70,7 +75,7 @@ function setupMap(data) {
     /**
      * Call back function used on each graffiti post
      */
-    function onEachFeature(feature, layer) {
+    function setupFeature(feature, layer) {
         var id = feature.id;
         var votes = feature.votes;
 
@@ -119,7 +124,6 @@ function setupMap(data) {
                 var post = data.getFeaturesWithId(feature.id);
 
                 console.log('actual votes value: ' + post.votes);
-                // TODO: Fix bug with popup value wont update after closed
 
                 bootbox.alert({
                     size: 'large',
@@ -140,9 +144,9 @@ function setupMap(data) {
      * @param feature
      * @param layer
      */
-    function onEachHiddenFeature(feature, layer) {
+    function setupHiddenFeature(feature, layer) {
         layer.on('click', function (e) {
-            if (radius_circle) { map.removeLayer(radius_circle); }
+            if (radius_circle) { hiddenpost.removeLayer(radius_circle); }
             var customPopup = $("<div>").addClass('popup-inner')
                 .append( "<h3 class='popup-votes'>You must travel within this radius to view this pintura.</h3>" );
 
@@ -154,7 +158,6 @@ function setupMap(data) {
                         ok: {
                             label: 'Close',
                             className: 'btn-danger'
-                            // <a class="btn fa fa-thumbs-up fa-3x" style="flex: 1;" onclick="vote({{id}}, 1, updateVote)"></a>
                         }
                     },
                     callback: function (result) { },
@@ -163,9 +166,9 @@ function setupMap(data) {
 
 
 
-            radius_circle = L.circle( e.latlng, { radius: feature.radius, color: 'gray'}).addTo(map);
+            radius_circle = L.circle( e.latlng, { radius: feature.radius, color: 'gray'}).addTo(hiddenpost);
         }).on('popupclose', function (e) {
-            map.removeLayer(radius_circle);
+            hiddenpost.removeLayer(radius_circle);
         });
     }
 
@@ -274,7 +277,7 @@ function setupMap(data) {
                             return L.marker(latlng, {icon: icon_hot});
                         } else { return L.marker(latlng, {icon: icon_pin}); }
                     },
-                    onEachFeature: onEachFeature
+                    onEachFeature: setupFeature
                 }).addTo(map);
             } else {
                 // add custom markers for unexplored graffiti area
@@ -282,13 +285,14 @@ function setupMap(data) {
                     pointToLayer: function (feature, latlng) {
                         return L.marker(latlng, {icon: icon_unexplored}); //.bindPopup("<h4>You must travel within this radius to view this pintura.</h4>");
                     },
-                    onEachFeature: onEachHiddenFeature
-                }).addTo(map);
+                    onEachFeature: setupHiddenFeature
+                }).addTo(hiddenpost);
                 post_hidden++;
             }
         }
     }
 
+    var hidden_shown = true;
 
     /**
      * Callbacks for the GPS detection events
@@ -298,11 +302,16 @@ function setupMap(data) {
     map.on('popupopen', function (e) {
     });
     map.on('zoomend', function (e) {
-        // TODO: implement question mark post when zoom too big
         if (this.getZoom() <= 10) {
-
+            if (hidden_shown) {
+                hidden_shown = false;
+                map.removeLayer(hiddenpost);
+            }
         } else {
-
+            if (!hidden_shown) {
+                hidden_shown = true;
+                map.addLayer(hiddenpost);
+            }
         }
     });
 
