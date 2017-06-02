@@ -3,7 +3,9 @@
 </head>
 
 <h1 id="mainHeading" class="text-center">Your Profile</h1>
-<p><button id="nopostsbtn" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'"></button></p>
+{{#if own}}
+    <p><button id="nopostsbtn" class="btn btn-primary btn-block btn-lg" onclick="window.location.href='/post'"></button></p>
+{{/if}}
 <br>
 <h2>Post History</h2>
 <script>var ownposts = 0;</script>
@@ -50,16 +52,24 @@
                         <!--<button style="flex: 1" type="button" id="commentBtn" class="btn-comments btn btn-primary" data-id="{{ id }}">-->
                             <!--<span class="glyphicon glyphicon-comment"></span> Comments -->
                         <!--</button>-->
+                        {{#if own}}
                         <button style="flex: 1; margin-right: 10px;" type="button" class="btn delete btn-danger" onclick="removePost({{id}})">
                             Delete
                         </button>
+                        {{/if}}
                 </div>
             </div>
             <hr>
 
     {{/each}}
     {{ else }}
-        <h3 class="text-center" class="strong post_left" id="noposts"></h3>
+        {{#if own}}
+            <h3 class="text-center" class="strong post_left" id="noposts"></h3>
+        {{ else }}
+            <h3 class="text-center" class="strong post_left">
+                This user has no post
+            </h3>
+        {{/if}}
     {{/if}}
 
 </div>

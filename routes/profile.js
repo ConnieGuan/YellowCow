@@ -22,8 +22,26 @@ router.get('/', function(req, res, next) {
     var userposts = data.features.filter(x => post_ids.indexOf(x.id) > -1 );
 
     console.log(userposts);
-    res.render('profile', { title: 'Profile', 'user_posts' : userposts, 'post_exists': (userposts.length > 0)});
+    res.render('profile', { own: true, title: 'Profile', 'user_posts' : userposts, 'post_exists': (userposts.length > 0)});
 });
+
+/**
+ * Access public profile
+ */
+router.get('/:userId', function (req, res, next) {
+    // get requested user posts
+    let user = helpers.getUser(req.params.userId);
+    if (user) {
+        var post_ids = user.posts;
+        var userposts = data.features.filter(x => post_ids.indexOf(x.id) > -1 );
+
+        // res.send({ title: 'Profile', 'user_posts' : userposts, 'post_exists': (userposts.length > 0)});
+        res.render('profile', { own: false, title: 'Profile', 'user_posts' : userposts, 'post_exists': (userposts.length > 0)});
+    } else {
+        res.status(409).redirect('/');
+    }
+});
+
 
 /**
  * API check if session is on
@@ -49,11 +67,6 @@ router.post('/add_comments', function (req, res, next) {
     });
 
     res.redirect('/home');
-});
-
-router.get('/logout', function (req, res, next) {
-    req.session.destroy();
-    res.redirect('/login');
 });
 
 module.exports = router;
