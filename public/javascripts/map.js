@@ -29,6 +29,8 @@ $(document).ready(function (event) {
     }).done(setupMap);
 });
 
+var global_map = {};
+
 var current_popup;  // to be used as reference to update vote number later on
 function updateVote(result, status) {
     console.log(result);
@@ -58,6 +60,8 @@ function setupMap(data) {
         doubleClickZoom: false,
         layers: [hiddenpost, openstreet]
     }).locate({setView: true, maxZoom: 16});
+
+    global_map = map;
 
     // NOTE: uncomment below to choose map tile
     // L.control.layers(baseMap, overlayMap).addTo(map);
